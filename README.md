@@ -61,14 +61,14 @@ MEB 是运行在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harn
 4. 从左侧打开 **MEB 工作台**。
 
 ```text
-meb-workbench
+meb-workbench@0.1.4
 ```
 
 <p align="center">
   <img src="docs/images/dsh-install.svg" alt="安装步骤：打开添加插件、输入 meb-workbench、安装并打开工作台" width="100%">
 </p>
 
-镜像源暂未同步时，可在「安装源」中选择 npm 官方源。需要固定版本时，输入 `meb-workbench@0.1.4`，已发布版本见 [npm 版本列表](https://www.npmjs.com/package/meb-workbench?activeTab=versions)。
+当前推荐固定安装 `meb-workbench@0.1.4`。刚发布的版本在部分 DSH / pnpm 环境中有等待期，仅填写包名可能安装到旧版。镜像源暂未同步时，可在「安装源」中选择 npm 官方源；已发布版本见 [npm 版本列表](https://www.npmjs.com/package/meb-workbench?activeTab=versions)。
 
 <details>
 <summary>其他安装来源：GitHub、下载包、本地源码</summary>
