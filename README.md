@@ -41,7 +41,7 @@ MEB 是运行在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harn
 
 ## 界面预览
 
-以下为当前源码候选版的实际截图，全部使用合成演示数据。npm 当前稳定版为 0.1.3；截图中的新版布局与表格功能尚未发布。首次安装为空工作区，不内置示例项目、模型或工程资料。
+以下为 0.1.4 的实际截图，全部使用合成演示数据。首次安装为空工作区，不内置示例项目、模型或工程资料。
 
 <p align="center">
   <img src="docs/images/workspace-ledger.jpg" alt="收方台账使用连续表格、格式工具栏与独立工作表" width="100%">
@@ -68,7 +68,7 @@ meb-workbench
   <img src="docs/images/dsh-install.svg" alt="安装步骤：打开添加插件、输入 meb-workbench、安装并打开工作台" width="100%">
 </p>
 
-镜像源暂未同步时，可在「安装源」中选择 npm 官方源。需要固定版本时，输入 `meb-workbench@0.1.3`，已发布版本见 [npm 版本列表](https://www.npmjs.com/package/meb-workbench?activeTab=versions)。
+镜像源暂未同步时，可在「安装源」中选择 npm 官方源。需要固定版本时，输入 `meb-workbench@0.1.4`，已发布版本见 [npm 版本列表](https://www.npmjs.com/package/meb-workbench?activeTab=versions)。
 
 <details>
 <summary>其他安装来源：GitHub、下载包、本地源码</summary>
@@ -81,7 +81,7 @@ github:baiye1997/MEB-DSH#main&path:workbench
 
 `main` 指定分支，`path:workbench` 指定仓库中的插件目录。这是 [pnpm 支持的 Git 子目录写法](https://pnpm.io/package-sources#install-from-a-git-repository-combining-different-parameters)。源码安装会执行本仓库的 `prepare` 构建。若 pnpm 提示构建未获准，请检查来源，并只批准当前提交的 `meb-workbench` 构建；不要全局放开脚本。若当前 DSH 版本解析失败，使用 npm 包或本地构建。
 
-**本地安装包**：在终端运行 `npm pack meb-workbench@0.1.3`，将生成的 `.tgz` 文件完整路径填入「添加插件」。安装仍需联网获取 JavaScript 依赖。
+**本地安装包**：在终端运行 `npm pack meb-workbench@0.1.4`，将生成的 `.tgz` 文件完整路径填入「添加插件」。安装仍需联网获取 JavaScript 依赖。
 
 **本地源码**：按 [开发指南](CONTRIBUTING.md#本地构建) 安装依赖并构建，再将本地 `workbench` 目录的完整路径填入「添加插件」。不要填仓库根目录。
 
