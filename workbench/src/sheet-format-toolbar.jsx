@@ -5,10 +5,15 @@ import UIIcon from './ui-icon.jsx';
 import {sheetAlignment,conditionOperators,removeExtraColumn} from './sheet-format.js';
 const fills=[['默认',null],['灰','#f0f1f3'],['蓝','#e9effb'],['绿','#eaf2eb'],['黄','#faf1d9'],['红','#f9e9e7'],['紫','#f0eafa']];
 const inks=[['默认',null],['灰','#646b76'],['蓝','#315da8'],['绿','#39674b'],['棕','#86621f'],['红','#a23f39'],['紫','#73529a']];
+export function shouldDismissFormatToolbar(event,container){
+ // Select menus are portalled outside the toolbar; they still belong to this interaction.
+ if(event.target?.closest?.('.ui-select-popup'))return false;
+ return event.type==='keydown'?event.key==='Escape':event.type==='pointerdown'&&!container?.contains(event.target);
+}
 export default function SheetFormatToolbar({format,selection,onChange,disabled,extra,columns=[],onManageFields,brush,onBrush}){
  const [scope,setScope]=useState('cell'),[panel,setPanel]=useState(''),[operator,setOperator]=useState('gt'),[threshold,setThreshold]=useState(''),[ruleFill,setRuleFill]=useState('#faf1d9'),[fieldName,setFieldName]=useState(''),[fieldType,setFieldType]=useState('text'),[error,setError]=useState('');
  const container=useRef(null),available=!!selection?.columnId&&(scope==='column'||!!selection.rowId),alignment=selection?sheetAlignment(format,selection.rowId,selection.columnId,selection.defaultAlignment):null;
- useEffect(()=>{if(!panel)return;const close=e=>{if(e.type==='keydown'&&e.key==='Escape'||e.type==='pointerdown'&&!container.current?.contains(e.target))setPanel('');};document.addEventListener('pointerdown',close);document.addEventListener('keydown',close);return()=>{document.removeEventListener('pointerdown',close);document.removeEventListener('keydown',close);};},[panel]);
+ useEffect(()=>{if(!panel)return;const close=e=>{if(shouldDismissFormatToolbar(e,container.current))setPanel('');};document.addEventListener('pointerdown',close);document.addEventListener('keydown',close);return()=>{document.removeEventListener('pointerdown',close);document.removeEventListener('keydown',close);};},[panel]);
  useEffect(()=>{if(selection?.kind)setScope(selection.kind);},[selection?.kind]);
  const apply=action=>{try{onChange(changeRangeFormat(format,selection,scope,action));setError('');}catch(e){setError(e.message);}};
  const change=next=>{setError('');onChange(next);},hidden=new Set(format?.hiddenColumns||[]),extras=new Set((format?.extraColumns||[]).map(c=>c.id));

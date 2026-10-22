@@ -56,6 +56,16 @@ assert.match(tbodyHtml,/data-format-column="name" data-align="right"/);
 assert.match(tbodyHtml,/data-format-column="name" data-align="center"/);
 console.log('Legacy tbody rows retain saved cell and row alignment through original business IDs.');
 
+import {shouldDismissFormatToolbar} from '../src/sheet-format-toolbar.jsx';
+const fieldButton={},portalOption={closest:selector=>selector==='.ui-select-popup'?{}:null},outsideButton={closest:()=>null},toolbar={contains:target=>target===fieldButton};
+assert.equal(shouldDismissFormatToolbar({type:'pointerdown',target:fieldButton},toolbar),false);
+assert.equal(shouldDismissFormatToolbar({type:'pointerdown',target:portalOption},toolbar),false);
+assert.equal(shouldDismissFormatToolbar({type:'keydown',key:'Escape',target:portalOption},toolbar),false);
+assert.equal(shouldDismissFormatToolbar({type:'pointerdown',target:outsideButton},toolbar),true);
+assert.equal(shouldDismissFormatToolbar({type:'keydown',key:'Escape',target:fieldButton},toolbar),true);
+assert.equal(shouldDismissFormatToolbar({type:'keydown',key:'ArrowDown',target:fieldButton},toolbar),false);
+console.log('Portalled field and condition menus retain their format panel; Escape dismisses one layer.');
+
 import './check-calculator-render.jsx';
 
 import './check-model-editor-render.jsx';
