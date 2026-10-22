@@ -1,0 +1,48 @@
+.meb .sheet-format-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;flex:none;padding:3px 0 5px;font-size:12px;min-height:32px}
+.meb .sheet-format-toolbar .ui-select{min-width:88px;min-height:26px;height:26px;padding:2px 7px;gap:6px;font-size:12px;line-height:1.4}
+.meb .sheet-alignment-actions{display:flex;gap:2px}
+.meb .sheet-format-toolbar .sheet-alignment-actions button{display:inline-flex;align-items:center;justify-content:center;width:28px;min-width:28px;height:26px;min-height:26px;padding:4px;border:1px solid transparent;background:transparent}
+.meb .sheet-format-toolbar .sheet-alignment-actions button[aria-pressed=true]{background:var(--selected);border-color:var(--rule);color:var(--blue)}
+.meb .sheet-format-selection{min-width:0;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:11px}
+.meb .sheet-cell[data-align]{text-align:var(--sheet-cell-align);justify-content:var(--sheet-cell-justify)}
+.meb .sheet-cell[data-align] :is(input:not([type=checkbox]),textarea,output,.cell-summary,.mode-cell>span,button:not(.calendar-trigger):not(.ui-select)){text-align:var(--sheet-cell-align)}
+.meb .sheet-cell[data-align]>output{width:100%}
+.meb .sheet-cell[data-align] .record-title{width:100%}
+.meb .sheet-cell[data-align] .ui-select>span:first-child{flex:1;text-align:var(--sheet-cell-align)}
+.meb .sheet-host{position:relative}
+.meb .sheet-format-toolbar{position:relative;z-index:4;padding-inline:8px;overflow:visible}
+.meb .sheet-format-toolbar .sheet-format-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;min-height:26px;height:26px;padding:3px 6px;font-size:11px;white-space:nowrap}
+.meb .sheet-format-trigger[aria-expanded=true]{background:var(--selected)}
+.meb .sheet-format-panel{position:absolute;left:8px;top:100%;z-index:40;width:min(360px,calc(100% - 16px));max-height:min(430px,60vh);overflow:auto;padding:14px;background:#fff;color:var(--ink);border:1px solid var(--rule);border-radius:9px;box-shadow:0 8px 24px #26324718;font-size:12px;line-height:20px;text-align:left}
+.meb .sheet-format-panel>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.meb .sheet-format-panel>header button{display:flex;align-items:center;justify-content:center;width:26px;min-width:26px;height:26px;min-height:26px;border:0;padding:4px;background:transparent}
+.meb .sheet-format-panel p{margin:6px 0 10px;font-size:11px;color:var(--muted);line-height:18px}
+.meb .sheet-format-panel label{display:flex;gap:6px;align-items:center;margin:8px 0;font-size:12px;line-height:20px;min-width:0}
+.meb .sheet-format-panel :is(input:not([type=checkbox]),.ui-select){height:30px;min-height:30px;padding:4px 7px;font-size:12px;min-width:0;width:100%}
+.meb .sheet-format-panel input[type=checkbox]{appearance:auto;width:14px;min-width:14px;height:14px;min-height:14px;padding:0;margin:0;accent-color:var(--accent)}
+.meb .sheet-format-panel button:not(.sheet-palette button){height:28px;min-height:28px;padding:3px 8px;font-size:11px}
+.meb .sheet-format-panel>small{color:var(--muted);font-size:11px}
+.meb .sheet-palette>label{margin:10px 0 5px}
+.meb .sheet-palette>div{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.meb .sheet-palette button{display:flex;align-items:center;justify-content:center;width:28px;min-width:28px;height:28px;min-height:28px;border:1px solid #d9dfe8;border-radius:5px;padding:4px;font-size:14px;font-weight:600}
+.meb .sheet-palette .sheet-custom-color{position:relative;display:flex;width:34px;height:28px;margin:0;align-items:center;justify-content:center;font-size:10px}
+.meb .sheet-custom-color input[type=color]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.meb .sheet-rule-inputs{display:flex;gap:8px;margin-block:10px}
+.meb .sheet-format-panel .sheet-rule-color{justify-content:space-between}
+.meb .sheet-rule-color input[type=color]{width:44px;max-width:44px;padding:2px}
+.meb .sheet-rule-list>div{display:flex;align-items:center;gap:8px;border-top:1px solid var(--rule);padding:6px 0}
+.meb .sheet-rule-list>div>span{width:12px;height:12px;border:1px solid var(--rule);border-radius:3px;flex:none}
+.meb .sheet-rule-list p{flex:1;margin:0}
+.meb .sheet-field-list{max-height:230px;overflow:auto;margin:8px 0}
+.meb .sheet-field-list>div{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--rule)}
+.meb .sheet-field-list label{flex:1;margin:7px 0;overflow-wrap:anywhere}
+.meb .sheet-field-list small{font-size:10px;color:var(--muted)}
+.meb .sheet-field-create{display:grid;grid-template-columns:minmax(80px,1fr) 76px auto;gap:6px}
+.meb .sheet-format-toolbar :focus-visible{outline-offset:-1px}
+.meb .sheet-cell[data-range-selected]{box-shadow:inset 0 0 0 1px #3478c580;background-image:linear-gradient(#3478c510,#3478c510)}
+.meb .sheet-range-heading{display:flex;align-items:center;width:100%;height:100%;cursor:cell;user-select:none;min-width:0}
+.meb .sheet-range-heading[data-range-selected]{color:var(--accent);background:var(--selected)}
+.meb .sheet-cell[data-format-row]{cursor:e-resize;user-select:none}
+.meb .is-range-dragging,.meb .is-range-dragging *{user-select:none!important;cursor:cell!important}
+.meb .is-format-brushing .sheet-cell{cursor:crosshair}
+.meb .sheet-format-trigger[aria-pressed=true]{color:var(--accent);background:var(--selected)}

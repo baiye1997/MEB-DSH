@@ -1,0 +1,68 @@
+/* Workbench visual roles: readable data, recognizable actions, quiet supporting chrome.
+   This layer owns typography and contrast across all work surfaces. */
+.meb{
+ --ink:light-dark(#202936,#edf1f7);
+ --muted:light-dark(#596579,#aebbd0);
+ --line:light-dark(#d6dde6,#465164);
+ --rule:light-dark(#e0e5ec,#384457);
+ --quiet:light-dark(#f5f7fa,#242c39);
+ --selected:light-dark(#eaf1fd,#253d5e);
+ --text-body:13px;--text-label:12px;--text-meta:12px;--text-title:18px;
+ font-size:var(--text-body);line-height:1.5;
+}
+.meb input::placeholder,.meb textarea::placeholder{color:var(--muted);opacity:1}
+.meb :is(button,input,textarea,[role=combobox]){font-size:var(--text-body);line-height:1.4}
+.meb button{padding:5px 10px}
+.meb input:not([type=checkbox]),.meb select,.meb textarea{padding:5px 8px}
+.meb button:disabled{opacity:1;color:var(--muted);background:var(--quiet);border-color:var(--rule)}
+
+.meb :is(button,summary,[role=tab]):focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+/* Navigation remains compact while labels retain reading contrast. */
+.meb .project-nav :is(.nav-item,.rare-sidebar-item){font-size:14px;min-height:40px;color:var(--ink)}
+.meb .project-nav .active,.meb .project-nav [aria-current=page]{color:var(--blue)}
+.meb .project-switch .ui-select{font-size:13px;min-height:36px}
+.meb .project-switch>span,.meb .brand span,.meb .nav-bottom button{font-size:12px}
+.meb .work>header{min-height:64px;height:64px;padding:12px 20px}
+.meb .work>header .heading h1{font-size:20px;font-weight:650;line-height:1.3}
+.meb .work>header .breadcrumb{font-size:13px;color:var(--muted)}
+.meb .heading .save-actions .primary{font-size:13px;min-height:34px}
+.meb .ledger-tabs .tab{font-size:14px;padding:12px 0;color:var(--muted)}
+.meb .ledger-tabs .tab.selected{font-weight:600;color:var(--blue)}
+/* Toolbars: controls have a hit area, data keeps the visual emphasis. */
+.meb :is(.tools,.record-filters,.calc-toolbar,.quick-toolbar) :is(button,input,.ui-select,summary){font-size:13px;min-height:34px}
+.meb .action-menu>summary{border:1px solid var(--rule);background:var(--surface);padding:6px 10px;list-style:none;display:flex;align-items:center;gap:8px}
+.meb .action-menu>summary:after{content:'⌄';color:var(--muted);font-size:12px}
+.meb .action-menu[open]>summary{background:var(--selected);border-color:var(--blue);color:var(--blue)}
+.meb .action-menu .menu-panel{border-color:var(--rule);padding:6px}
+.meb .menu-panel button{min-height:36px;text-align:left;font-size:13px}
+.meb .menu-panel label,.meb .filter-menu .menu-panel label{font-size:12px}
+.meb .status,.meb .status>button{font-size:12px}
+.meb .status-hint{font-size:12px}
+/* Sheets: medium weight headers and full-contrast cell values. */
+.meb .meb-sheet{font-size:13px}
+.meb .meb-sheet [role=columnheader]{font-size:12px;font-weight:600;color:var(--ink);background:var(--quiet)}
+.meb .sheet-cell input:not([type=checkbox]),.meb .meb-sheet .ui-field,.meb .meb-sheet .ui-select{font-size:13px;color:var(--ink)}
+.meb .sheet-cell.business-index span,.meb .meb-sheet .approval-cell label{font-size:12px}
+.meb .business-footer,.meb .calc-total,.meb .calc-feedback{font-size:12px;color:var(--muted)}
+/* Documents: readable prose, smaller labels, deliberate numeric roles. */
+.meb :is(.ledger-inspector,.calculation-drawer,.calculation-record-detail) :is(h2){font-size:18px;line-height:1.4}
+.meb :is(.document-tabs,.inspector-tabs) [role=tab]{font-size:13px;padding:10px 0}
+.meb .document-sections h3{font-size:13px}
+.meb .document-sections .document-field>span,.meb .record-reader h4,.meb .parameter-item>span{font-size:12px;color:var(--muted)}
+.meb .document-sections :is(input,textarea),.meb .record-edit-grid :is(input,textarea),.meb .parameter-item input{font-size:14px;color:var(--ink)}
+.meb .record-reader section p,.meb .calculation-record-detail .record-reader section p{font-size:14px;line-height:1.8;color:var(--ink)}
+.meb .formula-meaning,.meb .formula-numbers,.meb .step-operands,.meb .calc-explain{font-size:13px;line-height:1.7;color:var(--ink)}
+.meb .formula-term small,.meb .parameter-item>small,.meb .record-source-note{font-size:12px;color:var(--muted)}
+.meb .step-heading{font-size:14px}.meb .step-heading strong{color:var(--ink)}
+.meb .record-reader-meta,.meb .record-reader-meta button,.meb .record-supplement>summary{font-size:13px}
+/* Project, files, library and settings share the same reading scale. */
+.meb .board-intro h2{font-size:28px;letter-spacing:-.02em}
+.meb .board-intro p,.meb .cover-info p,.meb .files-page .empty p,.meb .settings p{font-size:14px;line-height:1.75;color:var(--muted)}
+.meb .cover-info h3{font-size:19px;color:var(--ink)}
+.meb .stage-badge,.meb .record-distribution,.meb .dossier-unit{font-size:12px}
+.meb .project-dossier,.meb .cost-stages,.meb .project-rates,.meb .overview-registers button{font-size:14px}
+.meb .cost-stages dd,.meb .project-rates dd{font-variant-numeric:tabular-nums;color:var(--ink)}
+.meb .cost-stages .not-recorded{font-size:12px;color:var(--muted)}
+.meb .settings button,.meb .files-page .tools button{font-size:13px}
+.meb .file-row{font-size:14px}.meb .file-path{font-size:12px;color:var(--muted)}
+@container workarea (max-width:700px){.meb .status-hint{display:none}.meb .work>header .heading h1{font-size:18px}.meb .business-actions,.meb .record-filters{row-gap:8px}}

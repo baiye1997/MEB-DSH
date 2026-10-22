@@ -1,0 +1,11 @@
+/* Motion explains temporary surfaces; table edits and scrolling stay immediate. */
+.meb{--motion-quick:120ms;--motion-panel:180ms;--motion-ease:cubic-bezier(.16,1,.3,1)}
+.meb .project-dock>div>button{transition:background-color var(--motion-quick),color var(--motion-quick),box-shadow var(--motion-quick)}
+.meb .project-dock>div>button:active{background:#dce2e8;box-shadow:inset 0 1px 3px #26324710}
+.meb.workbench-layout>.dsh-assistant:not([hidden]){animation:workspace-panel-in var(--motion-panel) var(--motion-ease)}
+.meb.assistant-resizing>.dsh-assistant{animation:none}
+.meb .dialog,.meb .workspace-search-dialog{animation:workspace-dialog-in var(--motion-panel) var(--motion-ease)}
+.meb .action-menu[open]>.menu-panel,.meb .worksheet-editor{animation:workspace-menu-in var(--motion-quick) var(--motion-ease);transform-origin:top right}
+@keyframes workspace-panel-in{from{opacity:.65;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes workspace-dialog-in{from{opacity:.7;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes workspace-menu-in{from{opacity:.7;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}

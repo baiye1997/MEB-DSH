@@ -1,0 +1,120 @@
+/* Calculation controls belong to the sheet; configuration opens only on demand. */
+.meb .calculation-workspace.sheet-calculator{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto auto;gap:0;padding:0;min-height:0;height:100%;overflow:hidden}
+.meb .calculation-workspace.sheet-calculator>style{display:none}
+.meb .calculation-workspace.sheet-calculator>:not(.calculation-drawer){grid-column:1}
+.meb .calculation-workspace.sheet-calculator>.calc-commandbar{grid-row:1}
+.meb .calculation-workspace.sheet-calculator>.calc-table-scroll{grid-row:2;min-height:0;overflow:hidden}
+.meb .calculation-workspace.sheet-calculator>.calc-summary{grid-row:3}
+.meb .calculation-workspace.sheet-calculator>.calc-feedback{grid-row:4;min-height:0;margin:0;padding:4px 0;font-size:12px;line-height:1.5}
+.meb .calculation-workspace .calc-feedback:empty{display:none}
+.meb .calc-commandbar,.meb .calc-publish-actions,.meb .calculation-workspace .calc-toolbar-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.meb .calc-commandbar{padding:10px 0;border-bottom:1px solid var(--rule);min-width:0}
+.meb .calc-commandbar button,.meb .calculation-workspace .calc-toolbar-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:30px;height:30px;padding:4px 9px;font-size:12px;line-height:20px}
+.meb .calc-publish-actions{margin-left:auto;min-width:0}
+.meb .calc-commandbar .publish-target{display:flex;align-items:center;gap:6px;margin:0;font-size:12px;white-space:nowrap}
+.meb .calc-commandbar .publish-target .ui-select{width:170px;max-width:24vw;min-height:30px;height:30px;padding:4px 8px;font-size:12px;line-height:20px}
+.meb .calculation-workspace .calc-toolbar-actions{min-height:42px;padding:6px 0}
+.meb .calc-selection{margin-left:auto;color:var(--muted);font-size:12px;white-space:nowrap}
+.meb .calculation-workspace .calc-clear-selection{border-color:transparent;color:var(--blue);padding-inline:4px}
+.meb .calc-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:34px;padding:6px 2px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meb .calc-summary strong{margin-left:8px;color:var(--ink);font-size:15px;font-weight:600}
+.meb .calculation-workspace .calculation-grid .sheet-cell{min-height:0;line-height:30px}
+.meb .calculation-workspace .calculation-grid .sheet-cell input:not([type=checkbox]){height:30px;min-height:0;padding:4px 8px;line-height:20px;font-size:13px}
+.meb .calculation-workspace .calculation-grid .spec-cell{display:block;padding:0}
+.meb .calculation-workspace .calculation-grid .cell-summary{min-height:0;display:block;line-height:30px;font-size:13px;overflow:hidden;text-overflow:ellipsis}
+.meb .calculation-workspace .calculation-grid .cell-summary strong{font-weight:500}
+.meb .calculation-workspace .calculation-grid .incomplete-result{height:26px;min-height:0;padding:0 4px;border:0;background:transparent;color:var(--blue);font-size:12px;line-height:26px}
+.meb .calculation-workspace.sheet-calculator.inspecting{grid-template-columns:minmax(0,1fr) minmax(320px,370px);column-gap:16px}
+.meb .calculation-workspace.sheet-calculator.inspecting>.calculation-drawer{grid-column:2;grid-row:1/5;position:relative;display:flex;flex-direction:column;width:auto;height:100%;min-height:0;max-height:none;margin:0;border:0;border-left:1px solid var(--rule);border-radius:0;overflow:hidden}
+.meb .calculation-workspace .drawer-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;min-height:48px;flex-wrap:wrap}
+.meb .calculation-workspace .drawer-heading h2{margin:0;font-size:15px;line-height:1.4}
+.meb .calculation-workspace .drawer-heading button{min-height:28px;padding:3px 7px;font-size:12px;line-height:20px}
+.meb .calculation-workspace .drawer-heading>button:last-child{font-size:20px}
+.meb .calculation-workspace .drawer-content{padding:12px;max-height:none;min-height:0;overflow:auto}
+.meb .calculation-workspace .drawer-content .parameter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.meb .calculation-workspace .drawer-content .parameter-item input{height:30px;min-height:0;padding:4px 8px;font-size:13px}
+.meb .calculation-workspace .drawer-content .parameter-item button{padding:0;border:0;background:transparent;min-height:20px;font-size:11px}
+.meb .calculation-workspace .calc-recognition{font-size:12px;color:var(--muted)}
+.meb .calculation-settings>section+section{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule)}
+.meb .calculation-settings h3{margin:0 0 8px;font-size:13px;font-weight:600}
+.meb .calculation-settings h3 small{margin-left:6px;font-size:12px}
+.meb .calculation-settings p{margin:0 0 12px;font-size:12px;line-height:1.6;color:var(--muted)}
+.meb .calc-default-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.meb .calc-default-grid label{display:flex;flex-direction:column;gap:5px;margin:0;font-size:12px;min-width:0}
+.meb .calc-default-grid label>span{display:flex;flex-wrap:wrap;gap:3px 6px}
+.meb .calc-default-grid input{width:100%;height:30px;min-height:0;padding:4px 8px;font-size:13px;line-height:20px}
+.meb .calc-default-grid small{font-size:11px;color:var(--muted)}
+.meb .calculation-settings .calc-rule-text{color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
+.meb .calc-exception-list{list-style:none;margin:0;padding:0;max-height:210px;overflow:auto}
+.meb .calc-exception-list li+li{border-top:1px solid var(--rule)}
+.meb .calc-exception-list button{display:flex;align-items:center;gap:8px;justify-content:space-between;width:100%;border:0;border-radius:0;padding:8px 0;text-align:left;white-space:normal;font-size:12px}
+.meb .calc-exception-list button>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meb .calc-exception-list button>small{flex:none;color:var(--blue)}
+.meb.workbench-layout .custom-calculator{padding:0;min-width:0}
+.meb.workbench-layout .work>.body>.custom-calculator{padding:0 16px}
+.meb .custom-calculator .custom-rule-toolbar{min-height:46px;align-items:center;gap:8px;margin:0;padding:6px 0;border-bottom:1px solid var(--rule)}
+.meb .custom-calculator .custom-rule-toolbar>label{display:flex;align-items:center;gap:8px;margin:0;min-width:0;white-space:nowrap}
+.meb .custom-calculator .custom-rule-toolbar>label select{width:150px;min-width:100px;max-width:150px}
+.meb .custom-calculator .custom-rule-toolbar>.calc-tool-heading{flex:0 1 180px;min-width:0;margin-right:0}
+.meb .custom-calculator .custom-rule-toolbar .calc-tool-heading .ui-select{min-width:0;font-size:16px}
+.meb .custom-calculator .custom-rule-toolbar :is(button,select),.meb .custom-calculator .custom-row-toolbar :is(button,input){min-height:30px;height:30px;padding:4px 8px;line-height:20px;font-size:12px}
+.meb .custom-calculator .custom-save-actions{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:12px;color:var(--muted)}
+.meb .custom-calculator .custom-row-toolbar{align-items:center;gap:8px;min-height:42px;padding:6px 0;margin:0}
+.meb .custom-calculator .custom-rule-summary{padding:8px 0;margin:0;font-size:12px}
+.meb .custom-calculator .custom-rule-summary>strong{font-weight:500}
+.meb .custom-calculator .sheet-cell input:not([type=checkbox]){height:30px;min-height:0;padding:4px 8px;font-size:13px;line-height:20px}
+.meb .custom-calculator .custom-rule-editor{padding:14px 0}
+.meb .custom-calculator .custom-rule-editor>h2{font-size:16px;margin:0 0 8px}
+@container workarea (max-width:900px){
+ .meb .calculation-workspace.sheet-calculator.inspecting{grid-template-columns:minmax(0,1fr);column-gap:0}
+ .meb .calculation-workspace.sheet-calculator.inspecting>:not(style):not(.calculation-drawer){display:none}
+ .meb .calculation-workspace.sheet-calculator.inspecting>.calculation-drawer{grid-column:1;grid-row:1/5;border-left:0}
+ .meb .calculation-workspace .drawer-content{padding:12px 4px}
+ .meb .calc-commandbar .publish-target .ui-select{max-width:180px}
+}
+@container workarea (max-width:620px){
+ .meb .calc-publish-actions{margin-left:0;width:100%;justify-content:space-between}
+ .meb .calc-selection{margin-left:0}
+ .meb .custom-calculator .custom-save-actions{margin-left:0;width:100%;justify-content:space-between}
+}
+
+.meb .calculation-workspace .calc-toolbar-actions{min-height:30px;padding:0;gap:5px;margin-left:auto}
+.meb .calc-tool-heading{margin-right:auto;min-width:0;max-width:320px}
+.meb .calc-tool-heading .ui-select{width:100%;max-width:100%;min-height:32px;height:32px;padding:4px 7px;border-color:transparent;font-size:16px;font-weight:600;line-height:22px;justify-content:space-between}
+.meb .calc-tool-heading .ui-select>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meb .calc-commandbar:has(.calc-tool-heading) .calc-publish-actions{margin-left:0}
+.meb .calculation-workspace .sheet-format-toolbar{min-height:42px;padding:6px 0;border-bottom:1px solid var(--rule)}
+.meb .calculation-workspace .sheet-format-selection{max-width:150px}
+@container workarea (max-width:1050px){.meb .calculation-workspace .sheet-format-selection{max-width:110px}.meb .calculation-workspace .calc-toolbar-actions{margin-left:0}}
+
+.meb .custom-calculator .sheet-format-toolbar .custom-row-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-left:auto;min-height:30px;padding:0}
+.meb .custom-calculator .custom-publish-scope{font-size:11px;color:var(--muted);white-space:nowrap}
+.meb .custom-calculator .custom-row-toolbar>input{width:180px}
+.meb .custom-calculator .custom-rule-toolbar button{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+
+/* Calculator follows the same sheet and inspector hierarchy as the ledgers. */
+.meb.workbench-layout .calculator-page{background:var(--work-canvas)}
+.meb.workbench-layout .calculation-tools{background:var(--work-chrome);margin-inline:-16px;padding-inline:16px;border-color:var(--rule);gap:0 4px}
+.meb.workbench-layout .calculation-tools>button{font-size:12px;padding:7px 8px;min-height:38px;line-height:22px}
+.meb.workbench-layout .calculation-workspace.sheet-calculator{position:relative;grid-template-rows:auto minmax(0,1fr) auto auto auto}
+.meb.workbench-layout .calculation-workspace.sheet-calculator>.calc-commandbar{grid-column:1/-1;min-height:58px;gap:6px;border:0;padding:10px 0}
+.meb.workbench-layout .calculation-workspace.sheet-calculator>.calc-table-scroll{background:var(--surface);border:1px solid var(--rule)}
+.meb.workbench-layout .calculation-workspace.sheet-calculator>.calculation-sheet-tabs{grid-row:4}
+.meb.workbench-layout .calculation-workspace.sheet-calculator>.calc-feedback{grid-row:5;max-height:72px;overflow:auto}
+.meb.workbench-layout .calculation-workspace .calc-commandbar>button,.meb.workbench-layout .calculation-workspace .calc-commandbar summary{background:transparent;border:1px solid transparent;color:var(--muted);font-size:12px;height:30px;min-height:30px;padding:4px 7px;white-space:nowrap}
+.meb.workbench-layout .calculation-workspace .calc-commandbar>button:hover,.meb.workbench-layout .calculation-workspace .calc-commandbar>button[aria-expanded=true]{background:#eef1f7;color:var(--accent, #2563eb)}
+.meb.workbench-layout .calculation-workspace .calc-commandbar>.batch-parameter-trigger{background:#eef1f7;color:var(--accent, #2563eb)}
+.meb.workbench-layout .calculation-workspace .calc-publish-actions{gap:6px;flex-wrap:nowrap}.meb.workbench-layout .calculation-workspace .calc-publish-actions>.primary{height:30px;min-height:30px;font-size:12px;padding:4px 10px}
+.meb.workbench-layout .publish-options{max-width:170px}.meb.workbench-layout .publish-options>summary{overflow:hidden;text-overflow:ellipsis;max-width:170px}.meb.workbench-layout .publish-options .menu-panel{right:0;left:auto;width:260px}.meb.workbench-layout .publish-options p{font-size:12px;white-space:normal;color:var(--muted);line-height:1.6}
+.meb.workbench-layout .calc-row-menu summary{display:flex;align-items:center;gap:4px}.meb.workbench-layout .calc-row-menu .menu-panel{left:0;right:auto}
+.meb.workbench-layout .calc-short-help{font-size:11px;color:var(--muted);flex:1;min-width:120px}.meb.workbench-layout .calculation-workspace .sheet-format-toolbar{padding:3px 8px;min-height:34px;background:var(--quiet);border-bottom:1px solid var(--rule)}.meb.workbench-layout .calculation-workspace .sheet-format-toolbar .ui-select{background:transparent;border-color:transparent}.meb.workbench-layout .calculation-workspace .sheet-format-selection{display:none}
+.meb.workbench-layout .calculation-workspace .calc-toolbar-actions{margin-left:auto;min-width:0}.meb.workbench-layout .calculation-workspace .calc-selection{font-size:11px;overflow:hidden;text-overflow:ellipsis;max-width:300px}.meb.workbench-layout .calculation-workspace .meb-sheet [role=columnheader]{background:var(--work-chrome);color:var(--muted);border-color:var(--rule);font-size:12px}.meb.workbench-layout .calculation-workspace [role=columnheader] small{font-size:10px;color:var(--muted)}
+.meb.workbench-layout .calculation-workspace.sheet-calculator.inspecting{grid-template-columns:minmax(0,1fr) 370px;column-gap:12px}
+.meb.workbench-layout .calculation-workspace.sheet-calculator.inspecting>.calculation-drawer{grid-column:2;grid-row:2/6;position:relative;inset:auto;display:flex;width:370px;background:var(--detail-surface);border:1px solid var(--rule);margin:0;padding:0;min-height:0;border-radius:0}
+.meb.workbench-layout .calculation-workspace .drawer-heading{background:#eef1f7;border-bottom:1px solid var(--rule);padding:10px 12px;flex:none}.meb.workbench-layout .calculation-workspace .drawer-heading button{background:transparent;border-color:transparent}.meb.workbench-layout .calculation-workspace .drawer-content{flex:1;min-height:0;padding:16px;overflow:auto}
+.meb.workbench-layout .batch-field-list{margin:12px 0}.meb.workbench-layout .batch-field{padding:8px 0;border-bottom:1px solid var(--rule)}.meb.workbench-layout .batch-field>label{display:flex;align-items:center;gap:8px;font-size:12px;margin:0}.meb.workbench-layout .batch-field small{font-size:11px;color:var(--muted);margin-left:auto}.meb.workbench-layout .batch-field input[type=checkbox]{appearance:auto;width:15px;height:15px;min-height:15px;min-width:15px;margin:0;padding:0;accent-color:var(--accent, #2563eb)}.meb.workbench-layout .batch-field>div{display:flex;align-items:center;gap:8px;margin:6px 0 0 23px}.meb.workbench-layout .batch-field input:not([type=checkbox]){width:130px;min-width:0;flex:1;height:30px;min-height:30px;padding:4px 8px;font-size:13px;background:var(--surface)}.meb.workbench-layout .batch-restore{font-size:11px;display:flex;gap:4px;align-items:center;white-space:nowrap;margin:0}.meb.workbench-layout .batch-mode{display:flex;gap:8px;align-items:center;font-size:12px}.meb.workbench-layout .batch-mode .ui-select{flex:1;min-width:0;font-size:12px}.meb.workbench-layout .batch-parameters>[role=alert]{color:#aa3030}.meb.workbench-layout .batch-parameters>button.primary{width:100%;min-height:32px}
+@container workarea (max-width:900px){.meb.workbench-layout .calculation-workspace.sheet-calculator.inspecting{grid-template-columns:minmax(0,1fr);column-gap:0}.meb.workbench-layout .calculation-workspace.sheet-calculator.inspecting>:not(style):not(.calculation-drawer){display:flex}.meb.workbench-layout .calculation-workspace.sheet-calculator.inspecting>.calc-table-scroll{display:block}.meb.workbench-layout .calculation-workspace.sheet-calculator.inspecting>.calculation-drawer{position:absolute;grid-column:1;inset:0 0 0 auto;width:min(370px,100%);z-index:18;box-shadow:-6px 0 16px #0001}.meb.workbench-layout .calc-short-help{display:none}.meb.workbench-layout .publish-options{max-width:125px}.meb.workbench-layout .publish-options>summary{max-width:125px}}
+
+.meb.workbench-layout .calculation-workspace .calculation-grid [role=columnheader]{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;line-height:16px}.meb.workbench-layout .calculation-workspace .calculation-grid [role=columnheader] small{display:block;line-height:12px}
+
+.meb.workbench-layout .calculation-workspace .calculation-grid .sheet-utility-heading{align-items:center;text-align:center}

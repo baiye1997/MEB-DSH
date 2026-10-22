@@ -1,0 +1,169 @@
+/* Project identity, navigation and the working canvas each have a single owner. */
+.meb.workbench-layout{--action:#242627;--action-hover:#3b3e3f;--ink:#242627;--muted:#666b70;--line:#e5e6e5;--rule:#e5e6e5;--sheet-frame:#e5e6e5;--blue:#3478bd;--accent:#3478bd;--surface:#fff;--quiet:#f5f5f3;--soft:#f5f5f3;--hover:#eeefed;--selected:#eaf1f8;--studio-canvas:#fff;--work-chrome:#f7f7f5;--work-canvas:#f4f4f2;--detail-surface:#fafafa;--meb-navigation-width:0px;color-scheme:light;container-type:inline-size;container-name:workbench;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto minmax(0,1fr);background:var(--work-canvas);color:var(--ink);overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px;line-height:1.5}
+html[data-platform=darwin] .meb.workbench-layout{padding-top:42px}
+.meb.workbench-layout>[hidden]{display:none!important}
+.meb.workbench-layout>.work-topbar{grid-column:1/-1;grid-row:1;display:flex;flex-direction:column;align-items:stretch;gap:0;min-width:0;padding:0 20px;background:var(--work-chrome);border:0;border-bottom:1px solid var(--rule);z-index:25}
+.meb .workspace-context{display:flex;align-items:center;gap:12px;min-height:55px;min-width:0}
+.meb .work-topbar button{display:inline-flex;align-items:center;gap:7px;min-height:30px;height:30px;padding:4px 8px;border:0;border-radius:6px;background:transparent;font-size:12px;line-height:20px;color:var(--muted);box-shadow:none;white-space:nowrap}
+.meb .work-topbar button:hover{background:var(--hover);color:var(--ink)}
+.meb .work-topbar .projects-back{flex:none;padding-left:0;min-width:0}
+.meb .context-divider{height:18px;border-left:1px solid #d6d8d7;flex:none}
+.meb .current-project{display:flex;align-items:center;gap:8px;flex:1;min-width:0;color:var(--ink)}
+.meb .current-project>.ui-icon{flex:none;color:var(--muted)}
+.meb .work-topbar .topbar-project{width:auto;max-width:100%;min-width:0;height:36px;min-height:36px;padding:3px 6px 3px 0;font-size:17px;font-weight:600;color:var(--ink);border:0;border-radius:5px;background:transparent;gap:12px;line-height:26px}
+.meb .topbar-project>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meb .topbar-utilities{display:flex;align-items:center;gap:7px;margin-left:auto;flex:none}
+.meb .work-topbar .workspace-search-trigger{background:#eeefec;min-width:112px;color:#565c61;justify-content:flex-start}
+.meb .workspace-search-trigger kbd{margin-left:auto;font-family:inherit;font-size:10px;color:var(--muted)}
+.meb .work-topbar .project-assistant-trigger{color:var(--ink)}
+.meb .work-topbar .project-assistant-trigger[aria-pressed=true]{background:#e6e9ec;color:#245d98}
+.meb .topbar-more>summary{display:flex;align-items:center;justify-content:center;gap:5px;width:auto;min-width:58px;height:30px;min-height:30px;padding:5px;border:0;background:transparent}
+.meb .topbar-more>summary:after{display:none!important}
+.meb .topbar-more .menu-panel{right:0;left:auto;min-width:190px}
+.meb .topbar-more .menu-panel button{width:100%;height:34px;justify-content:flex-start;color:var(--ink)}
+.meb.workbench-layout>.work{grid-column:1;grid-row:2;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;padding:0;background:var(--surface);container-type:inline-size;container-name:workarea}
+.meb.workbench-layout .work>.work-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;flex:none;margin:0;padding:10px 24px;border:0;background:var(--work-canvas)}
+.meb.workbench-layout .project-title-line{gap:10px;flex-wrap:nowrap;width:100%;min-width:0}
+.meb.workbench-layout .work-heading h1{margin:0;font-size:23px;font-weight:600;line-height:32px;letter-spacing:-.025em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meb.workbench-layout .work>.body{flex:1;min-width:0;min-height:0;margin:0;border:0;border-radius:0;background:var(--surface);overflow:hidden}
+.meb.workbench-layout .work>.body>:is(.ledger,.calculator-page,.materials-page){padding:0 20px;min-height:0;min-width:0;flex:1;overflow:hidden}
+.meb.workbench-layout .work>.body>:is(.ledger,.calculator-page){display:flex;flex-direction:column}
+.meb.workbench-layout .work>.status{display:flex;align-items:center;gap:8px;flex:none;position:relative;min-height:34px;max-height:64px;margin:0;padding:3px 20px;border:0;border-top:1px solid var(--rule);background:var(--work-chrome);font-size:11px;overflow:visible;z-index:8}
+.meb.workbench-layout .status>[role=status]{flex:1;min-width:0;max-height:48px;overflow:auto;line-height:18px}
+.meb.workbench-layout .status>button{display:inline-flex;align-items:center;gap:5px;flex:none;min-height:26px;height:26px;font-size:11px;padding:2px 8px;line-height:20px}
+.meb.workbench-layout .status .status-hint{display:none}
+.meb.workbench-layout .status .save-project:not(:disabled){background:#242627;border-color:#242627;color:#fff}
+.meb.workbench-layout>.dsh-assistant:not([hidden]){grid-column:2;grid-row:2;position:relative;inset:auto;width:var(--dsh-assistant-width,400px);height:100%;max-width:none;min-height:0;border-left:1px solid var(--rule);box-shadow:none;z-index:15}
+.meb.workbench-layout.assistant-expanded>.dsh-assistant:not([hidden]){grid-column:1/-1;grid-row:2;position:relative;width:100%;border:0}
+.meb.assistant-expanded .assistant-resize-handle{display:none}
+.meb.workbench-layout .overlay{grid-column:1/-1;grid-row:2;position:absolute;inset:0;z-index:80}
+.meb.workbench-layout .preview-dock{grid-column:1/-1;grid-row:2;inset:0 0 0 auto}
+.meb.workbench-layout .business-actions,.meb.workbench-layout .record-filters{gap:6px;min-height:44px;padding:7px 0}
+.meb.workbench-layout .business-actions :is(button,input,.ui-select),.meb.workbench-layout .record-filters :is(button,input,.ui-select){min-height:30px;height:30px;font-size:12px;padding:4px 8px}
+.meb.workbench-layout .business-grid>.business-footer{border-radius:0;min-height:26px;padding:4px 8px;background:var(--surface)}
+.meb.workbench-layout .calculation-workspace .calc-commandbar{gap:8px;min-height:44px;padding:6px 0}
+.meb.workbench-layout .calc-commandbar .publish-target .ui-select{width:140px;max-width:150px}
+@container workbench (max-width:760px){.meb.workbench-layout>.work-topbar{padding-inline:12px}.meb .workspace-context{gap:8px;min-height:50px}.meb .work-topbar .current-project>.ui-icon{display:none}.meb .work-topbar .topbar-project{font-size:15px}.meb .context-divider{display:none}.meb .work-topbar .workspace-search-trigger{min-width:30px;width:30px;padding:6px}.meb .workspace-search-trigger :is(span,kbd){display:none}.meb .topbar-utilities{gap:3px}.meb .project-assistant-trigger span{display:none}.meb.workbench-layout .work>.body>:is(.ledger,.calculator-page,.materials-page){padding-inline:10px}.meb.workbench-layout .work>.status{padding-inline:10px}}
+.meb.workbench-layout :is(.settings,.model-editor,.files-page){padding:16px;min-width:0}
+.meb.workbench-layout .settings h2{margin:0 0 8px;font-size:16px;line-height:24px}.meb.workbench-layout .settings>h2:first-child{font-size:17px}.meb.workbench-layout .settings>h2:not(:first-child){margin-top:18px}.meb.workbench-layout .settings p{margin:4px 0 10px;font-size:13px;line-height:20px;overflow-wrap:anywhere}.meb.workbench-layout .settings>div{display:flex;flex-wrap:wrap;gap:8px}.meb.workbench-layout .settings button{height:30px;min-height:30px;margin:0;padding:4px 8px;font-size:12px;line-height:20px}.meb.workbench-layout .settings label{margin:0}
+.meb.workbench-layout .webdav-settings{margin:16px 0;padding-top:12px}.meb.workbench-layout .webdav-fields{gap:8px}.meb.workbench-layout .webdav-fields label{gap:4px;font-size:12px}.meb.workbench-layout .webdav-fields input{height:30px;min-height:30px;margin:0;padding:4px 8px;font-size:13px;line-height:20px}.meb.workbench-layout .webdav-fields>button{justify-self:start}.meb.workbench-layout .webdav-fields>small{font-size:11px;line-height:17px;overflow-wrap:anywhere}.meb.workbench-layout .webdav-conflict{margin-top:10px;padding:10px}.meb.workbench-layout .webdav-conflict p{margin:0}
+.meb.workbench-layout .model-editor-tools{gap:8px 12px}.meb.workbench-layout .model-editor-tools label{flex-wrap:wrap;gap:8px;min-width:0;max-width:100%}.meb.workbench-layout .model-editor-tools .ui-select{width:auto;min-width:0}.meb.workbench-layout .model-editor-note{margin:8px 0;line-height:18px}.meb.workbench-layout .model-editor-error{margin:8px 0;font-size:12px;line-height:18px;overflow-wrap:anywhere}.meb.workbench-layout .model-editor-layout{gap:12px}.meb.workbench-layout :is(.model-building-list,.model-editor-preview){min-width:0}
+.meb.workbench-layout .model-building-browser{margin:0 0 12px;padding:8px 0}.meb.workbench-layout .model-building-browser-head{flex-wrap:wrap;gap:8px;margin-bottom:8px}.meb.workbench-layout .model-building-browser-head>div{flex-wrap:wrap;min-width:0}.meb.workbench-layout .model-building-browser-filters{flex-wrap:wrap;gap:6px;margin-bottom:8px}.meb.workbench-layout .model-building-browser-filters :is(input,.ui-select){flex:1 1 160px}.meb.workbench-layout .model-building-tabs{gap:6px;padding-bottom:4px}.meb.workbench-layout .model-building-tabs button{min-height:30px;padding:4px 8px;line-height:20px}.meb.workbench-layout .model-building-tabs small{min-width:0;overflow-wrap:anywhere;white-space:normal}
+.meb.workbench-layout .model-building{margin-bottom:12px;padding-bottom:12px}.meb.workbench-layout .model-building>header{flex-wrap:wrap;gap:8px;padding-bottom:8px}.meb.workbench-layout .model-building h3{flex:1;min-width:0;font-size:14px;line-height:20px}.meb.workbench-layout .model-building-actions{flex-wrap:wrap;gap:6px;margin-left:auto}.meb.workbench-layout .model-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 10px}.meb.workbench-layout :is(.model-fields,.model-floor-fields) label{gap:4px}.meb.workbench-layout .model-building details{margin-top:10px}.meb.workbench-layout .model-floor-fields{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-top:8px}.meb.workbench-layout .model-building .dwg-building-provenance{margin:6px 0 10px;overflow-wrap:anywhere}
+.meb.workbench-layout :is(.model-editor-tools,.model-building-browser-filters,.model-fields,.model-floor-fields,.model-splitter-precise) :is(input,.ui-select){height:30px;min-height:30px;margin:0;padding:4px 8px;font-size:13px;line-height:20px}.meb.workbench-layout :is(.model-editor-tools,.model-building-browser-head,.model-building-actions,.model-splitter-actions,.model-splitter-precise) button{height:30px;min-height:30px;padding:4px 8px;font-size:12px;line-height:20px}
+.meb.workbench-layout .files-page>.tools{gap:8px;min-height:40px;padding:0 0 10px}.meb.workbench-layout .files-page>.tools :is(button,.ui-select,summary),.meb.workbench-layout .files-page .file-row>button{height:30px;min-height:30px;padding:4px 8px;font-size:12px;line-height:20px}.meb.workbench-layout .files-page .file-row{flex-wrap:wrap;gap:4px 8px;margin:0;padding:10px 0}.meb.workbench-layout .files-page .file-row>div{flex:1 1 160px;min-width:0}.meb.workbench-layout .files-page .file-row>button{flex:none}.meb.workbench-layout .files-page .file-row strong{font-size:13px;line-height:20px;word-break:normal;overflow-wrap:anywhere}.meb.workbench-layout .files-page .file-row p{margin:2px 0 0;font-size:11px;line-height:17px;overflow-wrap:anywhere}.meb.workbench-layout .files-page .file-icon{display:flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;padding:3px;border-radius:5px}.meb.workbench-layout .files-page .file-path{order:1;flex:1 0 calc(100% - 38px);min-width:0;max-width:none;margin-left:38px;font-size:11px;line-height:17px;overflow-wrap:anywhere}
+@container workarea (max-width:480px){.meb.workbench-layout .model-floor-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.meb.workbench-layout .calculation-records input:not([type=checkbox]){height:30px;min-height:0;padding:4px 8px;line-height:20px}.meb.workbench-layout .calculation-records .ui-field:has(.calendar-trigger) input{padding-right:28px}
+
+.meb.workbench-layout .calculation-records [role=columnheader]:first-child{justify-content:center}
+.meb.workbench-layout .preview-dialog .detail-heading h2{min-width:0;overflow-wrap:anywhere}.meb.workbench-layout .preview-dialog .detail-heading button{flex:none}
+@container workbench (max-width:1000px){.meb.workbench-layout .with-preview{margin-right:0}.meb.workbench-layout .preview-dock{width:min(420px,90%)}}
+
+.meb.workbench-layout .dwg-review-options{gap:8px;margin-top:8px}.meb.workbench-layout .dwg-review-options>label{margin:0;gap:4px}.meb.workbench-layout .dwg-review :is(input:not([type=checkbox]),.ui-select){height:30px;min-height:30px;padding:4px 8px;line-height:20px}.meb.workbench-layout .dwg-review-bar>button,.meb.workbench-layout .dwg-review-results>footer button{min-height:30px;padding:4px 8px;line-height:20px}
+/* Receipt details stay beside the working sheet on the desktop canvas. */
+.meb.workbench-layout .business-grid:has(>.ledger-inspector){position:relative;grid-template-columns:minmax(0,1fr) 380px;column-gap:0}
+.meb.workbench-layout .business-grid:has(>.ledger-inspector)>.business-actions{grid-column:1/-1;grid-row:1}
+.meb.workbench-layout .business-grid:has(>.ledger-inspector)>:is(.business-table,.business-empty){display:block;grid-column:1}
+.meb.workbench-layout .business-grid:has(>.ledger-inspector)>.business-footer{display:flex;grid-column:1}
+.meb.workbench-layout .business-grid:has(>.ledger-inspector)>.ledger-inspector{grid-column:2;grid-row:2/4;position:relative;inset:auto;width:100%;height:100%;min-width:0;margin:0;border:0;border-left:1px solid var(--rule);border-radius:0;box-shadow:none}
+.meb.workbench-layout .ledger-inspector .inspector-return{display:none}.meb.workbench-layout .ledger-inspector .detail-heading{padding:10px 12px;gap:8px}.meb.workbench-layout .ledger-inspector .detail-heading h2{font-size:16px;margin:0}.meb.workbench-layout .ledger-inspector :is(.detail-heading,footer) button{height:30px;min-height:30px;padding:4px 8px;line-height:20px;flex:none}.meb.workbench-layout .ledger-inspector>footer{padding:8px 12px;gap:8px}
+.meb.workbench-layout .ledger-inspector .document-sections{padding-inline:12px}.meb.workbench-layout .ledger-inspector .document-sections>section:first-child .document-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.meb.workbench-layout .ledger-inspector .document-sections>section:first-child .signature-fields{grid-template-columns:1fr}.meb.workbench-layout .ledger-inspector .document-fields{gap:8px}.meb.workbench-layout .ledger-inspector .document-field input:not([type=checkbox]){height:30px;min-height:30px;padding:4px 8px;line-height:20px}.meb.workbench-layout .ledger-inspector .ui-field:has(.calendar-trigger) input{padding-right:28px}
+@container workarea (max-width:850px){.meb.workbench-layout .business-grid:has(>.ledger-inspector){grid-template-columns:minmax(0,1fr);column-gap:0}.meb.workbench-layout .business-grid:has(>.ledger-inspector)>.ledger-inspector{grid-column:1;position:absolute;inset:0 0 0 auto;width:min(380px,100%);z-index:15;box-shadow:-6px 0 16px #0001}}
+.meb.workbench-layout .ledger-inspector .ledger-document{padding:12px}.meb.workbench-layout .ledger-inspector .ledger-document h3{font-size:14px;line-height:22px;font-weight:500;margin-bottom:12px}.meb.workbench-layout .ledger-inspector .document-facts{gap:10px 12px;margin-bottom:12px}.meb.workbench-layout .ledger-inspector .document-facts dd,.meb.workbench-layout .ledger-inspector .ledger-document section p{font-size:13px;line-height:20px}.meb.workbench-layout .ledger-inspector .document-amounts{gap:12px;margin-bottom:12px;padding:10px 0}.meb.workbench-layout .ledger-inspector .document-amounts dd{font-size:16px}.meb.workbench-layout .ledger-inspector .ledger-document section+section{margin-top:12px}
+
+/* The receipt sheet is the primary surface; navigation and the inspector recede. */
+.meb.workbench-layout .ledger-workspace>.body{background:var(--surface)}
+.meb.workbench-layout .ledger-workspace>.body>.ledger{padding:0 16px 12px}
+.meb.workbench-layout .ledger-workspace .business-actions{gap:6px;min-height:46px;padding:7px 0;align-items:center}
+.meb.workbench-layout .ledger-workspace .ledger-heading{flex:none;margin:0 14px 0 0;font-size:16px;line-height:30px;white-space:nowrap;min-width:max-content}
+.meb.workbench-layout .ledger-workspace .ledger-heading .sheet-picker{font-size:16px;font-weight:650;color:var(--ink);padding-inline:0 6px;height:32px;min-height:32px;max-width:170px}
+.meb.workbench-layout .ledger-workspace .business-actions>:is(input,.ui-field){flex:1 1 160px;width:auto;min-width:120px;max-width:260px;height:30px;margin-right:auto}
+.meb.workbench-layout .ledger-workspace .business-actions>input,.meb.workbench-layout .ledger-workspace .business-actions>.ui-field input{height:30px;min-height:30px;background:var(--surface);border-color:var(--rule);font-size:12px}
+.meb.workbench-layout .ledger-workspace .business-actions>.compact-action,.meb.workbench-layout .ledger-workspace .business-actions summary.compact-action{width:auto;min-width:0;height:30px;min-height:30px;padding:4px 7px;border:1px solid transparent;background:transparent;color:var(--muted);font-size:12px;white-space:nowrap}
+.meb.workbench-layout .ledger-workspace .business-actions .compact-action .action-label{display:inline}
+.meb.workbench-layout .ledger-workspace .business-actions>.compact-action:is(:hover,[aria-pressed=true]),.meb.workbench-layout .ledger-workspace .business-actions summary.compact-action:hover{background:#eef1f7;color:var(--accent, #2563eb)}
+.meb.workbench-layout .ledger-workspace .business-actions>.primary{margin-left:6px;min-height:30px;height:30px;padding:4px 10px;background:var(--accent, #2563eb);border-color:var(--accent, #2563eb);font-weight:500}
+.meb.workbench-layout .ledger-workspace .business-actions>.primary:hover{background:#1d4ed8}
+.meb.workbench-layout .ledger-workspace .business-actions>.ledger-active-filters{order:1;flex-basis:100%;margin-top:4px}
+.meb.workbench-layout .ledger-workspace .row-action-menu .menu-panel{right:0;left:auto;min-width:220px}
+.meb.workbench-layout .ledger-workspace .menu-group-label{padding:6px 10px;font-size:11px;color:var(--muted)}
+.meb.workbench-layout .ledger-workspace .menu-group-divider{margin-top:5px;padding-top:10px;border-top:1px solid var(--rule)}
+.meb.workbench-layout .ledger-workspace .business-table{border:0;background:var(--surface)}
+.meb.workbench-layout .ledger-workspace .sheet-format-toolbar{min-height:34px;padding:3px 8px;background:var(--quiet);border-bottom:1px solid var(--rule);gap:8px}
+.meb.workbench-layout .ledger-workspace .sheet-format-toolbar .ui-select{background:transparent;border-color:transparent}
+.meb.workbench-layout .ledger-workspace .sheet-format-selection{margin-left:auto}
+.meb.workbench-layout .ledger-workspace .meb-sheet [role=columnheader]{background:var(--work-chrome);color:var(--muted);font-size:12px;font-weight:600;border-color:var(--rule)}
+.meb.workbench-layout .ledger-workspace .business-footer{background:var(--quiet);border-color:var(--rule);font-size:11px;padding:4px 10px;min-height:28px;color:var(--muted)}
+.meb.workbench-layout .ledger-workspace .business-grid:has(>.ledger-inspector){column-gap:0}
+.meb.workbench-layout .ledger-workspace .business-grid>.ledger-inspector{background:var(--detail-surface);border:0;border-left:1px solid var(--rule)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .detail-heading{background:#eef1f7;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .detail-heading h2{font-size:16px;color:var(--ink);line-height:24px}
+.meb.workbench-layout .ledger-workspace .ledger-inspector:not(.receipt-summary) .detail-heading>div{display:flex;align-items:baseline;gap:10px;flex-direction:row-reverse;justify-content:flex-end}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .detail-heading button{border-color:transparent;background:transparent;color:var(--accent, #2563eb)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .detail-heading button:hover{background:var(--rule)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .ledger-document{padding:18px 16px}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .ledger-document h3{font-size:15px;line-height:24px;font-weight:600;color:var(--ink);margin-bottom:20px}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-facts{gap:14px 18px;margin-bottom:20px}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-facts dt,.meb.workbench-layout .ledger-workspace .ledger-inspector .document-amounts dt,.meb.workbench-layout .ledger-workspace .ledger-inspector .ledger-document h4{font-size:11px;color:var(--muted)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-amounts{padding:16px 0;margin-bottom:20px;border-color:var(--rule);gap:40px}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-amounts dd{font-size:22px;line-height:30px;font-weight:600;color:var(--ink)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-amounts>div+div dd{font-size:14px;font-weight:500}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-approvals>div{min-height:34px;padding:8px 0;font-size:12px;border-color:var(--rule)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector>footer{padding:8px 12px;background:var(--work-chrome);border-top-color:var(--rule)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector>footer button{border-color:var(--rule);background:var(--surface);color:var(--accent, #2563eb)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-tabs>[role=tablist]{background:var(--work-chrome)}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-tabs>[role=tabpanel]{padding-inline:0}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-sections{padding-inline:16px}
+.meb.workbench-layout .ledger-workspace .ledger-inspector .document-field :is(input,textarea,.ui-select){background:var(--surface)}
+@container workarea (max-width:900px){.meb.workbench-layout .ledger-workspace .business-actions{gap:4px}.meb.workbench-layout .ledger-workspace .ledger-heading{margin-right:4px}.meb.workbench-layout .ledger-workspace .business-actions>:is(input,.ui-field){flex-basis:120px;max-width:180px}}
+@container workarea (max-width:700px){.meb.workbench-layout .ledger-workspace>.body>.ledger{padding-inline:10px}.meb.workbench-layout .ledger-workspace .ledger-heading{flex:1}.meb.workbench-layout .ledger-workspace .business-actions>:is(input,.ui-field){flex:1 1 calc(100% - 180px);max-width:none}.meb.workbench-layout .ledger-workspace .business-actions>.compact-action{margin-top:4px}.meb.workbench-layout .ledger-workspace .business-actions>.primary{margin-left:auto}}
+
+/* Shared page hierarchy: one command row, a white sheet and a quiet inspector. */
+.meb.workbench-layout .ledger-workspace .record-filters{display:flex;align-items:center;gap:6px;min-height:46px;padding:7px 0;flex-wrap:wrap}
+.meb.workbench-layout .ledger-workspace .record-filters>input{flex:1 1 140px;min-width:120px;max-width:230px;margin-right:auto;background:var(--surface)}
+.meb.workbench-layout .ledger-workspace .record-filters>:is(button,details>summary){font-size:12px;min-height:30px;height:30px;padding:4px 7px}
+.meb.workbench-layout .ledger-workspace .record-filters>button:not(.primary),.meb.workbench-layout .ledger-workspace .record-filters summary{background:transparent;border-color:transparent;color:var(--muted)}
+.meb.workbench-layout .ledger-workspace .record-filters>.primary{margin-left:6px}
+.meb.workbench-layout .ledger-workspace .calculation-records{border:0;background:var(--surface)}
+.meb.workbench-layout .ledger-workspace .sheet-format-toolbar{background:var(--quiet);border-bottom:1px solid var(--rule);padding:3px 8px;min-height:34px}
+.meb.workbench-layout .ledger-workspace .meb-sheet [role=columnheader]{background:var(--work-chrome);color:var(--muted);font-size:12px;font-weight:600;border-color:var(--rule)}
+.meb.workbench-layout .meb-sheet .sheet-utility-heading{display:flex;align-items:center;justify-content:center;text-align:center}
+.meb.workbench-layout .meb-sheet .sheet-cell:not([data-format-column]){display:flex;align-items:center;justify-content:center;text-align:center;padding-inline:4px}
+.meb.workbench-layout .ledger-workspace .body>.detail{background:var(--detail-surface);border-left:1px solid var(--rule);width:380px;min-width:380px;flex:0 0 380px;padding:0;overflow:auto}
+.meb.workbench-layout .ledger-workspace .detail>.detail-heading{position:sticky;top:0;z-index:3;background:#eef1f7;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.meb.workbench-layout .ledger-workspace .detail h2{font-size:16px}.meb.workbench-layout .ledger-workspace .detail .record-supplement{margin:16px}
+.meb.workbench-layout .files-page{background:var(--work-canvas);padding:0 16px 16px}.meb.workbench-layout .files-page>.attachment{background:var(--surface);border:0;border-bottom:1px solid var(--rule);margin:0;padding:10px 12px;border-radius:0;gap:12px;align-items:center;flex-wrap:wrap}
+.meb.workbench-layout .files-page>.attachment>div{flex:1;min-width:180px}.meb.workbench-layout .files-page>.attachment :is(button,summary){min-height:30px;font-size:12px;padding:4px 8px}.meb.workbench-layout .file-action-menu .menu-panel{right:0;left:auto}.meb.workbench-layout .file-path-details{flex-basis:100%;order:2;font-size:11px;color:var(--muted)}
+.meb.workbench-layout .settings{background:var(--work-canvas)}.meb.workbench-layout .settings-information{margin-top:16px;border-top:1px solid var(--rule);padding-top:12px;font-size:13px}.meb.workbench-layout .settings-information>summary{cursor:pointer;font-weight:600;min-height:30px}.meb.workbench-layout .settings-information[open]>summary{margin-bottom:8px}
+@container workarea (max-width:850px){.meb.workbench-layout .ledger-workspace .body>.detail{position:absolute;inset:0 0 0 auto;width:min(380px,100%);min-width:0;max-height:none;z-index:18;box-shadow:-6px 0 16px #0001}.meb.workbench-layout .ledger-workspace .record-filters .ledger-heading{flex-basis:100%}}
+
+.meb.workbench-layout .ledger-workspace>.body>.materials-page{padding-bottom:12px}.meb.workbench-layout .work[data-page=settings]>.body{background:var(--work-canvas)}
+
+.meb .topbar-more>summary{color:#4d555b;cursor:pointer;border-radius:6px;font-size:12px}.meb .topbar-more>summary:is(:hover,:focus-visible),.meb .topbar-more[open]>summary{background:#e7eaee;color:#242627}
+
+/* Project pages live beside a compact main dock; only secondary tabs stay above the sheet. */
+.meb.workbench-layout.has-project{grid-template-columns:68px minmax(0,1fr) auto}
+.meb.workbench-layout.has-project>.work-topbar{grid-column:2/-1}
+.meb.workbench-layout.has-project>.work{grid-column:2}
+.meb.workbench-layout.has-project>.dsh-assistant:not([hidden]){grid-column:3}
+.meb.workbench-layout.has-project.assistant-expanded>.dsh-assistant:not([hidden]){grid-column:2/-1}
+.meb.workbench-layout.has-project>.preview-dock{grid-column:2/-1}
+.meb.workbench-layout>.project-dock{grid-column:1;grid-row:1/-1;display:flex;flex-direction:column;align-items:center;min-height:0;overflow-y:auto;overflow-x:hidden;padding:6px 5px 12px;background:#f2f3f4;border:0;border-right:1px solid #e3e6e9;z-index:24}
+.meb .dock-brand{display:flex;align-items:center;justify-content:center;width:50px;height:42px;color:#495b68;flex:none}
+.meb .project-dock>div{display:flex;flex-direction:column;gap:5px;margin:12px 0;flex:1;width:100%}
+.meb .project-dock>div>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:none;width:100%;min-height:55px;padding:7px 2px;border:0;border-radius:8px;background:transparent;color:#626b70;font-size:10px;line-height:15px;white-space:nowrap}
+.meb .project-dock>div>button:hover{background:#e7eaed;color:#252a2c}
+.meb .project-dock>div>button[aria-current=page]{background:#e4e8ec;color:#242a2c;font-weight:600}
+.meb .project-dock>div>button[aria-current=page]:before,.meb .project-dock>div>button[aria-current=page]:after{content:none}
+.meb .home-wordmark{display:flex;align-items:baseline;gap:10px;font-size:17px;font-weight:600;letter-spacing:-.01em}
+.meb .home-wordmark>span{color:var(--muted);font-size:12px;font-weight:400}
+.meb .workspace-context{min-height:48px}
+.meb.workbench-layout .sheet-navigation{min-height:36px}
+.meb.workbench-layout .sheet-navigation>button{height:36px;min-height:36px;padding-block:6px}
+.meb .model-empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:240px;height:100%;padding:28px;background:#f5f6f7;color:#566269;text-align:center}
+.meb .model-empty-state>.ui-icon{color:#7b8792;margin-bottom:6px}
+.meb .model-empty-state h2{font-size:16px;font-weight:550;line-height:24px;margin:0;color:#343d42}
+.meb .model-empty-state p{font-size:12px;line-height:20px;margin:0;max-width:38ch;color:#68717a}
+.meb .model-empty-state>div{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+.meb .model-empty-state button{min-height:30px;height:30px;font-size:12px;padding:4px 10px;border-color:#dce0e5;background:#fff}
+@container workbench (max-width:760px){.meb.workbench-layout.has-project{grid-template-columns:58px minmax(0,1fr) auto}.meb .home-wordmark>span{display:none}.meb .project-dock>div>button{font-size:9px;min-height:52px}.meb.workbench-layout.has-project.narrow-workspace:not(.assistant-expanded)>.dsh-assistant:not([hidden]){grid-column:2/-1;position:absolute;inset:0 0 0 auto;width:min(400px,100%);box-shadow:-8px 0 20px #24262710}.meb.workbench-layout>.work-topbar{padding-inline:10px}.meb .workspace-context{gap:6px}.meb .work-topbar .projects-back{font-size:11px}.meb .work-topbar .topbar-project{font-size:14px}}

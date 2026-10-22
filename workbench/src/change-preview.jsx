@@ -1,0 +1,7 @@
+import React from 'react';
+import {prepareChanges} from './assistant-changes.js';
+import {ledgerNames} from './model.js';
+export default function ChangePreview({data,proposal,projectId,onApply}){
+ let preview,error;try{preview=prepareChanges(data,proposal,projectId);}catch(e){error=e.message;}
+ return <div className="change-preview"><p className="change-destination">{proposal.ledger==='materials'?'个人材料价格库':data.projects.find(p=>p.id===projectId)?.name+' · '+(ledgerNames[proposal.ledger]||'未知台账')+(proposal.worksheetId?' · '+(data.projects.find(p=>p.id===projectId)?.businessWorksheets?.find(s=>s.id===proposal.worksheetId)?.name||'工作表不存在'):' · 工作表 1')}</p><p>{proposal.summary||'请核对 DSH 提出的台账修改。'}</p>{error?<div role="alert"><strong>暂时不能采用这份建议</strong><p>{error}</p><p>请返回项目助手，按最新记录重新核对。</p></div>:<>{preview.changes.map(c=><section key={c.rowId}><h3>{c.type==='append'?'新增记录':'第 '+c.index+' 条记录'}{c.label&&<span>{c.label}</span>}</h3><div className="change-comparison"><table><thead><tr><th scope="col">修改内容</th><th scope="col">原来填写</th><th scope="col">DSH 建议</th></tr></thead><tbody>{c.diff.map(d=><tr key={d.field}><th scope="row">{d.field}</th><td>{d.before||'未填写'}</td><td><strong>{d.after||'清空此项'}</strong></td></tr>)}</tbody></table></div></section>)}<p className="change-next-step">采用后可返回台账复核，也可撤销。点击「保存更改」后才会保存。</p><button className="primary" onClick={onApply}>采用 {preview.changes.length} 条记录的修改</button></>}</div>;
+}

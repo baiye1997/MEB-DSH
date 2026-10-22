@@ -1,0 +1,210 @@
+/* Task pages share the receipt workspace's open canvas and quiet supporting panes. */
+.meb.workbench-layout :is(.quick-tools,.custom-calculator,.model-editor,.finance-page){background:var(--work-canvas);caret-color:var(--blue);scrollbar-color:#b9c1d0 #f5f6f9}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator,.model-editor,.project-dossier) :is(button,summary):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.meb.workbench-layout :is(.quick-actions button,.custom-rule-toolbar>button,.custom-save-actions button,.custom-row-toolbar button,.model-editor-tools>button,.model-building-actions>button,.model-building-browser-actions button){display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:30px;height:30px;margin:0;padding:4px 8px;border:1px solid var(--rule);border-radius:5px;background:var(--surface);color:var(--muted);font-size:12px;line-height:20px;white-space:nowrap}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator,.model-editor,.project-dossier) .primary:not(:disabled){background:var(--action,#242627);border-color:var(--action,#242627);color:#fff;font-weight:500}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator,.model-editor,.project-dossier) .primary:not(:disabled):hover{background:var(--action-hover,#3b3e3f);border-color:var(--action-hover,#3b3e3f)}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator) .menu-group-label{padding:6px 10px;color:var(--muted);font-size:11px}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator) .menu-group-divider{border-top:1px solid var(--rule);margin-top:4px;padding-top:10px}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator) .meb-sheet [role=columnheader]{background:var(--work-chrome);color:var(--muted);border-color:var(--rule);font-size:12px;font-weight:600}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator) .sheet-format-toolbar{min-height:34px;padding:3px 8px;background:var(--quiet);border-bottom:1px solid var(--rule);gap:8px}
+.meb.workbench-layout :is(.quick-tools,.custom-calculator) .sheet-format-toolbar .ui-select{background:transparent;border-color:transparent}
+
+.meb.workbench-layout .quick-tools{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;padding:0 0 12px}
+.meb.workbench-layout .quick-tools>.quick-toolbar{display:flex;align-items:flex-start;flex:none;flex-wrap:wrap;gap:8px 16px;min-height:54px;padding:12px 0}
+.meb.workbench-layout .quick-formula{flex:1;min-width:140px;font-size:12px;color:var(--muted)}
+.meb.workbench-layout .quick-formula>summary{width:max-content;max-width:100%;padding:5px 0;min-height:30px;line-height:20px;cursor:pointer}
+.meb.workbench-layout .quick-formula p{max-width:75ch;margin:8px 0 0;font-size:12px;line-height:20px;color:var(--muted);overflow-wrap:anywhere}
+.meb.workbench-layout .quick-actions{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-left:auto}
+.meb.workbench-layout .quick-tools>.table-scroll{flex:1;min-height:0;min-width:0;margin:0;border:1px solid var(--rule);background:var(--surface);overflow:hidden}
+.meb.workbench-layout .quick-tools.inspecting{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:auto minmax(0,1fr) auto;column-gap:12px}
+.meb.workbench-layout .quick-tools.inspecting>.quick-toolbar{grid-column:1/-1;grid-row:1}
+.meb.workbench-layout .quick-tools.inspecting>.table-scroll{grid-column:1;grid-row:2}
+.meb.workbench-layout .quick-tools .quick-inspector{grid-column:2;grid-row:2;position:relative;inset:auto;width:auto;height:auto;min-width:0;max-width:none;margin:0;padding:0;border:1px solid var(--rule);border-radius:0;background:var(--detail-surface);box-shadow:none;z-index:auto}
+.meb.workbench-layout .quick-inspector .detail-heading{padding:10px 12px;background:#eef1f7;border-bottom:1px solid var(--rule)}
+.meb.workbench-layout .quick-inspector .detail-heading h2{font-size:15px;line-height:24px;margin:0;color:var(--ink)}
+.meb.workbench-layout .quick-inspector .detail-heading button{flex:none;height:30px;min-height:30px;padding:4px 8px;border-color:transparent;background:transparent;color:var(--accent, #2563eb);font-size:12px;line-height:20px}
+.meb.workbench-layout .quick-tools .quick-detail-body{padding:12px;min-height:0}
+.meb.workbench-layout .quick-detail-body h3{font-size:14px;margin:0 0 12px;overflow-wrap:anywhere}
+.meb.workbench-layout .quick-detail-body p{font-size:12px;line-height:20px;overflow-wrap:anywhere}
+.meb.workbench-layout .quick-detail-body label{gap:4px;margin:12px 0;color:var(--muted)}
+.meb.workbench-layout .quick-detail-body input{height:30px;min-height:30px;padding:4px 8px;background:var(--surface);font-size:13px;line-height:20px}
+.meb.workbench-layout .quick-detail-body textarea{min-height:80px;background:var(--surface)}
+.meb.workbench-layout .quick-detail-body .quick-result{font-size:20px;line-height:28px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.meb.workbench-layout .quick-footer{display:flex;align-items:baseline;flex:none;flex-wrap:wrap;gap:4px 16px;grid-column:1/-1;grid-row:3;padding:6px 0 0;color:var(--muted);font-size:11px;line-height:18px}
+.meb.workbench-layout .quick-footer p{margin:0;font-size:11px;line-height:18px}
+.meb.workbench-layout .quick-footer p:empty{display:none}
+
+.meb.workbench-layout .custom-calculator{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;padding:0 0 12px}
+.meb.workbench-layout .custom-calculator .custom-rule-toolbar{flex:none;gap:6px;min-height:54px;padding:12px 0;border-bottom:0}
+.meb.workbench-layout .custom-calculator .custom-rule-toolbar>label{gap:8px;font-size:12px;color:var(--muted)}
+.meb.workbench-layout .custom-calculator .custom-rule-toolbar>label select{height:30px;min-height:30px;max-width:180px;width:170px;padding:4px 8px;border-color:var(--rule);background:var(--surface);font-size:13px;line-height:20px}
+.meb.workbench-layout .custom-calculator .custom-actions>summary{min-height:30px;height:30px;padding:4px 8px;color:var(--muted);line-height:20px}
+.meb.workbench-layout .custom-calculator .custom-actions .menu-panel{left:0;right:auto;min-width:200px}
+.meb.workbench-layout .custom-calculator .custom-save-actions{margin-left:auto;gap:8px}
+.meb.workbench-layout .custom-calculator .custom-save-actions>span{max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--muted)}
+.meb.workbench-layout .custom-calculator .custom-rule-summary{flex:none;border-top:1px solid var(--rule);border-bottom:0;padding:6px 0 10px;margin:0;color:var(--muted)}
+.meb.workbench-layout .custom-calculator .custom-rule-summary summary{width:max-content;max-width:100%;cursor:pointer;font-size:12px;line-height:20px}
+.meb.workbench-layout .custom-table-workspace{display:grid;grid-template-columns:minmax(0,1fr);flex:1;min-width:0;min-height:0;gap:12px}
+.meb.workbench-layout .custom-table-workspace:has(>.custom-current){grid-template-columns:minmax(0,1fr) 280px}
+.meb.workbench-layout .custom-table-workspace>.table-scroll{min-width:0;min-height:0;margin:0;border:1px solid var(--rule);background:var(--surface);overflow:hidden}
+.meb.workbench-layout .custom-table-workspace .meb-sheet{height:100%!important}
+.meb.workbench-layout .custom-calculator .sheet-format-toolbar .custom-row-toolbar{gap:6px;min-height:30px;padding:0;margin-left:auto}
+.meb.workbench-layout .custom-calculator .custom-row-toolbar>input{width:180px;min-width:100px;max-width:100%;height:30px;min-height:30px;padding:4px 8px;font-size:12px;line-height:20px;background:var(--surface)}
+.meb.workbench-layout .custom-calculator .custom-current{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden;margin:0;padding:0;border:1px solid var(--rule);background:var(--detail-surface)}
+.meb.workbench-layout .custom-current>header{display:flex;align-items:center;gap:8px;flex:none;padding:10px 12px;border-bottom:1px solid var(--rule);background:#eef1f7}
+.meb.workbench-layout .custom-current h3{flex:1;min-width:0;margin:0;font-size:14px;line-height:22px;overflow-wrap:anywhere;color:var(--ink)}
+.meb.workbench-layout .custom-current>header>button{flex:none;display:inline-block;min-height:30px;height:30px;margin:0;padding:4px 8px;border:0;background:transparent;color:var(--accent, #2563eb);font-size:12px;line-height:20px}
+.meb.workbench-layout .custom-current>div{padding:12px;overflow:auto}
+.meb.workbench-layout .custom-current p{margin:0 0 12px}
+.meb.workbench-layout .custom-current strong{color:var(--ink);font-variant-numeric:tabular-nums}
+.meb.workbench-layout .custom-calculator .custom-range-summary{flex:none;min-height:28px;margin:0;padding:6px 0 0;font-size:11px;line-height:18px;color:var(--muted)}
+.meb.workbench-layout .custom-calculator .custom-notice{flex:none;max-height:56px;overflow:auto;margin:4px 0 0;font-size:12px;line-height:18px}
+.meb.workbench-layout .custom-calculator .custom-notice:empty{display:none}
+.meb.workbench-layout .custom-calculator .custom-rule-editor{flex:1;min-height:0;max-width:none;overflow:auto;padding:16px;background:var(--surface);border:1px solid var(--rule)}
+.meb.workbench-layout .custom-calculator .custom-rule-editor>p{max-width:75ch;color:var(--muted);margin:4px 0 16px}
+.meb.workbench-layout .custom-calculator .custom-rule-basics{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:12px;margin:12px 0 24px}
+.meb.workbench-layout .custom-calculator .custom-variable{gap:8px 12px;margin:0;padding:12px 0;border-bottom:1px solid var(--rule)}
+.meb.workbench-layout .custom-calculator .custom-variable label{flex:1 1 140px}
+.meb.workbench-layout .custom-calculator .custom-rule-editor :is(input,select){height:32px;min-height:32px;min-width:0;padding:5px 8px;font-size:13px;line-height:20px}
+.meb.workbench-layout .custom-calculator .custom-rule-editor>button{margin-top:12px}
+.meb.workbench-layout .custom-calculator .custom-rule-actions{position:sticky;bottom:-16px;gap:8px;margin:20px -16px -16px;padding:12px 16px;border-top:1px solid var(--rule);background:var(--quiet)}
+.meb.workbench-layout .custom-formula-help{margin:0 0 16px;color:var(--muted);font-size:12px}
+.meb.workbench-layout .custom-formula-help summary{cursor:pointer;line-height:20px}
+.meb.workbench-layout .custom-formula-help p{max-width:75ch;margin:8px 0}
+
+.meb.workbench-layout .finance-page{padding:16px 16px 24px}
+.meb.workbench-layout .finance-page .project-dossier{max-width:none}
+.meb.workbench-layout .project-dossier .dossier-heading{align-items:center;margin-bottom:16px}
+.meb.workbench-layout .project-dossier .dossier-heading h2{color:var(--ink)}
+.meb.workbench-layout .project-dossier .dossier-heading p{color:var(--muted)}
+.meb.workbench-layout .project-dossier .finance-context{padding:10px 12px;background:#eef1f7;border:1px solid var(--rule);border-radius:0;flex-direction:row;align-items:center;gap:8px 20px}
+.meb.workbench-layout .project-dossier .finance-tax-select{display:flex;align-items:center;gap:8px;margin:0;color:var(--muted);font-size:12px}
+.meb.workbench-layout .project-dossier .finance-tax-select .ui-select{width:110px;min-height:30px;height:30px;padding:4px 8px;background:var(--surface);font-size:13px;line-height:20px}
+.meb.workbench-layout .project-dossier .dossier-unit{margin-left:auto;color:var(--muted)}
+.meb.workbench-layout .project-dossier .finance-workspace{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start;margin-top:20px}
+.meb.workbench-layout .project-dossier .finance-ledger{display:block;margin:0;padding:0;border:0;background:var(--surface)}
+.meb.workbench-layout .project-dossier .finance-amount-group{padding:0 16px 12px}
+.meb.workbench-layout .project-dossier .finance-amount-group+.finance-amount-group{border:0;border-top:1px solid var(--rule);padding:16px}
+.meb.workbench-layout .project-dossier .finance-amount-group header{padding:12px 0 4px;margin:0;min-height:0;gap:4px 12px}
+.meb.workbench-layout .project-dossier .finance-amount-group+.finance-amount-group header{padding-top:0}
+.meb.workbench-layout .project-dossier .finance-amount-group header p{color:var(--muted)}
+.meb.workbench-layout .project-dossier .finance-amount-group h3{font-size:14px;line-height:22px;color:var(--ink)}
+.meb.workbench-layout .project-dossier .cost-stages>div{min-height:48px;padding:8px 0;border-color:var(--rule)}
+.meb.workbench-layout .project-dossier .cost-stages dd{font-size:17px;line-height:24px;color:var(--ink)}
+.meb.workbench-layout .project-dossier .cost-stages dd input{background:var(--surface);width:min(180px,100%)}
+.meb.workbench-layout .project-dossier .finance-settlement{margin:0;padding:16px;background:var(--detail-surface);border:1px solid var(--rule)}
+.meb.workbench-layout .project-dossier .finance-settlement-heading{display:block;margin-bottom:16px}
+.meb.workbench-layout .project-dossier .finance-settlement-heading h3{font-size:14px;line-height:22px;color:var(--ink)}
+.meb.workbench-layout .project-dossier .finance-settlement-heading p{text-align:left;margin-top:6px;color:var(--muted)}
+.meb.workbench-layout .project-dossier .change-total{padding:10px 0;border:0;border-block:1px solid var(--rule);border-radius:0;background:transparent}
+.meb.workbench-layout .project-dossier .change-total strong{font-size:15px;color:var(--ink)}
+.meb.workbench-layout .project-dossier .project-rates{gap:16px;padding:16px 0}
+.meb.workbench-layout .project-dossier .project-rates dd{margin-top:8px}
+.meb.workbench-layout .project-dossier .project-rates input{background:var(--surface);width:90px;max-width:100%}
+.meb.workbench-layout .project-dossier .dossier-settings{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 16px;padding:16px 0 0;border-top:1px solid var(--rule)}
+.meb.workbench-layout .project-dossier .dossier-settings h4{margin:0;font-size:12px;font-weight:600;color:var(--muted)}
+.meb.workbench-layout .project-dossier .dossier-settings label{display:grid;grid-template-columns:90px minmax(0,1fr);align-items:center;gap:10px}
+.meb.workbench-layout .project-dossier .dossier-settings .ui-select{background:var(--surface)}
+.meb.workbench-layout .project-dossier .project-linked{padding:12px 0 0;border-bottom:0;border-color:var(--rule)}
+.meb.workbench-layout .project-dossier .project-linked summary{font-size:12px;line-height:20px}
+.meb.workbench-layout .project-dossier .project-linked summary>span{font-size:14px;color:var(--ink)}
+.meb.workbench-layout .project-dossier .finance-notes{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule)}
+.meb.workbench-layout .project-dossier .finance-notes h3{margin:0 0 10px;font-size:14px;line-height:22px;color:var(--ink)}
+.meb.workbench-layout .project-dossier .finance-notes label{display:block;margin:0}
+.meb.workbench-layout .project-dossier .finance-notes textarea{width:100%;max-width:100%;min-height:76px;margin:0;padding:8px 10px;background:var(--surface);font-size:13px;line-height:20px}
+.meb.workbench-layout .project-dossier .finance-notes small{display:block;margin-top:8px;color:var(--muted);font-size:11px;line-height:18px}
+.meb.workbench-layout .project-dossier .dossier-note-preview{max-width:75ch;margin:0;color:var(--muted)}
+
+.meb.workbench-layout .model-editor{height:100%;overflow:hidden;padding:0 16px 12px}
+.meb.workbench-layout .model-editor-tools{flex:none;gap:8px 12px;min-height:54px;padding:12px 0}
+.meb.workbench-layout .model-editor-tools>span{flex:1;min-width:130px;color:var(--muted);font-size:11px}
+.meb.workbench-layout .model-editor-tools>label{font-size:12px;color:var(--muted)}
+.meb.workbench-layout .model-editor-guidance{margin:0}
+.meb.workbench-layout .model-editor-guidance>summary{min-height:30px;height:30px;padding:4px 8px;color:var(--muted);line-height:20px}
+.meb.workbench-layout .model-editor-guidance .menu-panel{left:0;right:auto;width:360px;max-width:min(360px,calc(100cqw - 32px));padding:12px}
+.meb.workbench-layout .model-editor-guidance .model-editor-note{margin:0;line-height:20px;color:var(--muted)}
+.meb.workbench-layout .model-editor>.dwg-review{flex:none;margin:0 0 12px}
+/* Review owns the workspace until adoption or cancellation; keep its actions visible. */
+.meb.workbench-layout .model-editor:has(.dwg-review-results)>:is(.model-editor-tools,.model-editor-layout){display:none}
+.meb.workbench-layout .model-editor>.dwg-review:has(.dwg-review-results){display:flex;flex-direction:column;flex:1;min-height:0;max-height:none;overflow:hidden}
+.meb.workbench-layout .model-editor .dwg-review-results{display:flex;flex-direction:column;flex:1;min-height:0;overflow:auto}
+.meb.workbench-layout .model-editor .dwg-review-results>:is(header,footer,.dwg-review-options,p){flex:none}
+.meb.workbench-layout .model-editor .dwg-review-results>details{min-height:0;overflow:auto}
+.meb.workbench-layout .model-editor .dwg-review-results>footer{position:sticky;bottom:0;padding-block:10px 0;background:var(--surface);z-index:1}
+.meb.workbench-layout .model-editor .dwg-review-body{flex:1;min-height:190px;overflow:auto;align-items:stretch}
+.meb.workbench-layout .model-editor .dwg-review-list{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.meb.workbench-layout .model-editor .dwg-candidates-heading{flex:none}
+.meb.workbench-layout .model-editor .dwg-review-list .dwg-candidates{flex:1;min-height:90px;max-height:none}
+.meb.workbench-layout .model-editor .dwg-review-maps{min-height:0;overflow:auto}
+.meb.workbench-layout .model-editor .dwg-review-bar{gap:8px 12px}
+.meb.workbench-layout .model-editor .dwg-review-bar>span{color:var(--muted);font-size:11px}
+.meb.workbench-layout .model-editor .dwg-review-results{border-radius:0;background:var(--surface);border-color:var(--rule)}
+.meb.workbench-layout .model-editor-layout{grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:16px;flex:1;min-height:220px;align-items:stretch}
+.meb.workbench-layout .model-building-list{min-width:0;min-height:0;overflow:auto;padding:0 12px 0 0}
+.meb.workbench-layout .model-building-list .model-building-browser{padding:12px;background:var(--detail-surface);border:1px solid var(--rule);margin:0 0 16px}
+.meb.workbench-layout .model-building-browser-head{gap:8px;margin-bottom:10px}
+.meb.workbench-layout .model-building-browser-filters :is(input,.ui-select){max-width:100%;background:var(--surface)}
+.meb.workbench-layout .model-building-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;max-height:140px;overflow:auto;padding:0 2px 2px}
+.meb.workbench-layout .model-building-tabs button{max-width:none;min-width:0;min-height:32px;padding:5px 6px;border:1px solid transparent;border-radius:4px;background:transparent;gap:6px;flex-wrap:wrap}
+.meb.workbench-layout .model-building-tabs button[aria-pressed=true]{border-color:#c5d5fb;background:var(--selected);color:var(--accent, #2563eb)}
+.meb.workbench-layout .model-building-tabs button:hover{background:#eef1f7}
+.meb.workbench-layout .model-building-tabs button span{min-width:0;flex:1}
+.meb.workbench-layout .model-building-tabs button small{display:block;flex-basis:100%;padding-left:24px;font-size:11px;line-height:16px;color:var(--muted)}
+.meb.workbench-layout .model-building-tabs button em{flex:none}
+.meb.workbench-layout .model-building{margin:0;padding:0 0 16px;border:0}
+.meb.workbench-layout .model-building>header{padding-bottom:12px}
+.meb.workbench-layout .model-building-actions{gap:4px}
+.meb.workbench-layout .model-building-actions .action-menu{margin:0}
+.meb.workbench-layout .model-building-menu>summary{height:30px;min-height:30px;padding:4px 7px}
+.meb.workbench-layout .model-building .model-fields{gap:12px}
+.meb.workbench-layout .model-building :is(.model-fields,.model-floor-fields) label{color:var(--muted);font-size:12px}
+.meb.workbench-layout .model-building :is(.model-fields,.model-floor-fields) input{background:var(--surface);border-color:var(--rule)}
+.meb.workbench-layout .model-building>details:not(.action-menu){padding-top:12px;border-top:1px solid var(--rule);margin-top:16px}
+.meb.workbench-layout .model-editor-preview{height:auto;min-height:220px;order:0;align-self:stretch;border:1px solid var(--rule);border-radius:0;background:var(--surface)}
+.meb.workbench-layout .model-editor-preview iframe{display:block;min-height:220px;height:100%}
+
+@container workarea (max-width:880px){
+ .meb.workbench-layout .project-dossier .finance-workspace{grid-template-columns:minmax(0,1fr);gap:20px}
+ .meb.workbench-layout .project-dossier .finance-ledger{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .meb.workbench-layout .project-dossier .finance-amount-group+.finance-amount-group{border-top:0;border-left:1px solid var(--rule);padding:0 16px 12px}
+ .meb.workbench-layout .project-dossier .finance-amount-group+.finance-amount-group header{padding-top:12px}
+ .meb.workbench-layout .project-dossier .dossier-settings{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .meb.workbench-layout .project-dossier .dossier-settings h4{grid-column:1/-1}
+ .meb.workbench-layout .model-editor-layout{grid-template-columns:minmax(280px,340px) minmax(0,1fr)}
+ .meb.workbench-layout .custom-calculator .custom-save-actions>span{display:none}
+}
+@container workarea (max-width:740px){
+ .meb.workbench-layout .model-editor{overflow:auto;padding-inline:10px}
+ .meb.workbench-layout .model-editor-layout{display:flex;flex-direction:column;flex:none;min-height:0}
+ .meb.workbench-layout .model-building-list{overflow:visible;padding:0}
+ .meb.workbench-layout .model-editor-preview,.meb.workbench-layout .model-editor-layout.is-splitting .model-editor-preview{height:340px;min-height:340px;order:0;flex:none}
+ .meb.workbench-layout .model-editor>.dwg-review:has(.dwg-review-results){display:block;flex:none;max-height:none;overflow:visible;padding-right:0}
+ .meb.workbench-layout .model-editor .dwg-review-results{display:block;overflow:visible}
+ .meb.workbench-layout .model-editor .dwg-review-body{overflow:visible}
+ .meb.workbench-layout .model-editor .dwg-review-list .dwg-candidates{flex:none;max-height:300px}
+ .meb.workbench-layout .model-editor .dwg-review-maps{overflow:visible}
+ .meb.workbench-layout .quick-tools.inspecting{grid-template-columns:minmax(0,1fr) 260px;column-gap:10px}
+ .meb.workbench-layout .custom-table-workspace:has(>.custom-current){grid-template-columns:minmax(0,1fr) 250px;gap:10px}
+ .meb.workbench-layout .custom-calculator .custom-row-toolbar>input{width:150px}
+}
+@container workarea (max-width:560px){
+ .meb.workbench-layout .quick-tools.inspecting{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(260px,1fr) auto auto;overflow:auto}
+ .meb.workbench-layout .quick-tools .quick-inspector{grid-column:1;grid-row:3;max-height:380px}
+ .meb.workbench-layout .quick-tools.inspecting>.quick-footer{grid-row:4}
+ .meb.workbench-layout .quick-actions{margin-left:0}
+ .meb.workbench-layout .custom-calculator{overflow:auto}
+ .meb.workbench-layout .custom-table-workspace,.meb.workbench-layout .custom-table-workspace:has(>.custom-current){grid-template-columns:minmax(0,1fr);flex:none}
+ .meb.workbench-layout .custom-table-workspace>.table-scroll{height:300px}
+ .meb.workbench-layout .custom-calculator .custom-current{max-height:300px}
+ .meb.workbench-layout .custom-calculator .custom-rule-basics{grid-template-columns:minmax(0,1fr)}
+ .meb.workbench-layout .custom-calculator .custom-save-actions{width:auto;margin-left:auto}
+ .meb.workbench-layout .project-dossier .finance-ledger{display:block}
+ .meb.workbench-layout .project-dossier .finance-amount-group+.finance-amount-group{border:0;border-top:1px solid var(--rule);padding:0 16px 12px}
+ .meb.workbench-layout .project-dossier .finance-amount-group .cost-stages{display:block}
+ .meb.workbench-layout .project-dossier .finance-amount-group .cost-stages>div{display:flex;min-height:48px}
+ .meb.workbench-layout .project-dossier .finance-context{gap:8px 12px}
+ .meb.workbench-layout .project-dossier .dossier-unit{margin-left:0}
+ .meb.workbench-layout .project-dossier .dossier-settings{grid-template-columns:minmax(0,1fr)}
+ .meb.workbench-layout .project-dossier .finance-settlement{padding:12px}
+}

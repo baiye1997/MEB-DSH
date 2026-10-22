@@ -1,0 +1,156 @@
+/* Shared finish for working pages. All surfaces follow the host theme. */
+.meb{
+ --rule:color-mix(in srgb,var(--ink) 11%,var(--surface));
+ --cell-rule:color-mix(in srgb,var(--ink) 6%,var(--surface));
+ --quiet:color-mix(in srgb,var(--ink) 3%,var(--surface));
+ --hover:color-mix(in srgb,var(--ink) 6%,var(--surface));
+ --line:var(--rule);
+ font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.meb .ui-icon{flex-shrink:0;vertical-align:middle}
+.meb button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:32px;border-radius:5px;transition:background-color 120ms,color 120ms}
+.meb button:disabled{opacity:.46}
+.meb button.primary{font-weight:550}
+.meb input,.meb select{min-height:32px}
+.meb :is(button,input,select,textarea):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.meb .brand-row{display:flex;align-items:flex-start;justify-content:space-between;margin:4px 0 25px;gap:8px}
+.meb .brand{font-size:25px;letter-spacing:-.04em;margin:0;font-weight:650;line-height:1.1}
+.meb .brand span{font-size:11px;font-weight:400;margin-top:9px;letter-spacing:.015em}
+.meb .nav-collapse{border:0;padding:4px;background:transparent;color:var(--muted);min-height:28px}
+.meb .project-nav{width:214px;background:var(--quiet);gap:4px;padding:24px 16px;transition:width 160ms ease-out}
+.meb .project-nav>.nav-heading{margin-top:22px;margin-bottom:6px;font-weight:500;font-size:11px}
+.meb .project-nav>input{background:transparent;border-color:var(--rule);font-size:12px;margin-bottom:6px;padding:6px 9px;width:100%}
+.meb .project-nav :is(.nav-item,.meb-project){justify-content:flex-start;gap:10px;min-height:38px;font-size:13px;text-align:left}
+.meb .nav-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meb .project-nav .active{background:var(--surface)!important;color:var(--ink);box-shadow:0 1px 2px color-mix(in srgb,var(--ink) 6%,transparent);font-weight:550}
+.meb .project-nav .active:before{display:none}
+.meb .project-nav .ui-icon{color:var(--muted)}
+.meb .project-nav .active .ui-icon{color:var(--ink)}
+.meb .nav-bottom{padding-top:24px}.meb .nav-bottom p{font-size:10px}.meb .nav-bottom button{padding:5px 0;font-size:12px}
+.meb .project-nav.is-collapsed{width:58px;padding:20px 10px}
+.meb .is-collapsed :is(.brand,.nav-label,.nav-heading,input,.nav-bottom p){display:none}
+.meb .is-collapsed .brand-row{margin-bottom:22px;justify-content:center}
+.meb .is-collapsed :is(.nav-item,.meb-project){justify-content:center;padding:8px}.meb .is-collapsed .nav-bottom button{width:100%}
+.meb .work>header{padding:20px 28px 14px}
+.meb [data-page=table]>header,.meb [data-page=calculator]>header{padding:15px 24px 13px;border-bottom:1px solid var(--rule)}
+.meb .heading h1{font-weight:580;letter-spacing:-.025em}
+.meb .breadcrumb{font-size:11px}.meb .breadcrumb button{min-height:0;font-size:inherit}
+.meb .heading>button{min-width:78px;font-size:12px}
+.meb .heading>button:disabled{opacity:1;background:transparent;color:var(--muted);border-color:transparent;font-weight:400}
+.meb .draft-notice{padding:7px 24px;background:var(--quiet);border-bottom:1px solid var(--rule);font-size:12px;display:block}
+.meb .draft-notice summary{cursor:pointer;width:fit-content;color:var(--ink)}
+.meb .draft-notice summary>span{font-size:11px;color:var(--muted);margin-left:12px}
+.meb .draft-actions{display:flex;gap:8px;padding:8px 0 2px}.meb .draft-actions button{font-size:12px;min-height:28px}
+.meb .ledger-tabs{gap:16px;min-height:44px;align-items:stretch;border-color:var(--rule)}
+.meb .ledger-tabs .tab{font-size:13px;padding:10px 2px;margin-right:2px;border-radius:0;position:relative;color:var(--muted);border-bottom:2px solid transparent}
+.meb .ledger-tabs .tab.selected{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+.meb .ledger-tabs .tab:hover{color:var(--ink);background:transparent}
+.meb .ledger>.tools{padding:10px 0 6px;gap:6px}
+.meb .tools :is(button,select,input){min-height:30px;font-size:12px}
+.meb .tools>button:not(.primary),.meb .record-filters>button:not(.primary),.meb .record-filters>select{border-color:transparent;background:transparent;padding:5px 9px}
+.meb .tools>button:not(.primary):not(:disabled):hover,.meb .record-filters>button:not(.primary):not(:disabled):hover{background:var(--hover)}
+.meb .tools>input{background:var(--quiet);border-color:transparent;padding:6px 10px;max-width:260px;min-width:150px}
+.meb .tools select{border-color:transparent;background:var(--quiet);max-width:180px;padding:5px 7px}
+.meb .tools .inline-help summary{padding:5px 7px;color:var(--muted)}
+.meb .business-actions{padding:4px 0 10px;gap:6px}.meb .business-actions>span{font-size:11px}
+.meb .table-scroll,.meb .calc-table-scroll{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.meb table th{background:var(--quiet);color:var(--muted);font-weight:500;font-size:12px;border-right-color:var(--cell-rule);border-bottom-color:var(--rule);padding:10px 12px}
+.meb table td{border-right-color:var(--cell-rule);border-bottom-color:var(--cell-rule)}
+.meb table tbody tr:last-child td{border-bottom:0}
+.meb :is(.business-table,.calculation-records,.calculation-grid,.quick-tools) tbody tr:hover{background:var(--quiet)}
+.meb :is(.business-table,.calculation-records,.calculation-grid,.quick-tools) tbody tr:focus-within{background:color-mix(in srgb,var(--blue) 3%,var(--surface))}
+.meb table td input{font-size:13px;line-height:1.5;min-height:40px;padding:9px 12px;font-variant-numeric:tabular-nums}
+.meb table td input:focus{background:var(--surface);outline:2px solid var(--blue);outline-offset:-2px}
+.meb .business-index{font-size:11px;color:var(--muted);min-width:64px}
+.meb .business-table input[type=checkbox],.meb .calculation-grid input[type=checkbox]{min-height:14px;width:14px;height:14px}
+.meb .approval-cell label{font-size:11px;gap:5px;color:var(--muted)}
+.meb .approval-cell label:has(input:checked){color:var(--ink)}
+.meb .business-footer{padding:10px 0;font-size:11px}.meb .business-empty{border:0;text-align:left;padding:24px 12px;line-height:1.8;font-size:12px}
+.meb .calculator-page{padding-top:10px}.meb .calculator-switch{border:0;padding:0;margin:0 0 4px;gap:2px;width:fit-content;background:var(--quiet);border-radius:5px}
+.meb .calculator-switch button{font-size:12px;padding:5px 12px;min-height:30px;margin:2px;border-radius:4px}
+.meb .calculator-switch .selected{background:var(--surface);box-shadow:0 1px 2px color-mix(in srgb,var(--ink) 8%,transparent);font-weight:550}
+.meb .calculator,.meb .quick-tools{padding:0 0 24px}
+.meb .shared-parameters{margin:8px 0 0;border-bottom:0;padding:5px 0}.meb .shared-parameters summary{font-size:12px}.meb .shared-parameters summary small{font-size:11px}
+.meb .sheet-parameters{background:var(--quiet);padding:12px!important;border-radius:5px;margin-top:8px}
+.meb .sheet-help{margin:0;padding:3px 0;font-size:11px}.meb .calc-toolbar{padding:8px 0 10px}
+.meb .calculation-grid .action-col{min-width:116px}.meb .row-actions{padding:5px;gap:1px}.meb .row-actions button{border:0;background:transparent;min-height:28px;height:28px;padding:4px 6px}
+.meb .calculation-grid .mode-cell button{color:var(--muted);font-size:11px}
+.meb .calculation-grid .calc-value strong{font-size:14px;font-weight:550;font-variant-numeric:tabular-nums}
+.meb .cable-recognition{font-size:10px;padding-bottom:7px;line-height:1.4}.meb .calc-state{font-size:11px}
+.meb .calculation-drawer,.meb .calculation-record-detail{border-color:var(--rule)}
+.meb .drawer-heading{padding:18px 24px}.meb .drawer-heading h2{font-size:20px;font-weight:550;letter-spacing:-.02em}.meb .drawer-heading>button{border:0;background:var(--quiet);width:32px;height:32px;padding:0}
+.meb .drawer-content h3{font-size:13px;margin-top:22px;font-weight:600}.meb .drawer-content h3 small{display:inline;margin-left:10px;font-size:11px}
+.meb .parameter-grid{gap:12px 20px}.meb .parameter-item>span{font-size:12px}.meb .parameter-item input{background:var(--quiet);border-color:transparent;font-size:13px;padding:7px 9px}.meb .parameter-item input:focus{background:var(--surface);border-color:var(--blue)}
+.meb .parameter-item>small{line-height:1.6;font-size:10px;margin-top:3px}
+.meb .formula-term{background:transparent;border-bottom:1px solid var(--rule);border-radius:0;padding:2px 2px 4px;margin-right:2px}.meb .formula-term>span{font-size:13px}.meb .formula-meaning{font-size:11px;line-height:1.6}.meb .equation-table td{padding:12px 10px}
+.meb .drawer-footer{background:var(--quiet);padding:12px 24px}.meb .record-title>button{color:var(--muted)}.meb .record-title>button:hover{color:var(--ink)}
+.meb .quick-tools>p{font-size:12px;margin:12px 0;line-height:1.7}.meb .quick-tools>button{font-size:12px;margin-right:6px}.meb .quick-tools .table-scroll{margin-top:12px}
+.meb .files-page,.meb .materials-page{padding:0 24px 24px}.meb .file-row{gap:14px;padding:14px 4px}.meb .file-row strong{font-size:13px}.meb .file-row button{font-size:12px;border-color:transparent}.meb .empty{padding:48px 24px}.meb .empty h2{font-size:20px;font-weight:500}.meb .empty p{font-size:12px}
+.meb .status{font-size:11px;background:var(--surface);padding:7px 24px;border-color:var(--rule);min-height:30px}
+@media(max-width:900px){.meb .project-nav{width:180px;padding:20px 12px}.meb .tools{gap:4px}.meb .ledger-tabs{gap:12px}.meb .parameter-grid{gap:12px}.meb .shared-parameters summary small{display:block;margin:4px 0 0 14px}}
+@media(max-width:650px){.meb .project-nav{width:58px;padding:18px 10px}.meb .project-nav :is(.brand,.nav-label,.nav-heading,input,.nav-bottom p){display:none}.meb .brand-row{justify-content:center;margin-bottom:16px}.meb .project-nav :is(.nav-item,.meb-project){justify-content:center;padding:8px}.meb .ledger,.meb .calculator-page,.meb .files-page,.meb .materials-page{padding-left:14px;padding-right:14px}.meb [data-page=table]>header,.meb [data-page=calculator]>header{padding:12px 14px}.meb .draft-notice{padding:6px 14px}.meb .parameter-grid{grid-template-columns:1fr 1fr}.meb .ledger-tabs{gap:10px}.meb .ledger-tabs .tab{font-size:12px}.meb .record-filters input{width:120px}}
+/* Operate: a project shelf with CAD covers, quiet accents, and contextual table actions. */
+.meb .action-menu{position:relative;font-size:12px;align-self:center}
+.meb .action-menu summary{display:flex;align-items:center;gap:7px;cursor:pointer;padding:6px 10px;list-style:none;min-height:32px;border-radius:5px}
+.meb .action-menu summary::-webkit-details-marker{display:none}
+.meb .action-menu summary:hover,.meb .action-menu[open]>summary{background:var(--hover)}
+.meb .menu-panel{position:absolute;top:calc(100% + 5px);left:0;min-width:190px;z-index:20;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:3px}
+.meb .menu-panel button{justify-content:flex-start;background:transparent;border:0;min-height:34px;font-size:12px}
+.meb .menu-panel button:hover{background:var(--quiet)}
+.meb .business-table tfoot{background:var(--quiet);font-size:12px;font-variant-numeric:tabular-nums}
+.meb .business-table tfoot td{padding:10px 12px;border-top:1px solid var(--rule);font-weight:550;vertical-align:top}
+.meb .business-table tfoot th{position:static}.meb .total-label{display:block;max-width:200px;white-space:normal;line-height:1.6;color:var(--muted)}
+.meb .cost-stage-select{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;margin:12px 0 18px}
+.meb .cost-stage-select select{width:140px;background:var(--quiet);border-color:transparent}
+.meb .project-board{width:100%;padding:12px 32px 40px}
+.meb [data-page=board]>header .heading h1{font-size:18px}.meb [data-page=board]>header .heading p{display:none}
+.meb [data-page=board]>header{padding-bottom:10px}.meb [data-page=board] .breadcrumb{margin-bottom:10px}
+.meb .board-intro{display:flex;align-items:center;justify-content:space-between;margin:12px 0 22px;gap:24px}
+.meb .eyebrow{font-size:12px;color:var(--muted)}.meb .board-intro h2{font-size:30px;letter-spacing:-.025em;font-weight:550;margin:6px 0 8px}.meb .board-intro p{font-size:13px;margin:0}
+.meb .board-filter{display:flex;gap:8px;margin-bottom:24px}.meb .board-filter input{width:240px}.meb .board-filter select{width:150px}
+.meb .project-shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:24px;max-width:1200px}
+.meb .project-cover{padding:0;display:block;text-align:left;white-space:normal;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--surface)}
+.meb .project-cover:hover{background:var(--surface);border-color:var(--muted)}
+.meb .cover-art{height:160px;position:relative;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--blue) 6%,var(--surface));overflow:hidden}
+.meb .cover-art svg{height:140px;width:80%;fill:color-mix(in srgb,var(--blue) 22%,var(--surface));stroke:color-mix(in srgb,var(--blue) 50%,var(--surface));stroke-width:.7;transform:rotate(-10deg)}
+.meb .cover-letter{font-size:78px;font-weight:300;color:color-mix(in srgb,var(--blue) 40%,var(--surface));line-height:1}
+.meb .stage-badge{position:absolute;left:16px;top:14px;font-size:11px;color:var(--ink);background:var(--surface);padding:4px 9px;border-radius:4px}
+.meb .cover-info{padding:20px}.meb .cover-info h3{display:flex;justify-content:space-between;margin:0 0 6px;font-size:19px;font-weight:550}.meb .cover-info h3 span{color:var(--muted);font-size:15px}
+.meb .cover-info p{font-size:12px;margin:0 0 20px}.meb .stage-trail{display:flex;gap:4px;margin:0 0 20px}.meb .stage-trail i{height:3px;flex:1;background:var(--rule)}.meb .stage-trail i.reached{background:var(--blue)}
+.meb .record-distribution{display:flex;gap:14px}.meb .record-distribution span{flex:1;position:relative;padding-bottom:9px;font-size:11px;color:var(--muted)}.meb .record-distribution b{display:block;font-size:19px;font-weight:500;color:var(--ink);margin-bottom:3px}.meb .record-distribution i{position:absolute;bottom:0;left:0;height:2px;background:color-mix(in srgb,var(--blue) 50%,var(--surface))}
+.meb .file-path{max-width:260px;overflow-wrap:anywhere}.meb .files-page .empty{border-top:1px solid var(--rule);margin-top:20px}.meb .file-icon{color:var(--blue)}
+@media(max-width:750px){.meb .project-board{padding:12px 18px 30px}.meb .board-intro h2{font-size:24px}.meb .project-shelf{grid-template-columns:1fr}.meb .board-filter input{width:60%}.meb .file-row{flex-wrap:wrap}}
+.meb{--work-accent:color-mix(in srgb,#558ba9 74%,var(--ink));--blue:var(--work-accent)}
+.meb .breadcrumb>button{border:0;background:transparent;padding:0;color:var(--muted)}
+.meb [data-page=board]>header{display:flex;justify-content:space-between;align-items:center;padding:14px 32px}
+.meb [data-page=board]>header .breadcrumb{margin:0}.meb [data-page=board]>header .heading>div{display:none}
+.meb .project-cover .cover-art{background:color-mix(in srgb,var(--work-accent) 9%,var(--surface))}
+/* Inspect rows without covering the source table. */
+.meb .sheet-calculator.inspecting{display:grid;grid-template-columns:minmax(280px,1fr) minmax(340px,42%);column-gap:20px;align-items:start}
+.meb .sheet-calculator.inspecting> :not(.calculation-drawer){grid-column:1}
+.meb .sheet-calculator.inspecting>.calculation-drawer{position:sticky;top:8px;grid-column:2;grid-row:1 / span 9;width:100%;max-width:none;height:calc(100vh - 145px);min-height:420px;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.meb .inspector-navigation{display:flex;align-items:center;gap:3px}
+.meb .inspector-navigation button{font-size:12px;padding:5px 7px}
+.meb .drawer-heading,.meb .drawer-content,.meb .drawer-footer{padding:14px 16px}
+.meb .drawer-heading h2{font-size:16px}
+.meb .reference-browser{margin:12px 0;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.meb .reference-path{display:flex;gap:8px;align-items:center;padding:8px;background:var(--quiet)}
+.meb .reference-path small{overflow-wrap:anywhere}
+.meb .reference-entries{height:240px;overflow:auto;padding:6px}
+.meb .reference-entries button{display:flex;justify-content:flex-start;width:100%;border:0;text-align:left;background:transparent;font-size:13px}
+@media(max-width:850px){.meb .sheet-calculator.inspecting{display:flex;flex-direction:column}.meb .sheet-calculator.inspecting>.calculation-drawer{position:relative;top:auto;height:60vh;min-height:350px;order:20}.meb .sheet-calculator.inspecting>.calc-table-scroll{max-width:100%;max-height:40vh;overflow:auto}}
+.meb .calculation-steps{list-style:none;padding:0;margin:0;counter-reset:calcstep}
+.meb .calculation-steps>li{counter-increment:calcstep;position:relative;padding:12px 0 12px 30px;border-bottom:1px solid var(--cell-rule)}
+.meb .calculation-steps>li:before{content:counter(calcstep);position:absolute;left:0;top:13px;font-size:11px;color:var(--muted);width:20px;height:20px;display:grid;place-items:center;border:1px solid var(--rule);border-radius:50%}
+.meb .step-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:12px;margin-bottom:5px}
+.meb .step-heading strong{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:14px}
+.meb .step-operands{margin:5px 0 0!important;font-size:12px;font-variant-numeric:tabular-nums}
+.meb .step-operands summary{cursor:pointer;overflow-wrap:anywhere;color:var(--ink)}
+.meb .calculation-steps>.final-step{border-bottom:0;color:var(--ink)}
+.meb .final-step .step-heading strong{font-size:19px;color:var(--blue)}
+.meb .editable-parameters>summary{cursor:pointer;padding:8px 0;font-weight:500}
+.meb .editable-parameters .parameter-grid{margin-top:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.meb .table-body .calculation-record-detail{position:sticky;top:8px;bottom:auto;right:auto;width:40%;min-width:340px;max-width:560px;height:calc(100vh - 150px);max-height:calc(100vh - 150px);z-index:2}
+@media(max-width:850px){.meb .table-body:has(.calculation-record-detail){flex-direction:column}.meb .table-body .calculation-record-detail{position:relative;top:auto;width:100%;max-width:none;min-width:0;height:60vh}}
+.meb .work{container-type:inline-size;container-name:workarea}
+@container workarea (max-width:760px){.meb .sheet-calculator.inspecting{display:flex;flex-direction:column}.meb .sheet-calculator.inspecting>.calculation-drawer{position:relative;top:auto;height:60vh;min-height:350px;order:20}.meb .sheet-calculator.inspecting>.calc-table-scroll{max-width:100%;max-height:40vh;overflow:auto}.meb .table-body:has(.calculation-record-detail){flex-direction:column}.meb .table-body .calculation-record-detail{position:relative;top:auto;width:100%;max-width:none;min-width:0;height:60vh}}

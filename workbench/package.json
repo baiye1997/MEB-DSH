@@ -1,0 +1,142 @@
+{
+  "name": "meb-workbench",
+  "version": "0.1.4",
+  "description": "MEB construction-cost workbench plugin for DeepSeek Harness",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baiye1997/MEB-DSH.git",
+    "directory": "workbench"
+  },
+  "homepage": "https://github.com/baiye1997/MEB-DSH/tree/main/workbench",
+  "bugs": {
+    "url": "https://github.com/baiye1997/MEB-DSH/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "construction",
+    "cost-estimation"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "lib/client.js",
+    "lib/index.js",
+    "lib/dwg-evidence.py",
+    "lib/dwg-extract.py",
+    "lib/excel-worker.html",
+    "lib/model-embed.html",
+    "dsh.bundle.patch",
+    "README.md",
+    "THIRD-PARTY-NOTICES.md",
+    "LICENSE",
+    "src/rare-ui/LICENSE",
+    "src/daily-intro-font-license.txt",
+    "package.json"
+  ],
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./dsh.bundle.patch"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-file-upload",
+        "@deepseek-ai/dsh-api-session-controller"
+      ]
+    }
+  },
+  "scripts": {
+    "setup:cad": "uv venv .venv && uv pip install --python .venv/bin/python -r cad-requirements.txt",
+    "build": "node build.mjs",
+    "prepare": "npm run build",
+    "test": "node --test src/workspace-updates.test.mjs src/sheet-range.test.mjs src/business-worksheets.test.mjs src/dashboard-summary.test.mjs src/calculation-worksheets.test.mjs src/sheet-format.test.mjs src/model.test.mjs src/ledger-layout.test.mjs src/ledger-filter.test.mjs src/webdav-sync.test.mjs src/ledger-state.test.mjs src/excel-workbook.test.mjs src/excel-import.test.mjs src/excel-import-xls.test.mjs src/dwg-import.test.mjs",
+    "test:render": "node test-fixtures/check-render.mjs",
+    "test:package": "node test-fixtures/check-package.mjs",
+    "verify": "npm test && npm run test:render && npm run build && npm run test:package",
+    "preview:acceptance": "node test-fixtures/preview-acceptance.mjs",
+    "verify:ci": "npm run test:privacy && npm run build && npm run test:package",
+    "verify:release": "npm run test:privacy && npm run verify && npm audit --omit=dev --audit-level=high",
+    "prepublishOnly": "npm run verify:release",
+    "test:privacy": "node test-fixtures/check-public.mjs"
+  },
+  "dependencies": {
+    "@radix-ui/react-popover": "1.1.23",
+    "@radix-ui/react-select": "2.3.7",
+    "@radix-ui/react-tabs": "1.1.21",
+    "cfb": "1.2.2",
+    "codepage": "1.15.0",
+    "exceljs": "4.4.0",
+    "motion": "13.4.0",
+    "polygon-clipping": "^0.15.7",
+    "react-data-grid": "7.0.0-beta.47",
+    "react-day-picker": "10.0.1",
+    "ssf": "0.11.2",
+    "three": "^0.170.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-storage-domain": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.5-rc.2",
+    "esbuild": "0.25.12",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-api-session-controller": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "@deepseek-ai/dsh-client-connection": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "@deepseek-ai/dsh-client-file-upload": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "@deepseek-ai/dsh-client-ui-layout": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "@deepseek-ai/dsh-client-ui-sidebar": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "@deepseek-ai/dsh-storage-domain": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "^0.1.5-rc.2 || ^0.2.0-rc.2",
+    "react": ">=18.3.1 <19",
+    "react-dom": ">=18.3.1 <19"
+  },
+  "overrides": {
+    "exceljs": {
+      "uuid": "11.1.1"
+    }
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-api-session-controller": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-connection": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-file-upload": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-layout": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-sidebar": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-storage-domain": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  }
+}

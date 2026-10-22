@@ -1,0 +1,20 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {businessColumns,pasteCells} from './business.js';
+import {ledgerExportMatrix} from './ledger-export.js';
+import {ledgerDisplayColumns} from './ledger-layout.js';
+test('receipt display keeps quantity visible and clipboard aligned without changing saved fields',()=>{
+ const columns=businessColumns('receipt'),before=structuredClone(columns);
+ const visible=ledgerDisplayColumns(columns,'receipt');
+ assert.deepEqual(visible.slice(0,6).map(c=>c.id),['number','location','description','reported','unit','discipline']);
+ assert.deepEqual(columns,before);
+ assert.ok(!visible.some(c=>c.id==='status'));
+ const book={columns,rows:[{id:'r',cells:{},files:[],notes:''}]};
+ pasteCells(book,book.rows,visible,'r','description',[['给水管','12.5','m','给排水']],'receipt');
+ assert.deepEqual(book.rows[0].cells,{description:'给水管',reported:'12.5',unit:'m',discipline:'给排水'});
+ assert.deepEqual(ledgerExportMatrix(book.rows,columns,'receipt')[0].slice(0,6),visible.slice(0,6).map(c=>c.name));
+ columns[0].width=240;
+ assert.equal(ledgerDisplayColumns(columns,'receipt')[0].width,240);
+ const contract=businessColumns('contract');
+ assert.deepEqual(ledgerDisplayColumns(contract,'contract'),contract.filter(c=>!c.hidden));
+});

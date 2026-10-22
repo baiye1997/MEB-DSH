@@ -1,0 +1,26 @@
+import {build} from 'esbuild';
+import {writeFile,readFile,copyFile} from 'node:fs/promises';
+await build({entryPoints:['src/index.js'],outfile:'lib/index.js',bundle:true,platform:'node',format:'esm',packages:'external'});
+await copyFile('src/dwg-extract.py','lib/dwg-extract.py');
+await copyFile('src/dwg-evidence.py','lib/dwg-evidence.py');
+// Derive compact embedded model preview from source assets.
+const base='src/model-viewer';
+let viewer=await readFile(base+'/viewer.js','utf8');
+viewer=viewer.replace('building.height*i/building.floors', '(building.floorHeights?building.floorHeights.slice(0,i).reduce((a,h)=>a+h,0):building.height*i/building.floors)');
+const lotControls=await readFile('src/model-lot-controls.js','utf8');
+viewer=viewer.replace("preset();lighting();resize();$('loading').hidden=true;", "if(data.generated){document.querySelector('.disclaimer').textContent=data.mode==='cad'?'原 CAD 轮廓 · 楼栋与层高为项目配置，须核对设计图':data.mode==='imported'?'项目可编辑轮廓 · 楼层与位置以核对后的设置为准':'参数体块示意 · 非 CAD 实测模型';$('phase-status').textContent=groups.length+' 栋';if(data.mode!=='cad')document.querySelectorAll('[data-phase]').forEach(b=>b.hidden=true);"+lotControls+"}preset();lighting();resize();$('loading').hidden=true;");
+viewer="import {validViewState} from './view-state.js';\n"+viewer;
+viewer=viewer.replace('controls.enablePan = false;', 'controls.enablePan = true; controls.screenSpacePanning = true;');
+viewer=viewer.replace('preset();lighting();resize();', (await readFile('src/model-theme.js','utf8'))+'\n  preset();lighting();resize();');
+if(!viewer.includes("type:'meb-model-ready'")||!viewer.includes('building.floorHeights')||!viewer.includes('window.__MEB_MODEL__'))throw Error('模型嵌入初始化未接入，请检查 viewer 插入点');
+const embedBundle=await build({stdin:{contents:viewer,resolveDir:new URL(base+'/',import.meta.url).pathname,loader:'js'},bundle:true,write:false,format:'iife',minify:true});
+let template=await readFile(base+'/template.html','utf8');
+template=template.replace(/<title>.*?<\/title>/,'<title>项目模型预览</title>');
+template=template.replace('/* BUNDLE */',()=>embedBundle.outputFiles[0].text).replace('</style>',(await readFile('src/model-embed.css','utf8'))+'</style>').replace('id="grid" type="checkbox" checked','id="grid" type="checkbox"');
+template=template.replace('<button id="top">','<button id="expand" aria-pressed="false">展开模型</button><button id="settings" aria-expanded="false">显示设置</button><button id="top">');
+template=template.replace('</body>',`<script>document.getElementById('settings').onclick=function(){const open=document.querySelector('.workspace').classList.toggle('settings-open');this.setAttribute('aria-expanded',open)};</script></body>`);
+await writeFile('lib/model-embed.html',template);
+const excelWorker=await build({entryPoints:['src/excel-worker.js'],bundle:true,write:false,format:'iife',platform:'browser',minify:true});
+await writeFile('lib/excel-worker.html',excelWorker.outputFiles[0].text);
+const r=await build({entryPoints:['src/client.jsx'],bundle:true,write:false,format:'cjs',platform:'browser',external:['react','react-dom','react/jsx-runtime','react/jsx-dev-runtime'],loader:{'.css':'text','.html':'text'},minify:false});
+await writeFile('lib/client.js','window.__ModuleLoader__.load({id:"meb-workbench",factory:(require)=>{var module={exports:{}};var exports=module.exports;\n'+r.outputFiles[0].text+'\nreturn module.exports;}});');

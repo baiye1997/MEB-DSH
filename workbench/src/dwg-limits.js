@@ -1,0 +1,1 @@
+export const MAX_DWG_UPLOAD_BYTES=25_000_000;

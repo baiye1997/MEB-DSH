@@ -1,0 +1,187 @@
+/* Operate: project switch, one work surface, one task inspector.
+   Rare UI motion and Radix controls stay; hierarchy comes from content and spacing. */
+.meb{font-size:14px;--work-accent:var(--blue);height:100%;overflow:hidden}
+.meb .project-nav{width:180px;flex:0 0 180px;padding:20px 12px 12px;gap:5px;border-right:1px solid var(--rule)}
+.meb .brand-row{margin:0 4px 22px}.meb .brand span{font-size:11px}.meb .project-switch{margin:16px 0 24px;min-width:0}.meb .project-switch>span{display:block;font-size:11px;color:var(--muted);margin:0 8px 7px}.meb .project-switch .ui-select{width:100%;min-width:0;font-size:12px}.meb .nav-bottom{margin-top:auto;display:flex;flex-direction:column;gap:5px}.meb .nav-bottom button{justify-content:flex-start;font-size:12px;gap:9px;min-height:34px}.meb .dsh-symbol{color:var(--blue);font-size:18px;line-height:1}
+.meb .project-nav.is-collapsed{width:56px;flex-basis:56px;padding:16px 6px}.meb .project-nav.is-collapsed .project-switch{display:none}.meb .project-nav.is-collapsed .brand-row{margin:0 0 18px}.meb .project-nav.is-collapsed .nav-bottom button{justify-content:center}
+.meb .work{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden;min-width:0}.meb .work>.body{flex:1;min-height:0;overflow:auto}.meb .work>header{height:60px;min-height:60px;padding:12px 20px;gap:14px}.meb .work>header .heading h1{font-size:16px}.meb .work>header .breadcrumb{font-size:12px}.meb .work>header .breadcrumb>button:first-child,.meb .work>header .breadcrumb>span{display:none}.meb .heading .save-actions .primary{font-size:12px;min-height:32px;padding:6px 12px}.meb .save-actions .draft-notice summary{font-size:11px}
+.meb .status{display:flex;align-items:center;gap:12px;min-height:32px;padding:5px 20px;border-top:1px solid var(--rule);font-size:11px;flex-shrink:0}.meb .status>button{border:0;min-height:22px;padding:1px 7px;font-size:11px}.meb .status-hint{margin-left:auto;color:var(--muted)}
+.meb .ledger,.meb .calculator-page,.meb .files-page,.meb .materials-page{padding:0 20px 14px}.meb .ledger-tabs{min-height:46px;gap:24px}.meb .ledger-tabs .tab{font-size:13px;padding:12px 0}
+.meb .business-actions,.meb .record-filters,.meb .calc-toolbar{gap:8px;min-height:54px;padding:10px 0;align-items:center;flex-wrap:wrap}.meb .tools :is(button,input),.meb .tools .ui-select,.meb .tools summary{font-size:12px;min-height:32px}.meb .business-actions>input{flex:1;max-width:280px;min-width:120px}.meb .tools>button.primary{padding:6px 12px;flex-shrink:0}.meb .action-menu>summary{padding:7px 10px;border-radius:6px;white-space:nowrap;cursor:pointer}.meb .action-menu>summary:hover{background:var(--quiet)}.meb .action-menu .menu-panel{min-width:210px;max-width:290px;padding:8px;gap:4px;z-index:50}.meb .filter-menu .menu-panel label{display:flex;flex-direction:column;gap:5px;font-size:11px;margin:4px 3px 8px}.meb .filter-menu .ui-select{width:100%}.meb .menu-panel .publish-target{flex-direction:column;align-items:stretch;padding:5px;margin-bottom:8px}.meb .menu-panel .publish-target .ui-select{width:100%;max-width:none}
+.meb .meb-sheet{font-size:13px;border-radius:8px}.meb .meb-sheet [role=columnheader]{font-size:12px;font-weight:600}.meb .sheet-cell input:not([type=checkbox]){font-size:13px}.meb .sheet-cell.business-index span{font-size:12px}.meb .meb-sheet .approval-cell label{font-size:12px}
+.meb .business-grid.has-inspector{column-gap:14px;grid-template-columns:minmax(180px,1fr) minmax(320px,380px)}.meb .ledger-inspector{border-radius:10px}.meb .ledger-inspector .detail-heading{padding:12px 16px}.meb .ledger-inspector h2{font-size:17px}.meb .document-tabs [role=tab]{font-size:12px;padding:10px 0}.meb .ledger-inspector .document-field input{font-size:13px}
+.meb .calculator-switch{margin:12px 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--rule)}.meb .calculator-switch label{display:flex;align-items:center;gap:12px;font-size:12px;margin:0}.meb .calculator-switch .ui-select{width:230px}.meb .calculator-switch>span{color:var(--muted);font-size:11px}.meb .sheet-calculator,.meb .sheet-calculator.inspecting{padding:0;grid-template-rows:auto auto minmax(0,1fr) auto}.meb .sheet-calculator>.sheet-settings{grid-row:1;min-height:30px}.meb .sheet-calculator>.calc-toolbar{grid-row:2}.meb .sheet-calculator>.calc-table-scroll{grid-row:3;position:relative}.meb .sheet-calculator>.calc-feedback{grid-row:4;margin:0;min-height:0;font-size:12px;padding:5px 0}.meb .sheet-calculator>.calc-feedback:empty{display:none}.meb .sheet-calculator.inspecting{padding-top:10px;grid-template-columns:minmax(180px,1fr) minmax(320px,380px)}.meb .sheet-calculator.inspecting>.calculation-drawer{grid-row:1/5}.meb .calc-table-scroll>.empty{position:absolute;top:90px;left:20px;right:20px;height:auto;padding:24px;pointer-events:none}.meb .calc-table-scroll>.empty h2{font-size:18px}.meb .calc-table-scroll>.empty p{font-size:12px}
+.meb .quick-tools{display:flex;flex-direction:column;flex:1;min-height:0;padding:0}.meb .quick-tools>.table-scroll{flex:1;min-height:0}.meb .quick-tools .meb-sheet{height:100%!important}.meb .quick-tools>p{font-size:12px;margin:10px 0}.meb .quick-tools>p:last-child{display:none}.meb .quick-tools>.primary{align-self:flex-start}.meb .quick-tools>.quick-toolbar{display:flex;gap:8px;padding:8px 0}.meb .quick-tools>.quick-toolbar button{font-size:12px}
+.meb .project-board{padding:24px 24px 32px;max-width:1250px;width:100%}.meb .board-intro{margin-bottom:20px}.meb .board-intro h2{font-size:25px;margin:8px 0}.meb .board-intro p{font-size:13px}.meb .board-filter{margin-bottom:22px}.meb .project-shelf{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}.meb .cover-art{height:100px}.meb .project-cover{max-width:440px}.meb .cover-letter{font-size:48px}.meb .cover-info{padding:18px}.meb .stage-trail{margin:20px 0}.meb .record-distribution{font-size:11px}
+.meb .files-page{padding-top:16px}.meb .files-page>.empty{min-height:300px;padding:32px 20px;max-width:680px;margin:auto}.meb .files-page .folder-entry{transform:scale(.72);margin:-20px auto}.meb .files-page .empty h2{font-size:19px}.meb .files-page .empty p{font-size:13px;max-width:490px}.meb .file-row{box-shadow:none;border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:16px 4px}.meb .file-path{overflow-wrap:anywhere;max-width:220px}.meb .settings{max-width:780px;padding:28px}.meb .settings h2{margin-top:0;margin-bottom:12px;font-size:20px}.meb .settings h2:not(:first-child){margin-top:36px;font-size:16px}.meb .settings p{font-size:13px;line-height:1.8;max-width:620px}.meb .settings button{font-size:12px;margin:8px 8px 0 0}.meb .materials-page>.tools{min-height:48px}.meb .project-dossier{font-size:13px}.meb .cost-stages>div{padding:12px 0}.meb .overview-registers button{font-size:12px}
+@container workarea (max-width:700px){.meb .status-hint,.meb .calculator-switch>span{display:none}.meb .business-grid.has-inspector{grid-template-columns:minmax(120px,1fr) minmax(280px,55%)}.meb .business-actions>input{max-width:180px}.meb .work>header .breadcrumb{display:none}.meb .record-filters{gap:6px}.meb .calc-total{display:none}}
+
+.meb .quick-tools.inspecting{display:grid;grid-template-columns:minmax(180px,1fr) minmax(300px,380px);grid-template-rows:auto auto minmax(0,1fr) auto;gap:0 14px}.meb .quick-tools.inspecting>p,.meb .quick-tools.inspecting>.quick-toolbar,.meb .quick-tools.inspecting>.table-scroll{grid-column:1}.meb .quick-inspector{grid-column:2;grid-row:1/5;min-height:0;display:flex;flex-direction:column;margin-top:10px}.meb .quick-detail-body{overflow:auto;padding:16px}.meb .quick-detail-body label{display:flex;flex-direction:column;font-size:12px;gap:6px;margin:14px 0}.meb .quick-detail-body :is(input,textarea){font-size:13px;padding:8px}.meb .quick-detail-body textarea{min-height:100px}.meb .quick-result{font-size:20px;font-weight:600}.meb .quick-detail-body h3{font-size:15px}.meb .quick-detail-body dl{font-size:12px}.meb .quick-detail-body dd{margin:4px 0 12px;overflow-wrap:anywhere}
+
+.meb .work:not([data-page=table]):not([data-page=calculator]):not([data-page=materials]) .status-hint{display:none}
+
+.meb .business-empty{grid-column:1;grid-row:2;align-self:start;margin:70px 20px 0;z-index:1;pointer-events:auto;color:var(--muted);font-size:13px;line-height:1.8;max-width:440px}
+
+.meb :is(.record-filters,.business-actions,.quick-toolbar,.calc-toolbar)>.primary{padding:6px 12px;flex-shrink:0}
+.meb .calculation-records{position:relative}.meb .calculation-records>.business-empty{position:absolute;top:76px;left:20px;margin:0}
+.meb .record-filters>input{width:240px;max-width:30%;min-width:130px}.meb .record-filters .filter-menu .ui-field{width:100%;margin:6px 0}
+
+.meb .rare-sidebar-item{display:flex;align-items:center;justify-content:flex-start;gap:10px}.meb .rare-sidebar-item .ui-icon{flex-shrink:0}.meb .project-nav.is-collapsed .rare-nav-label{display:none}.meb .project-nav.is-collapsed .rare-sidebar-item{justify-content:center}
+
+/* Review imported data and assistant changes before entering the ledger. */
+.meb .import-mode{display:inline-flex;gap:3px;padding:3px;margin:12px 0;background:var(--quiet);border-radius:8px}
+.meb .import-mode button{min-height:32px;padding:6px 12px;border:0;background:transparent;color:var(--muted);font-size:12px;border-radius:6px}
+.meb .import-mode button[aria-pressed=true]{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(18,34,55,.12)}
+.meb .import-explanation{line-height:1.7;max-width:68ch;margin:6px 0 16px;color:var(--ink)}
+.meb .import-floor-controls{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(160px,1fr);gap:12px;margin:12px 0}
+.meb .import-floor-controls label{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center;min-width:0;font-size:12px;font-weight:600}
+.meb .import-floor-controls label>span{font-weight:400;color:var(--muted)}
+.meb .import-floor-controls .ui-select,.meb .import-floor-controls .ui-field{grid-column:1/-1;width:100%;min-width:0}
+.meb .import-floor-columns{font-size:12px;line-height:1.6;color:var(--muted);margin:8px 0 14px}
+.meb .import-floor-sample{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;margin:12px 0}
+.meb .import-floor-sample table{width:100%;min-width:580px;border-collapse:collapse;font-size:12px}
+.meb .import-floor-sample th,.meb .import-floor-sample td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top;overflow-wrap:anywhere}
+.meb .import-floor-sample th{background:var(--quiet);font-weight:600;color:var(--muted);white-space:nowrap}
+.meb .import-floor-sample td:nth-child(4){font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.meb .import-form-sheet{border:1px solid var(--rule);border-radius:10px;background:var(--surface);margin:14px 0;overflow:hidden}
+.meb .import-form-sheet>header{padding:15px 18px;border-bottom:1px solid var(--rule);background:var(--quiet)}
+.meb .import-form-sheet header small{display:block;color:var(--muted);font-size:11px;margin-bottom:4px}
+.meb .import-form-sheet h3{font-size:18px;line-height:1.3;margin:0;color:var(--ink)}
+.meb .import-form-sheet dl{display:grid;grid-template-columns:1fr 1fr;margin:0}
+.meb .import-form-sheet dl div{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px;padding:11px 18px;border-bottom:1px solid var(--rule);min-width:0}
+.meb .import-form-sheet dl div:nth-child(odd){border-right:1px solid var(--rule)}
+.meb .import-form-sheet dt{color:var(--muted);font-size:12px}
+.meb .import-form-sheet dd{margin:0;overflow-wrap:anywhere}
+.meb .import-form-sheet section{padding:14px 18px}
+.meb .import-form-sheet h4{font-size:12px;color:var(--muted);margin:0 0 8px}
+.meb .import-form-sheet section p{margin:0;white-space:pre-wrap;line-height:1.65;max-height:220px;overflow:auto}
+.meb .import-valuation-card{padding:18px 20px;margin:14px 0;border:1px solid var(--rule);border-radius:10px;background:var(--quiet)}
+.meb .import-valuation-card>span{display:block;font-size:12px;color:var(--muted);margin-bottom:8px}
+.meb .import-valuation-card>strong{display:block;font-size:28px;line-height:1.25;font-variant-numeric:tabular-nums;letter-spacing:-.025em;color:var(--ink)}
+.meb .import-valuation-card>strong small{font-size:13px;font-weight:500;letter-spacing:0}
+.meb .import-valuation-card p{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+.meb .import-valuation-draft{border-top:1px solid var(--rule);margin-top:20px;padding-top:18px}
+.meb .import-valuation-draft h3{margin:0 0 5px;color:var(--ink);font-size:15px;line-height:1.35}
+.meb .import-valuation-draft>div>p{margin:0;max-width:68ch;color:var(--muted);font-size:12px;line-height:1.65}
+.meb .import-valuation-draft .review-actions{margin-top:14px}
+.meb .import-valuation-sample{border-top:1px solid var(--rule);margin-top:16px;padding-top:10px}
+.meb .import-valuation-sample>summary{cursor:pointer;color:var(--muted);font-size:12px;font-weight:600;padding:4px 0}
+.meb .import-valuation-sample[open]>summary{color:var(--ink)}
+@media(max-width:650px){.meb .import-floor-controls{grid-template-columns:1fr}}
+@media(max-width:650px){.meb .import-form-sheet dl{grid-template-columns:1fr}.meb .import-form-sheet dl div:nth-child(odd){border-right:0}}
+.import-controls {display:grid;grid-template-columns:minmax(0,2fr) minmax(120px,1fr);gap:16px;margin:16px 0}
+.import-controls label {display:grid;gap:6px}
+.meb .import-source-preview,.meb .import-mapping{border-top:1px solid var(--rule);padding:10px 0}
+.meb .import-source-preview>summary,.meb .import-mapping>summary{cursor:pointer;padding:5px 0;font-size:13px;font-weight:600;color:var(--ink)}
+.meb .import-mapping>summary small{font-size:11px;font-weight:400;color:var(--muted);white-space:normal}
+.meb .import-source-scroll{overflow-x:auto;max-width:100%;margin-top:10px;border:1px solid var(--rule);border-radius:8px}
+.meb .import-source-scroll table{border-collapse:collapse;width:max-content;min-width:100%;font-size:12px}
+.meb .import-source-scroll th,.meb .import-source-scroll td{max-width:190px;min-width:100px;padding:8px 10px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.meb .import-source-scroll th{background:var(--quiet);font-weight:600}.meb .import-source-scroll th small{display:block;color:var(--muted);font-weight:400}
+.meb .import-source-scroll th:first-child{position:sticky;left:0;min-width:50px;z-index:1}
+.meb .import-mapping .mapping{margin-top:12px}
+.meb .import-error{padding:10px 12px;border-radius:8px;background:var(--selected);color:var(--ink);font-size:12px;line-height:1.6}
+.import-sample {display:grid;gap:12px;margin:16px 0}
+.import-sample dl,.change-preview section {padding:14px 16px;border:1px solid var(--line,#e5e7eb);border-radius:10px;background:var(--surface,#fff)}
+.import-sample dl {display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px;margin:0}
+.import-sample dl>dt:first-child {grid-column:1/-1;font-weight:600;color:var(--ink,#202631)}
+.import-sample dd,.change-preview dd {margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.import-sample dt,.change-preview dt {color:var(--muted,#667085)}
+.change-preview section {margin:12px 0}
+.change-preview h3 {font-size:14px;margin:0 0 12px}
+.change-preview dl>div {display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;margin:8px 0}
+.change-preview dd>span:first-child {color:var(--muted,#667085)}
+.change-preview strong {font-weight:500;color:var(--accent,#2863bf)}
+
+/* Document rhythm: identify the record, read its content, then its quantity. */
+.meb .document-sections{display:block;max-height:none;overflow:visible;padding:0 16px 16px}
+.meb .document-sections section+section{margin-top:16px}
+.meb .document-sections h3{font-size:12px;font-weight:600;color:var(--ink);margin:12px 0 8px;display:flex;align-items:center;gap:12px}
+.meb .document-sections h3:after{content:'';height:1px;background:var(--rule);flex:1}
+.meb .document-sections .document-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:0;gap:12px}
+.meb .document-sections .document-field{gap:6px;min-width:0}
+.meb .document-sections .document-field>span{font-size:11px;color:var(--muted)}
+.meb .document-sections textarea{min-height:82px;line-height:1.75;padding:10px 12px}
+.meb .document-sections input{min-height:36px;padding:8px 10px}
+.meb .document-sections .signature-fields{grid-template-columns:1fr}
+.meb .signature-fields .document-field{display:flex;flex-direction:row;align-items:center;justify-content:space-between;min-height:40px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+.meb .signature-fields .document-signatures{gap:20px}
+.meb .business-grid.has-inspector{grid-template-columns:minmax(180px,1fr) minmax(340px,420px)}
+.meb .ledger-inspector .document-tabs>[role=tabpanel]{padding:0}
+.meb .business-actions>button[aria-pressed=true]{color:var(--blue);background:var(--selected);border-color:transparent}
+.meb .business-actions>button{display:inline-flex;align-items:center;gap:6px}
+.meb .selection-clear{color:var(--blue)}
+.meb .message-context-tag{display:block;font-size:11px;color:var(--muted);margin-top:6px}
+.meb .proposal-code{font-size:11px;margin:12px 0;color:var(--muted)}
+.meb .proposal-code pre{max-height:180px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;background:var(--quiet)}
+.meb .project-board{max-width:none;padding:32px}
+.meb .board-intro{margin-bottom:28px}
+.meb .project-shelf{grid-template-columns:repeat(auto-fill,minmax(280px,360px));gap:24px}
+.meb .project-cover{max-width:none;text-align:left;transition:border-color .18s ease,transform .18s ease}
+.meb .project-cover:hover{border-color:var(--blue);transform:translateY(-2px)}
+.meb .cover-info h3{font-size:17px;line-height:1.5}
+.meb .cover-info h3>span{color:var(--muted)}
+.meb .cover-art{height:120px;background:var(--quiet)}
+.meb .cover-art svg{opacity:.8}
+.meb .stage-badge{font-size:11px;padding:4px 8px}
+@container workarea (max-width:780px){.meb .business-grid.has-inspector{grid-template-columns:minmax(120px,1fr) minmax(300px,52%)}.meb .project-board{padding:24px}.meb .project-shelf{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}}
+.meb .inspector-receipt .document-sections>section:first-child .document-fields{grid-template-columns:repeat(3,minmax(0,1fr))}
+.meb .document-sections .document-field>span{margin-bottom:0}
+.meb .inspector-receipt .document-sections>section:first-child .signature-fields{grid-template-columns:1fr}
+.meb .document-sections .document-signatures input{width:16px;height:16px;min-height:16px;padding:0;flex:0 0 16px}
+.meb .document-sections .document-signatures label{white-space:nowrap}
+
+/* Calculation workflow: input, review result, choose destination, retain snapshot. */
+.meb .sheet-calculator.inspecting{grid-template-columns:minmax(180px,1fr) minmax(340px,420px)}
+.meb .calculation-drawer .drawer-footer{display:flex;flex-direction:column;gap:8px;flex:none;border-top:1px solid var(--rule);padding:12px 16px}
+.meb .calculation-drawer .drawer-footer .publish-target{margin:0;display:flex;flex-direction:row;align-items:center;gap:12px}
+.meb .calculation-drawer .drawer-footer .ui-select{min-width:0;max-width:none}
+.meb .calculation-drawer .drawer-heading{padding:12px 16px;gap:8px}
+.meb .inspector-navigation{display:flex;gap:4px;flex-shrink:0}
+.meb .inspector-navigation button{min-height:28px;font-size:11px;padding:4px 6px}
+.meb .drawer-heading h2{overflow-wrap:anywhere}
+.meb .calculation-answer{padding:16px 0;border-bottom:1px solid var(--rule);display:grid;gap:6px}
+.meb .calculation-answer>span{font-size:12px;color:var(--muted)}
+.meb .calculation-answer>strong{font-size:25px;font-weight:600;line-height:1.3;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.meb .calculation-answer strong small{font-size:13px;font-weight:400;letter-spacing:0}
+.meb .calculation-answer>small{font-size:11px;color:var(--muted)}
+.meb .calculation-steps .step-heading{align-items:baseline;gap:12px}
+.meb .calculation-steps .step-heading>strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+.meb .step-operands summary{white-space:normal;overflow-wrap:anywhere;line-height:1.7}
+.meb .incomplete-result{font-size:12px;color:var(--muted);white-space:nowrap}
+.meb .calc-toolbar>button[aria-pressed=true]{background:var(--selected);color:var(--blue)}
+.meb .review-actions{position:sticky;bottom:-24px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;margin-top:16px;border-top:1px solid var(--rule);background:var(--surface);z-index:2}
+.meb .review-actions>span{font-size:12px;color:var(--muted)}
+@container workarea (max-width:780px){.meb .sheet-calculator.inspecting{grid-template-columns:minmax(120px,1fr) minmax(300px,52%)}.meb .review-actions{flex-wrap:wrap}}
+
+/* Calculation records are documents first; editing is an explicit mode. */
+.meb .calculation-record-detail{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.meb .calculation-record-detail>.detail-heading{padding:16px;flex:none}
+.meb .calculation-record-detail>.document-tabs{flex:1;min-height:0}
+.meb .calculation-record-detail .document-tabs>[role=tabpanel]{padding:0 16px 16px;overflow:auto}
+.meb .record-reader.ledger-detail-fields{display:block;max-height:none;overflow:visible;padding:0}
+.meb .record-reader-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 20px;color:var(--muted);font-size:12px}
+.meb .record-reader-meta button{font-size:12px;padding:5px 10px;color:var(--blue)}
+.meb .record-reader h3{font-size:19px;line-height:1.5;margin:0 0 20px;overflow-wrap:anywhere}
+.meb .record-measures{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:16px 0;margin:0 0 24px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.meb .record-measures dt{font-size:11px;color:var(--muted);margin-bottom:6px}
+.meb .record-measures dd{margin:0;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.meb .record-measures small{font-size:12px;font-weight:400}
+.meb .record-reader section{margin:20px 0}
+.meb .record-reader h4{font-size:11px;font-weight:500;color:var(--muted);margin:0 0 6px}
+.meb .record-reader section p{font-size:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.meb .record-reader .record-source-note{font-size:11px;color:var(--muted);line-height:1.7;margin:24px 0 0}
+.meb .record-edit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.meb .record-edit-grid .wide{grid-column:1/-1}
+.meb .record-edit-grid label{display:grid;gap:6px;font-size:11px;color:var(--muted);margin:0;min-width:0}
+.meb .record-edit-grid :is(input,textarea){width:100%;font-size:13px;padding:8px;min-height:34px}
+.meb .record-edit-grid textarea{height:76px;min-height:76px}
+.meb .record-edit-grid small{font-size:10px}
+.meb .record-supplement{flex:none;padding:12px 16px;border-top:1px solid var(--rule);max-height:40%;overflow:auto}
+.meb .record-supplement>summary{font-size:12px;cursor:pointer;color:var(--muted)}
+.meb .record-supplement>label{font-size:12px;margin:12px 0}
+.meb .record-supplement textarea{min-height:64px;height:64px}
+.meb .record-provenance{background:var(--quiet);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;margin:12px 0;font-size:12px}
+.meb .record-provenance strong{display:block;color:var(--ink);font-weight:650;margin-bottom:4px}
+.meb .record-provenance p{margin:0;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+.meb .calculation-record-detail .record-reader section p{color:var(--ink)}

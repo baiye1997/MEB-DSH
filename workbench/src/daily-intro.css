@@ -1,0 +1,10 @@
+.meb-intro-portal .meb-daily-intro{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;overflow:hidden;background:#030405;color:#f5f7fa;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;isolation:isolate}
+.meb-intro-portal .meb-daily-intro.is-ending{opacity:0;transition:opacity .28s ease-out}
+.meb-intro-portal .meb-intro-skip{position:absolute;z-index:3;top:max(24px,env(safe-area-inset-top));right:max(28px,env(safe-area-inset-right));padding:8px 2px;border:0;border-bottom:1px solid #777d84;background:transparent;color:#c4c9cf;font-size:13px;line-height:1.5;font-family:inherit;letter-spacing:.04em;border-radius:0;cursor:pointer}
+.meb-intro-portal .meb-intro-skip:hover{color:#fff;border-color:#fff}
+.meb-intro-portal .meb-intro-skip:focus-visible{outline:2px solid #add8ff;outline-offset:6px}
+.meb-intro-portal .meb-intro-lettering{display:block;width:min(86vw,1000px);height:auto;overflow:visible;margin-top:-2vh}
+.meb-intro-portal .meb-intro-stroke{fill:none;stroke:#f7faff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 4px #e1ebffb0)}
+.meb-intro-portal .meb-intro-light :is(polygon,line,circle){opacity:0;pointer-events:none}
+.meb-intro-portal .meb-intro-light line{stroke:#e9f3ff;stroke-width:1;stroke-opacity:.38}
+@media(max-width:600px){.meb-intro-portal .meb-intro-lettering{width:96vw}.meb-intro-portal .meb-intro-stroke{stroke-width:2.2}}

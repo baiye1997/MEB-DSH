@@ -1,0 +1,664 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T09:04:42.395962Z",
+  "title": "Design System: MEB-DSH",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Primary",
+        "tonalRamp": [
+          "oklch(15% 0.00347 228.92)",
+          "oklch(26% 0.00347 228.92)",
+          "oklch(38% 0.00347 228.92)",
+          "oklch(49% 0.00347 228.92)",
+          "oklch(61% 0.00347 228.92)",
+          "oklch(72% 0.00347 228.92)",
+          "oklch(84% 0.00347 228.92)",
+          "oklch(95% 0.00347 228.92)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Primary Hover",
+        "tonalRamp": [
+          "oklch(15% 0.00442 219.60)",
+          "oklch(26% 0.00442 219.60)",
+          "oklch(38% 0.00442 219.60)",
+          "oklch(49% 0.00442 219.60)",
+          "oklch(61% 0.00442 219.60)",
+          "oklch(72% 0.00442 219.60)",
+          "oklch(84% 0.00442 219.60)",
+          "oklch(95% 0.00442 219.60)"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15% 0.12727 251.41)",
+          "oklch(26% 0.12727 251.41)",
+          "oklch(38% 0.12727 251.41)",
+          "oklch(49% 0.12727 251.41)",
+          "oklch(61% 0.12727 251.41)",
+          "oklch(72% 0.12727 251.41)",
+          "oklch(84% 0.12727 251.41)",
+          "oklch(95% 0.12727 251.41)"
+        ]
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Focus",
+        "tonalRamp": [
+          "oklch(15% 0.09190 249.86)",
+          "oklch(26% 0.09190 249.86)",
+          "oklch(38% 0.09190 249.86)",
+          "oklch(49% 0.09190 249.86)",
+          "oklch(61% 0.09190 249.86)",
+          "oklch(72% 0.09190 249.86)",
+          "oklch(84% 0.09190 249.86)",
+          "oklch(95% 0.09190 249.86)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "tonalRamp": [
+          "oklch(15% 0.00265 106.45)",
+          "oklch(26% 0.00265 106.45)",
+          "oklch(38% 0.00265 106.45)",
+          "oklch(49% 0.00265 106.45)",
+          "oklch(61% 0.00265 106.45)",
+          "oklch(72% 0.00265 106.45)",
+          "oklch(84% 0.00265 106.45)",
+          "oklch(95% 0.00265 106.45)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(26% 0.00000 0.00)",
+          "oklch(38% 0.00000 0.00)",
+          "oklch(49% 0.00000 0.00)",
+          "oklch(61% 0.00000 0.00)",
+          "oklch(72% 0.00000 0.00)",
+          "oklch(84% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "chrome": {
+        "role": "neutral",
+        "displayName": "Chrome",
+        "tonalRamp": [
+          "oklch(15% 0.00264 106.45)",
+          "oklch(26% 0.00264 106.45)",
+          "oklch(38% 0.00264 106.45)",
+          "oklch(49% 0.00264 106.45)",
+          "oklch(61% 0.00264 106.45)",
+          "oklch(72% 0.00264 106.45)",
+          "oklch(84% 0.00264 106.45)",
+          "oklch(95% 0.00264 106.45)"
+        ]
+      },
+      "quiet": {
+        "role": "neutral",
+        "displayName": "Quiet",
+        "tonalRamp": [
+          "oklch(15% 0.00265 106.45)",
+          "oklch(26% 0.00265 106.45)",
+          "oklch(38% 0.00265 106.45)",
+          "oklch(49% 0.00265 106.45)",
+          "oklch(61% 0.00265 106.45)",
+          "oklch(72% 0.00265 106.45)",
+          "oklch(84% 0.00265 106.45)",
+          "oklch(95% 0.00265 106.45)"
+        ]
+      },
+      "detail": {
+        "role": "neutral",
+        "displayName": "Detail",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(26% 0.00000 0.00)",
+          "oklch(38% 0.00000 0.00)",
+          "oklch(49% 0.00000 0.00)",
+          "oklch(61% 0.00000 0.00)",
+          "oklch(72% 0.00000 0.00)",
+          "oklch(84% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.00347 228.92)",
+          "oklch(26% 0.00347 228.92)",
+          "oklch(38% 0.00347 228.92)",
+          "oklch(49% 0.00347 228.92)",
+          "oklch(61% 0.00347 228.92)",
+          "oklch(72% 0.00347 228.92)",
+          "oklch(84% 0.00347 228.92)",
+          "oklch(95% 0.00347 228.92)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.00998 248.02)",
+          "oklch(26% 0.00998 248.02)",
+          "oklch(38% 0.00998 248.02)",
+          "oklch(49% 0.00998 248.02)",
+          "oklch(61% 0.00998 248.02)",
+          "oklch(72% 0.00998 248.02)",
+          "oklch(84% 0.00998 248.02)",
+          "oklch(95% 0.00998 248.02)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15% 0.00171 145.56)",
+          "oklch(26% 0.00171 145.56)",
+          "oklch(38% 0.00171 145.56)",
+          "oklch(49% 0.00171 145.56)",
+          "oklch(61% 0.00171 145.56)",
+          "oklch(72% 0.00171 145.56)",
+          "oklch(84% 0.00171 145.56)",
+          "oklch(95% 0.00171 145.56)"
+        ]
+      },
+      "grid-rule": {
+        "role": "neutral",
+        "displayName": "Grid Rule",
+        "tonalRamp": [
+          "oklch(15% 0.00340 145.55)",
+          "oklch(26% 0.00340 145.55)",
+          "oklch(38% 0.00340 145.55)",
+          "oklch(49% 0.00340 145.55)",
+          "oklch(61% 0.00340 145.55)",
+          "oklch(72% 0.00340 145.55)",
+          "oklch(84% 0.00340 145.55)",
+          "oklch(95% 0.00340 145.55)"
+        ]
+      },
+      "hover": {
+        "role": "neutral",
+        "displayName": "Hover",
+        "tonalRamp": [
+          "oklch(15% 0.00286 128.49)",
+          "oklch(26% 0.00286 128.49)",
+          "oklch(38% 0.00286 128.49)",
+          "oklch(49% 0.00286 128.49)",
+          "oklch(61% 0.00286 128.49)",
+          "oklch(72% 0.00286 128.49)",
+          "oklch(84% 0.00286 128.49)",
+          "oklch(95% 0.00286 128.49)"
+        ]
+      },
+      "selected": {
+        "role": "secondary",
+        "displayName": "Selected",
+        "tonalRamp": [
+          "oklch(15% 0.01204 247.95)",
+          "oklch(26% 0.01204 247.95)",
+          "oklch(38% 0.01204 247.95)",
+          "oklch(49% 0.01204 247.95)",
+          "oklch(61% 0.01204 247.95)",
+          "oklch(72% 0.01204 247.95)",
+          "oklch(84% 0.01204 247.95)",
+          "oklch(95% 0.01204 247.95)"
+        ]
+      },
+      "row-selected": {
+        "role": "secondary",
+        "displayName": "Row Selected",
+        "tonalRamp": [
+          "oklch(15% 0.00513 247.88)",
+          "oklch(26% 0.00513 247.88)",
+          "oklch(38% 0.00513 247.88)",
+          "oklch(49% 0.00513 247.88)",
+          "oklch(61% 0.00513 247.88)",
+          "oklch(72% 0.00513 247.88)",
+          "oklch(84% 0.00513 247.88)",
+          "oklch(95% 0.00513 247.88)"
+        ]
+      },
+      "selection": {
+        "role": "secondary",
+        "displayName": "Selection",
+        "tonalRamp": [
+          "oklch(15% 0.02599 248.11)",
+          "oklch(26% 0.02599 248.11)",
+          "oklch(38% 0.02599 248.11)",
+          "oklch(49% 0.02599 248.11)",
+          "oklch(61% 0.02599 248.11)",
+          "oklch(72% 0.02599 248.11)",
+          "oklch(84% 0.02599 248.11)",
+          "oklch(95% 0.02599 248.11)"
+        ]
+      },
+      "selection-ink": {
+        "role": "secondary",
+        "displayName": "Selection Ink",
+        "tonalRamp": [
+          "oklch(15% 0.05851 249.04)",
+          "oklch(26% 0.05851 249.04)",
+          "oklch(38% 0.05851 249.04)",
+          "oklch(49% 0.05851 249.04)",
+          "oklch(61% 0.05851 249.04)",
+          "oklch(72% 0.05851 249.04)",
+          "oklch(84% 0.05851 249.04)",
+          "oklch(95% 0.05851 249.04)"
+        ]
+      },
+      "dock": {
+        "role": "neutral",
+        "displayName": "Dock",
+        "tonalRamp": [
+          "oklch(15% 0.00172 247.84)",
+          "oklch(26% 0.00172 247.84)",
+          "oklch(38% 0.00172 247.84)",
+          "oklch(49% 0.00172 247.84)",
+          "oklch(61% 0.00172 247.84)",
+          "oklch(72% 0.00172 247.84)",
+          "oklch(84% 0.00172 247.84)",
+          "oklch(95% 0.00172 247.84)"
+        ]
+      },
+      "dock-hover": {
+        "role": "neutral",
+        "displayName": "Dock Hover",
+        "tonalRamp": [
+          "oklch(15% 0.00518 247.88)",
+          "oklch(26% 0.00518 247.88)",
+          "oklch(38% 0.00518 247.88)",
+          "oklch(49% 0.00518 247.88)",
+          "oklch(61% 0.00518 247.88)",
+          "oklch(72% 0.00518 247.88)",
+          "oklch(84% 0.00518 247.88)",
+          "oklch(95% 0.00518 247.88)"
+        ]
+      },
+      "dock-selected": {
+        "role": "neutral",
+        "displayName": "Dock Selected",
+        "tonalRamp": [
+          "oklch(15% 0.00692 247.90)",
+          "oklch(26% 0.00692 247.90)",
+          "oklch(38% 0.00692 247.90)",
+          "oklch(49% 0.00692 247.90)",
+          "oklch(61% 0.00692 247.90)",
+          "oklch(72% 0.00692 247.90)",
+          "oklch(84% 0.00692 247.90)",
+          "oklch(95% 0.00692 247.90)"
+        ]
+      },
+      "dock-ink": {
+        "role": "neutral",
+        "displayName": "Dock Ink",
+        "tonalRamp": [
+          "oklch(15% 0.01356 231.86)",
+          "oklch(26% 0.01356 231.86)",
+          "oklch(38% 0.01356 231.86)",
+          "oklch(49% 0.01356 231.86)",
+          "oklch(61% 0.01356 231.86)",
+          "oklch(72% 0.01356 231.86)",
+          "oklch(84% 0.01356 231.86)",
+          "oklch(95% 0.01356 231.86)"
+        ]
+      },
+      "dock-selected-ink": {
+        "role": "neutral",
+        "displayName": "Dock Selected Ink",
+        "tonalRamp": [
+          "oklch(15% 0.00927 219.81)",
+          "oklch(26% 0.00927 219.81)",
+          "oklch(38% 0.00927 219.81)",
+          "oklch(49% 0.00927 219.81)",
+          "oklch(61% 0.00927 219.81)",
+          "oklch(72% 0.00927 219.81)",
+          "oklch(84% 0.00927 219.81)",
+          "oklch(95% 0.00927 219.81)"
+        ]
+      },
+      "worksheet-selected": {
+        "role": "neutral",
+        "displayName": "Worksheet Selected",
+        "tonalRamp": [
+          "oklch(15% 0.00629 255.48)",
+          "oklch(26% 0.00629 255.48)",
+          "oklch(38% 0.00629 255.48)",
+          "oklch(49% 0.00629 255.48)",
+          "oklch(61% 0.00629 255.48)",
+          "oklch(72% 0.00629 255.48)",
+          "oklch(84% 0.00629 255.48)",
+          "oklch(95% 0.00629 255.48)"
+        ]
+      },
+      "disabled-surface": {
+        "role": "neutral",
+        "displayName": "Disabled Surface",
+        "tonalRamp": [
+          "oklch(15% 0.00344 247.86)",
+          "oklch(26% 0.00344 247.86)",
+          "oklch(38% 0.00344 247.86)",
+          "oklch(49% 0.00344 247.86)",
+          "oklch(61% 0.00344 247.86)",
+          "oklch(72% 0.00344 247.86)",
+          "oklch(84% 0.00344 247.86)",
+          "oklch(95% 0.00344 247.86)"
+        ]
+      },
+      "disabled-ink": {
+        "role": "neutral",
+        "displayName": "Disabled Ink",
+        "tonalRamp": [
+          "oklch(15% 0.01154 238.66)",
+          "oklch(26% 0.01154 238.66)",
+          "oklch(38% 0.01154 238.66)",
+          "oklch(49% 0.01154 238.66)",
+          "oklch(61% 0.01154 238.66)",
+          "oklch(72% 0.01154 238.66)",
+          "oklch(84% 0.01154 238.66)",
+          "oklch(95% 0.01154 238.66)"
+        ]
+      },
+      "disabled-rule": {
+        "role": "neutral",
+        "displayName": "Disabled Rule",
+        "tonalRamp": [
+          "oklch(15% 0.00522 247.88)",
+          "oklch(26% 0.00522 247.88)",
+          "oklch(38% 0.00522 247.88)",
+          "oklch(49% 0.00522 247.88)",
+          "oklch(61% 0.00522 247.88)",
+          "oklch(72% 0.00522 247.88)",
+          "oklch(84% 0.00522 247.88)",
+          "oklch(95% 0.00522 247.88)"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Error",
+        "tonalRamp": [
+          "oklch(15% 0.12010 27.04)",
+          "oklch(26% 0.12010 27.04)",
+          "oklch(38% 0.12010 27.04)",
+          "oklch(49% 0.12010 27.04)",
+          "oklch(61% 0.12010 27.04)",
+          "oklch(72% 0.12010 27.04)",
+          "oklch(84% 0.12010 27.04)",
+          "oklch(95% 0.12010 27.04)"
+        ]
+      },
+      "error-surface": {
+        "role": "neutral",
+        "displayName": "Error Surface",
+        "tonalRamp": [
+          "oklch(15% 0.01223 29.87)",
+          "oklch(26% 0.01223 29.87)",
+          "oklch(38% 0.01223 29.87)",
+          "oklch(49% 0.01223 29.87)",
+          "oklch(61% 0.01223 29.87)",
+          "oklch(72% 0.01223 29.87)",
+          "oklch(84% 0.01223 29.87)",
+          "oklch(95% 0.01223 29.87)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "项目目录和空工作区标题。"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "业务页标题。"
+      },
+      "project": {
+        "displayName": "Project",
+        "purpose": "顶部当前项目身份。"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "说明与对话正文。"
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "基础表格文字。"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "命令与参数名称。"
+      },
+      "support": {
+        "displayName": "Support",
+        "purpose": "保存状态与补充说明。"
+      },
+      "summary": {
+        "displayName": "Summary",
+        "purpose": "来自当前数据的摘要数值。"
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "依赖说明代码；不用于普通表格与输入。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "help",
+        "value": "0 8px 24px #2426271c",
+        "purpose": "锚定帮助浮层。"
+      },
+      {
+        "name": "format-or-session",
+        "value": "0 8px 24px #26324718",
+        "purpose": "格式面板或会话菜单。"
+      },
+      {
+        "name": "worksheet-editor",
+        "value": "0 -8px 24px #24262714",
+        "purpose": "工作表条上方的编辑器。"
+      },
+      {
+        "name": "search",
+        "value": "0 18px 60px #0002",
+        "purpose": "搜索面板。"
+      },
+      {
+        "name": "narrow-assistant",
+        "value": "-8px 0 20px #24262710",
+        "purpose": "窄屏右侧助手覆盖面板。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "quick",
+        "value": "120ms",
+        "purpose": "菜单、工作表编辑器和控件状态变化。"
+      },
+      {
+        "name": "panel",
+        "value": "180ms",
+        "purpose": "助手侧栏与对话框进入。"
+      },
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "临时面板进入曲线。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "workarea-dashboard-single-column",
+        "value": "1000px"
+      },
+      {
+        "name": "workarea-ledger-overlay",
+        "value": "850px"
+      },
+      {
+        "name": "workarea-calculator-overlay",
+        "value": "900px"
+      },
+      {
+        "name": "workarea-dashboard-compact",
+        "value": "780px"
+      },
+      {
+        "name": "workbench-dock-compact",
+        "value": "760px"
+      },
+      {
+        "name": "workbench-assistant-reading-without-context",
+        "value": "1150px"
+      },
+      {
+        "name": "workbench-assistant-reading-without-history",
+        "value": "640px"
+      },
+      {
+        "name": "workbench-worksheet-controls-wrap",
+        "value": "600px"
+      },
+      {
+        "name": "workarea-dashboard-mobile",
+        "value": "580px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "石墨主要操作",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "新增、保存或应用的主要动作。",
+      "html": "<button class=\"ds-primary\">保存更改</button>",
+      "css": ".ds-primary{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-primary{display:inline-flex;align-items:center;gap:6px;height:30px;padding:4px 10px;border:1px solid #242627;border-radius:7px;background:#242627;color:#fff;font-size:12px;line-height:20px;cursor:pointer;transition:background-color 120ms,color 120ms;}.ds-primary:hover:not(:disabled){background:#3b3e3f;border-color:#3b3e3f}.ds-primary:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}.ds-primary:disabled{color:#6b7277;background:#eceef0;border-color:#dfe2e5;opacity:1;cursor:default}"
+    },
+    {
+      "name": "轻量命令",
+      "kind": "button",
+      "refersTo": "button-command",
+      "description": "命令栏中的常用辅助操作。",
+      "html": "<button class=\"ds-command\"><svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>新增行</button>",
+      "css": ".ds-command{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-command{display:inline-flex;align-items:center;gap:6px;height:30px;padding:4px 7px;border:1px solid transparent;border-radius:7px;background:transparent;color:#666b70;font-size:12px;line-height:20px;cursor:pointer;transition:background-color 120ms,color 120ms;}.ds-command:hover:not(:disabled){background:#eef1f7;color:#3478bd}.ds-command:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}.ds-command:disabled{background:#f5f5f3;color:#666b70;cursor:default}"
+    },
+    {
+      "name": "单行字段",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "参数和字段名称的紧凑输入。",
+      "html": "<label class=\"ds-field\">字段名称<input placeholder=\"输入字段名称\" aria-label=\"字段名称\" /></label>",
+      "css": ".ds-field{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-field{display:flex;flex-direction:column;gap:6px;max-width:260px;color:#666b70;font-size:12px;line-height:20px}.ds-field input{height:30px;min-width:0;padding:4px 8px;border:1px solid #e5e6e5;border-radius:7px;background:#fff;color:#242627;caret-color:#3478bd;font-family:inherit;font-size:13px;line-height:20px}.ds-field input::placeholder{color:#666b70;opacity:1}.ds-field input:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}.ds-field input:disabled{background:#f5f5f3;color:#666b70}"
+    },
+    {
+      "name": "项目 Dock",
+      "kind": "nav",
+      "refersTo": "dock-item",
+      "description": "项目打开后出现的六项主导航。",
+      "html": "<nav class=\"ds-dock\" aria-label=\"项目工作\"><button><svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 5h16v14H4zM9 5v14M15 5v14\"/></svg><span>项目总览</span></button><button><svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7h7l2 2h9v11H3zM3 7V4h7l2 3\"/></svg><span>造价档案</span></button><button><svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 7l8-4 8 4v10l-8 4-8-4zM4 7l8 4 8-4M12 11v10\"/></svg><span>模型配置</span></button><button><svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 5h16v14H4zM4 10h16M10 10v9\"/></svg><span>工作台</span></button><button aria-current=\"page\"><svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3h12v18H6zM9 7h6M9 11h1m4 0h1M9 15h1m4 0h1\"/></svg><span>计算台</span></button><button><svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7h7l2 2h9v11H3zM3 7V4h7l2 3\"/></svg><span>附件库</span></button></nav>",
+      "css": ".ds-dock{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-dock{display:flex;flex-direction:column;gap:5px;width:68px;box-sizing:border-box;padding:6px 5px 12px;background:#f2f3f4;border-right:1px solid #e3e6e9}.ds-dock button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:55px;padding:7px 2px;border:0;border-radius:8px;background:transparent;color:#626b70;font-family:inherit;font-size:10px;line-height:15px;white-space:nowrap;cursor:pointer;transition:background-color 120ms,color 120ms,box-shadow 120ms}.ds-dock button:hover{background:#e7eaed;color:#252a2c}.ds-dock button[aria-current=page]{background:#e4e8ec;color:#242a2c;font-weight:600}.ds-dock button:active{background:#dce2e8;box-shadow:inset 0 1px 3px #26324710}.ds-dock button:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}"
+    },
+    {
+      "name": "共享工作表条",
+      "kind": "nav",
+      "refersTo": "worksheet-tab-selected",
+      "description": "业务与计算工作表使用同一组件语言。",
+      "html": "<div class=\"ds-worksheets\"><div role=\"tablist\" aria-label=\"示例工作表\"><button role=\"tab\" aria-selected=\"true\">示例工作表一</button><button role=\"tab\" aria-selected=\"false\">示例工作表二</button></div><button><svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>新建工作表</button><button>重命名</button></div>",
+      "css": ".ds-worksheets{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-worksheets{display:flex;align-items:center;gap:12px;min-height:36px;padding:4px 0;border-top:1px solid #e5e6e5;background:#fafafa}.ds-worksheets>[role=tablist]{display:flex;align-items:center;gap:3px;flex:1;min-width:0;overflow:auto}.ds-worksheets button{display:inline-flex;align-items:center;justify-content:center;gap:5px;flex:none;height:28px;max-width:210px;padding:4px 9px;border:0;border-radius:5px;background:transparent;color:#596168;font-family:inherit;font-size:11px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:background-color 120ms,color 120ms;}.ds-worksheets button:hover{background:#e9ecef;color:#242627}.ds-worksheets button[aria-selected=true]{background:#e7eaee;color:#242627;font-weight:600}.ds-worksheets button:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}"
+    },
+    {
+      "name": "上下文标签",
+      "kind": "chip",
+      "refersTo": "context-chip",
+      "description": "附件或批次语境；预览内容为合成数据。",
+      "html": "<div class=\"ds-context\"><span><strong>示例计算批次</strong><small>已选 2 行</small></span><button aria-label=\"移除示例批次\">移除</button></div>",
+      "css": ".ds-context{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-context{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 8px;border-radius:6px;background:#f5f5f3;color:#242627;font-size:11px;line-height:18px}.ds-context>span{flex:1;min-width:0;overflow-wrap:anywhere}.ds-context strong,.ds-context small{display:block;font-size:10px}.ds-context small{color:#666b70;font-weight:400}.ds-context button{height:26px;padding:3px 6px;border:1px solid #e5e6e5;border-radius:7px;background:#fff;color:#242627;font-family:inherit;font-size:10px;cursor:pointer;transition:background-color 120ms,color 120ms;}.ds-context button:hover{background:#eeefed}.ds-context button:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}"
+    },
+    {
+      "name": "中性摘要带",
+      "kind": "card",
+      "refersTo": "summary-band",
+      "description": "当前数据摘要的合成预览，正式初始状态不注入示例数据。",
+      "html": "<div class=\"ds-summary\"><section><span>待核对收方</span><strong>0<small> 条</small></strong></section><section><span>项目档案</span><strong>0<small> 个项目</small></strong></section><section><span>计算留存</span><strong>0<small> 条记录</small></strong></section></div>",
+      "css": ".ds-summary{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-summary{display:grid;grid-template-columns:1fr 1fr 1fr;padding:18px 0;border-radius:12px;background:#fff;color:#242627}.ds-summary section{min-width:0;padding:0 24px}.ds-summary section+section{border-left:1px solid #e5e6e5}.ds-summary span{font-size:12px;color:#666b70}.ds-summary strong{display:block;margin-top:10px;font-size:27px;font-weight:600;line-height:34px;letter-spacing:-.035em;font-variant-numeric:tabular-nums}.ds-summary small{font-size:12px;font-weight:400;letter-spacing:0}"
+    },
+    {
+      "name": "连续工作表",
+      "kind": "custom",
+      "refersTo": "working-sheet",
+      "description": "合成数据展示两期价格、紧凑行和细分隔。",
+      "html": "<div class=\"ds-sheet\"><table><thead><tr><th>#</th><th>事项 / 部位</th><th>基准期铜价</th><th>施工期铜价</th></tr></thead><tbody><tr><td>1</td><td>示例回路</td><td><input aria-label=\"示例基准期铜价\" value=\"68740\" /></td><td><input aria-label=\"示例施工期铜价\" value=\"83500\" /></td></tr><tr aria-selected=\"true\"><td>2</td><td>示例支线</td><td>68740</td><td>83500</td></tr></tbody></table></div>",
+      "css": ".ds-sheet{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-sheet{overflow:auto;border:0;border-top:1px solid #e5e6e5;background:#fff;color:#242627;scrollbar-width:thin}.ds-sheet table{border-collapse:collapse;width:100%;min-width:420px;font-size:12px;line-height:18px;font-variant-numeric:tabular-nums}.ds-sheet th{height:38px;padding:0 8px;background:#f7f7f5;color:#666b70;border-right:1px solid #e5e6e5;border-bottom:1px solid #e5e6e5;text-align:left;font-weight:600}.ds-sheet td{height:32px;padding:0 8px;border-right:1px solid #ebedeb;border-bottom:1px solid #ebedeb}.ds-sheet td:first-child,.ds-sheet th:first-child{text-align:center}.ds-sheet td:nth-child(n+3){text-align:right}.ds-sheet tr[aria-selected=true]{background:#f5f8fb}.ds-sheet tbody tr:hover:not([aria-selected=true]){background:#fafafa}.ds-sheet input{height:30px;width:86px;max-width:100%;padding:4px 0;border:0;border-radius:0;background:transparent;color:#242627;caret-color:#3478bd;font-family:inherit;font-size:13px;line-height:20px;font-variant-numeric:tabular-nums;text-align:right}.ds-sheet input:focus{background:#fff;outline:1px solid #6495c7;outline-offset:-1px}.ds-sheet ::selection{background:#d9e8f7;color:#203c57}"
+    },
+    {
+      "name": "锚定帮助",
+      "kind": "custom",
+      "refersTo": "help-popover",
+      "description": "静态展开预览；产品使用 Radix Portal 和真实工作区碰撞边界。",
+      "html": "<div class=\"ds-help\"><button aria-label=\"工作表说明\"><svg aria-hidden=\"true\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM9.5 9a2.5 2.5 0 1 1 4 2c-1 .5-1.5 1-1.5 2M12 16h.01\"/></svg></button><aside role=\"note\">工作表分别保存记录、参数、字段与格式。修改后需要保存。</aside></div>",
+      "css": ".ds-help{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-help{display:flex;align-items:flex-start;gap:7px;max-width:100%;color:#666b70}.ds-help>button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;padding:3px;border:0;border-radius:4px;background:transparent;color:inherit;cursor:pointer}.ds-help>button:hover{background:#eeefed;color:#242627}.ds-help>button:focus-visible{outline:2px solid #6495c7;outline-offset:1px;}.ds-help>aside{width:280px;max-width:100%;max-height:260px;overflow:auto;padding:12px 14px;border:1px solid #e1e4df;border-radius:8px;background:#fff;color:#303537;box-shadow:0 8px 24px #2426271c;font-size:12px;line-height:1.7;white-space:normal;overflow-wrap:anywhere}"
+    },
+    {
+      "name": "助手输入区",
+      "kind": "custom",
+      "refersTo": "assistant-compose",
+      "description": "右侧助手保留作用范围、草稿输入和发送操作。",
+      "html": "<section class=\"ds-compose\"><div>当前项目 · 已选范围</div><label><span>向项目助手提问</span><textarea placeholder=\"输入需要核对的问题…\" aria-label=\"向项目助手提问\"></textarea></label><footer><small>使用当前范围</small><button>发送</button></footer></section>",
+      "css": ".ds-compose{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;}.ds-compose{width:400px;max-width:100%;box-sizing:border-box;padding:8px 12px;border-top:1px solid #e5e6e5;background:#fff;color:#242627}.ds-compose>div{margin-bottom:6px;color:#666b70;font-size:11px;line-height:18px}.ds-compose label>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.ds-compose textarea{display:block;width:100%;height:64px;min-height:48px;max-height:120px;resize:vertical;padding:8px 10px;border:1px solid #e5e6e5;border-radius:7px;background:#fff;color:#242627;caret-color:#3478bd;font-family:inherit;font-size:13px;line-height:20px}.ds-compose textarea::placeholder{color:#666b70}.ds-compose footer{display:flex;align-items:center;gap:8px;margin-top:6px}.ds-compose small{margin-right:auto;font-size:10px;color:#666b70}.ds-compose button{height:28px;padding:4px 9px;border:1px solid #242627;border-radius:7px;background:#242627;color:#fff;font-family:inherit;font-size:11px;cursor:pointer;transition:background-color 120ms,color 120ms;}.ds-compose button:hover{background:#3b3e3f;border-color:#3b3e3f}.ds-compose :is(button,textarea):focus-visible{outline:2px solid #6495c7;outline-offset:1px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "安静的工程桌面",
+    "overview": "以中性浅灰画布、白色工作面和石墨色动作构成安静的工程桌面。项目身份清楚，数字与记录占据主要视野，克制蓝色只帮助定位数据、选区与焦点。层次来自文字、留白和细分隔，操作控件保持熟悉、紧凑、可发现。\n\n视觉方向结合用户选定的 Payvora 仪表盘与 Notion、macOS 操作习惯，使用本项目自己的组件和业务内容。首页先呈现项目入口，用户明确打开项目后才出现左侧 Dock 与页面子标签；业务页以连续表格为中心，参数、说明和 AI 对话按需展开。",
+    "keyCharacteristics": [
+      "中性灰白色面与石墨主操作，少量蓝色强调数据。",
+      "项目身份、主功能 Dock、页面子标签各自分工。",
+      "连续白色工作表、共享工作表标签与平实的相邻明细区。",
+      "右侧助手默认保持侧栏，用户可主动展开阅读。"
+    ],
+    "rules": [
+      {
+        "name": "The Quiet Action Rule",
+        "body": "石墨色承载主要动作；蓝色用于数据定位、选择与焦点。状态必须同时具有文字或控件形态，不能只靠颜色。",
+        "section": "colors"
+      },
+      {
+        "name": "The Data Type Rule",
+        "body": "正文与操作使用系统无衬线；金额和参数使用等宽数字。等宽字体只用于代码或需要逐字符核对的公式，不作为页面风格。",
+        "section": "typography"
+      },
+      {
+        "name": "The Continuous Surface Rule",
+        "body": "固定工作表和相邻侧栏使用连续色面与一条分隔；只有脱离文档流的临时面板需要浮动阴影。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do 让项目名称与当前任务明确可见，主功能放在左侧 Dock，子功能放在页面顶部。",
+      "Do 使用共享的 WorksheetTabs 组件组织业务与计算工作表，保留各表独立的记录、参数、字段和格式。",
+      "Do 维持 32px 数据行、居中序号和可发现的横向滚动；核对两期铜价及当前作用范围。",
+      "Do 让格式操作只改变格式，清楚显示单元格、行或列的作用范围；取消拖动不提交格式。",
+      "Do 将说明挂在中性问号图标旁，用跟随触发器且能避让边界的浮层展示。",
+      "Do 默认使用右侧 AI 侧栏，保留会话、草稿和作用范围，再由用户主动展开阅读。",
+      "Do 让正式插件从空项目列表开始；文档与测试示例明确使用合成数据。",
+      "Do 让表格编辑、拖选和滚动立即响应，把短动效留给临时面板。"
+    ],
+    "donts": [
+      "Don't 在首页预选项目、显示项目选择器或项目 Dock。",
+      "Don't 用大面积黄色、紫色、绿色或高饱和撞色组织工作台。",
+      "Don't 用嵌套卡片、重复边框、重复标题或重复快捷任务挤占工作表。",
+      "Don't 在助手打开时默认展开阅读，也不要在多个栏重复同一组快捷任务。",
+      "Don't 让帮助浮层假定插件位于宿主视口原点。",
+      "Don't 以黑色空模型视图、失效查看控件或内置演示工程填充正式初始状态。",
+      "Don't 为格式变化、单元格编辑或表格滚动加入进出场动画。",
+      "Don't 把项目内的计算记录提升为 Dock 主功能，或把公用材料价格与设置混入项目子标签。"
+    ]
+  }
+}

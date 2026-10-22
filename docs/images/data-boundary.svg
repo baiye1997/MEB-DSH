@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 540" role="img" aria-labelledby="title desc">
+  <title id="title">MEB 项目资料与本机工具</title>
+  <desc id="desc">项目台账与计算保存在本机，修改建议需人工确认，DWG 解析使用单独安装的本机工具。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f8fc"/><stop offset="1" stop-color="#e8f0f8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#48647f" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1500" height="540" rx="26" fill="url(#bg)"/>
+  <text x="70" y="72" fill="#173553" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="27" font-weight="700">项目资料，放在一起核对</text>
+  <text x="70" y="106" fill="#66809b" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15">台账、计算依据和图纸按项目关联；助手建议核对后采用，最后保存。</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="154" width="860" height="310" rx="22" fill="#fff" stroke="#cadbea" stroke-width="2"/>
+    <rect x="96" y="180" width="808" height="258" rx="18" fill="#edf5fc" stroke="#c4d9eb" stroke-dasharray="8 8"/>
+    <text x="126" y="218" fill="#2865b0" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" font-weight="700">DSH Desktop · 当前项目</text>
+    <rect x="126" y="246" width="218" height="142" rx="16" fill="#173b63"/><text x="154" y="286" fill="#e8f5ff" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700">MEB 工作台</text><text x="154" y="316" fill="#a8c5df" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13">台账 · 计算 · 图纸</text><text x="154" y="342" fill="#a8c5df" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13">核对后采用 · 随时撤销</text>
+    <rect x="374" y="246" width="218" height="142" rx="16" fill="#e3f4eb" stroke="#a6d9bc"/><text x="402" y="286" fill="#226b45" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700">本机存储</text><text x="402" y="316" fill="#4e8266" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13">保存更改 · 导出备份</text><text x="402" y="342" fill="#4e8266" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13">可选 WebDAV 同步</text>
+    <rect x="622" y="246" width="252" height="142" rx="16" fill="#fff1dc" stroke="#f1ca88"/><text x="650" y="286" fill="#8b5d16" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700">DSH 项目助手</text><text x="650" y="316" fill="#9d7a3e" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13">按项目查询 · 核对依据</text><text x="650" y="342" fill="#9d7a3e" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13">修改建议需人工采用</text>
+    <path d="M344 317h30m218 0h30" stroke="#6a99bf" stroke-width="3" stroke-linecap="round"/><path d="M360 306l14 11-14 11M608 306l14 11-14 11" fill="none" stroke="#6a99bf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1000" y="154" width="430" height="310" rx="22" fill="#10243d"/>
+    <text x="1040" y="218" fill="#f1f8ff" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700">DWG 工具 · 按需安装</text>
+    <circle cx="1046" cy="270" r="7" fill="#65c5ff"/><text x="1070" y="276" fill="#b5d2ea" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14">LibreDWG · dwg2dxf</text>
+    <circle cx="1046" cy="314" r="7" fill="#65c5ff"/><text x="1070" y="320" fill="#b5d2ea" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14">Python · ezdxf</text>
+    <circle cx="1046" cy="358" r="7" fill="#f5c76d"/><text x="1070" y="364" fill="#b5d2ea" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14">缺少工具时显示配置说明</text>
+    <text x="1040" y="414" fill="#7598b8" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12">台账与工程计算无需安装这些工具</text>
+  </g>
+</svg>

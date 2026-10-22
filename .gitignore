@@ -1,0 +1,26 @@
+.DS_Store
+**/node_modules/
+**/*.log
+**/.env
+**/.env.*
+!**/.env.example
+**/*.db
+**/*.db-*
+**/*.sqlite*
+**/exports/
+workbench/lib/
+workbench/test-fixtures/roundtrip-backup.json
+# Real project documents and generated previews stay outside this repository.
+tests/
+
+# Local host acceptance backups may contain project data.
+/_accept/
+
+# Local visual acceptance artifacts
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/live/
+.impeccable/*.local.json
+
+.impeccable/hook.cache.json
