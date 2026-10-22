@@ -31,24 +31,26 @@ function tasksFor(data){
  if(data.ledger==='output'&&data.page==='table')return [['核对产值口径','这批产值的口径有没有混？'],['整理待核事项','还有哪些产值资料要补？']];
  return [['核对缺项','这批记录哪里还需要核实？'],['梳理下一步','下一步先补什么？']];
 }
-export default function DSHAssistant({ctx,project,context,reviewPage,onClose,onProposal,onModelProposal,modelReviewRequest,assistantWidth=400,resizing=false,onResizeStart,onResizeMove,onResizeEnd,onResizeKeyDown,visible=true,expanded=false,onExpand,draftCache}){
+export default function DSHAssistant({ctx,project,context,reviewPage,onClose,onProposal,onModelProposal,modelReviewRequest,onReviewRequestSettled,assistantWidth=400,resizing=false,onResizeStart,onResizeMove,onResizeEnd,onResizeKeyDown,visible=true,expanded=false,onExpand,draftCache}){
  const storageKey='meb-dsh-session:'+project.id,sessionsKey='meb-dsh-sessions:'+project.id;
  const [projectChats,setProjectChats]=useState(()=>projectSessions(project.id));
  const [sessionId,setSessionId]=useState(()=>{try{return localStorage.getItem(storageKey)||projectChats[0]?.id||'';}catch{return projectChats[0]?.id||'';}});
- const [draft,setDraft]=useState(()=>draftCache?.get(project.id)?.draft||''),[scopeMode,setScopeMode]=useState(()=>draftCache?.get(project.id)?.scopeMode||'auto'),[busy,setBusy]=useState(false),[error,setError]=useState(''),[receipt,setReceipt]=useState('');
+ const initialDraft=useRef(draftCache?.get(project.id));
+ const [draft,setDraft]=useState(()=>initialDraft.current?.draft||''),[scopeMode,setScopeMode]=useState(()=>initialDraft.current?.scopeMode||'auto'),[busy,setBusy]=useState(false),[error,setError]=useState(''),[receipt,setReceipt]=useState('');
  // Unsent text belongs to its project, including after returning home or switching projects.
  // Keep this in memory only; it is not part of project backups or model context until sent.
- useEffect(()=>{draftCache?.set(project.id,{draft,scopeMode});},[draft,scopeMode,project.id,draftCache]);
+ useEffect(()=>{draftCache?.set(project.id,{draft,scopeMode,reviewRequestId:modelReviewRequest?.sent?null:modelReviewRequest?.id});},[draft,scopeMode,project.id,draftCache,modelReviewRequest?.id,modelReviewRequest?.sent]);
  const [reviewFile,setReviewFile]=useState(null),[relatedFiles,setRelatedFiles]=useState([]),[reviewImages,setReviewImages]=useState([]),[uploadProgress,setUploadProgress]=useState(null);
  const [batch,setBatch]=useState(null),[chatQuery,setChatQuery]=useState('');
- const transcript=useRef(null),follow=useRef(true),input=useRef(null),uploadedReceipts=useRef(new WeakMap());
+ const transcript=useRef(null),follow=useRef(true),input=useRef(null),uploadedReceipts=useRef(new WeakMap()),reviewRequestId=useRef();
+ reviewRequestId.current=modelReviewRequest?.id;
  const list=useFeed(ctx.sessions?.list,emptyList),binding=sessionId?ctx.sessions?.binding(sessionId):null;
  const session=useFeed(binding?.session,emptySession),events=useFeed(binding?.eventSource,emptyEvents);
  const messages=sessionMessages(events.entries),available=!!ctx.sessions,data=JSON.parse(context),scope=assistantScope(context,scopeMode);
  const subject=data.page==='calculator'?'当前计算表':data.page==='materials'?'材料价格库':data.page==='table'?ledgerNames[data.ledger]:'项目资料';
  const tasks=tasksFor(data);
  const emptyTable=data.page==='table'&&data.visibleRows===0;
- useEffect(()=>{if(modelReviewRequest?.id){uploadedReceipts.current=new WeakMap();setDraft(modelReviewRequest.text);setReviewFile(modelReviewRequest.file||null);setRelatedFiles(modelReviewRequest.relatedFiles||[]);setReviewImages(modelReviewRequest.visualFiles||[]);setUploadProgress(null);setReceipt('图纸已准备好，发送后由 DSH 核对。识别建议需要你复核后采用。');}},[modelReviewRequest?.id]);
+ useEffect(()=>{if(modelReviewRequest?.id&&!modelReviewRequest.sent){uploadedReceipts.current=new WeakMap();setDraft(initialDraft.current?.reviewRequestId===modelReviewRequest.id?initialDraft.current.draft:modelReviewRequest.text);setReviewFile(modelReviewRequest.file||null);setRelatedFiles(modelReviewRequest.relatedFiles||[]);setReviewImages(modelReviewRequest.visualFiles||[]);setUploadProgress(null);setReceipt('图纸已准备好，发送后由 DSH 核对。识别建议需要你复核后采用。');}},[modelReviewRequest?.id]);
  useEffect(()=>{try{if(sessionId&&list.byId[sessionId])ctx.sessions.open(sessionId);}catch(e){setError(e.message);}},[sessionId,list.byId[sessionId]?.id]);
  useEffect(()=>{if(follow.current&&transcript.current)transcript.current.scrollTop=transcript.current.scrollHeight;},[events,session.pendingSubmissions,session.queue]);
  function selectChat(id){if(id===sessionId)return;setBatch(null);setSessionId(id);setReceipt('已切换会话；待发送的问题仍保留。');setError('');try{localStorage.setItem(storageKey,id);}catch{setError('已切换会话，但未能记住选择；刷新后请重新选择。');}}
@@ -72,7 +74,7 @@ export default function DSHAssistant({ctx,project,context,reviewPage,onClose,onP
  }
  async function send(){
   if(!draft.trim()||!available||busy)return;
-  const submitted=draft,file=reviewFile,related=relatedFiles,images=reviewImages;
+  const submitted=draft,file=reviewFile,related=relatedFiles,images=reviewImages,requestId=modelReviewRequest?.id;
   setBusy(true);setError('');setReceipt('');follow.current=true;
   try{
    if(file&&submitted.trim().startsWith('/'))throw Error('请先完成图纸核对，再单独发送 DSH 指令。');
@@ -93,7 +95,8 @@ export default function DSHAssistant({ctx,project,context,reviewPage,onClose,onP
     }else{await submitPrompt(target.binding.session,workbenchPrompt(submitted,context,scopeMode!=='none'&&!file,scope.snapshot),parts);setBatch(null);}
    }
    if(draftCache?.get(project.id)?.draft===submitted)draftCache.set(project.id,{...draftCache.get(project.id),draft:''});
-   uploadedReceipts.current=new WeakMap();setDraft(current=>current===submitted?'':current);setReviewFile(null);setRelatedFiles([]);setReviewImages([]);setUploadProgress(null);
+   onReviewRequestSettled?.(requestId,'sent');
+   if(reviewRequestId.current===requestId){uploadedReceipts.current=new WeakMap();setDraft(current=>current===submitted?'':current);setReviewFile(null);setRelatedFiles([]);setReviewImages([]);setUploadProgress(null);}
    setReceipt(submitted.trim().startsWith('/')?'指令已交给 DSH，处理过程可在完整会话查看。':'已发送给 DSH。');
   }catch(e){setUploadProgress(null);setError('未发送，问题已保留。'+e.message);}finally{setBusy(false);}
  }
@@ -119,7 +122,7 @@ export default function DSHAssistant({ctx,project,context,reviewPage,onClose,onP
     {session.promptError&&<p role="alert">消息未能处理：{session.promptError.error?.message}</p>}
    </div>
    <div className="assistant-compose">
-    {reviewFile?<div className="assistant-file-chip"><span><strong>本次核对图纸</strong>{reviewFile.name}{relatedFiles.length>0?`，另有 ${relatedFiles.length} 张关联图纸`:''}{reviewImages.length>0?`、${reviewImages.length} 张审图图片`:''}<small>{uploadProgress?.label||'发送后保存在本项目的 DSH 会话中。'}</small></span><button type="button" disabled={busy} onClick={()=>{setReviewFile(null);setRelatedFiles([]);setReviewImages([]);setDraft('');setReceipt('');}}>取消识图</button></div>:<div className="assistant-scope-card"><div className="assistant-scope"><span>核对范围</span><UISelect aria-label="DSH 可以使用的资料" disabled={busy} value={scopeMode} onChange={e=>setScopeMode(e.target.value)}><option value="auto">{scopeMode==='auto'?scope.label:'自动选择合适范围'}</option><option value="view">发送当前记录</option><option value="none">只问方法，不带项目资料</option></UISelect></div><HelpNote label="核对范围说明" side="up">{scope.detail}</HelpNote></div>}
+    {reviewFile?<div className="assistant-file-chip"><span><strong>本次核对图纸</strong>{reviewFile.name}{relatedFiles.length>0?`，另有 ${relatedFiles.length} 张关联图纸`:''}{reviewImages.length>0?`、${reviewImages.length} 张审图图片`:''}<small>{uploadProgress?.label||'发送后保存在本项目的 DSH 会话中。'}</small></span><button type="button" disabled={busy} onClick={()=>{setReviewFile(null);setRelatedFiles([]);setReviewImages([]);setDraft('');setReceipt('');onReviewRequestSettled?.(modelReviewRequest?.id,'cancelled');}}>取消识图</button></div>:<div className="assistant-scope-card"><div className="assistant-scope"><span>核对范围</span><UISelect aria-label="DSH 可以使用的资料" disabled={busy} value={scopeMode} onChange={e=>setScopeMode(e.target.value)}><option value="auto">{scopeMode==='auto'?scope.label:'自动选择合适范围'}</option><option value="view">发送当前记录</option><option value="none">只问方法，不带项目资料</option></UISelect></div><HelpNote label="核对范围说明" side="up">{scope.detail}</HelpNote></div>}
     {!batch&&!reviewFile&&scopeMode!=='none'&&scope.partial&&<p className="assistant-scope-warning" role="status">{reviewPage&&['table','materials'].includes(data.page)&&data.omittedAfter>0?`共 ${data.visibleRows} 条记录，将分批发送；每批回复后可继续下一批。`:`本次仅附带 ${scope.attached} 条记录，部分内容未包含。请缩小范围分批核对。`}{data.clippedFields>0?' 部分长文字已截短，需另行核实原记录。':''}</p>}
     {batch&&<section className="assistant-batch" aria-label="分批核对进度"><strong>{batch.label} · 已发送 {batch.sent} / {batch.total} 条</strong><HelpNote label="分批核对说明" side="up">沿用首次发送的资料和问题。发送进度不代表核对完成；跨批重复项需汇总核实。</HelpNote>{batch.next!==null?<button type="button" disabled={busy||session.running||!!session.pendingSubmissions?.length||!!session.queue?.length} onClick={continueBatch}>继续下一批</button>:<span>本次范围已全部发送，请查看 DSH 的核对结论。</span>}<button type="button" disabled={busy} onClick={()=>{setBatch(null);setReceipt('已结束分批发送，已有回复保留。');}}>结束本次分批</button></section>}
     {messages.length>0&&!reviewFile&&<details className="assistant-shortcuts"><summary>常用核对</summary>{quickTasks}</details>}

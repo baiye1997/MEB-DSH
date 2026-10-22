@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {parseTSV} from './business.js';
+import {parseTSV,assertPasteCapacity} from './business.js';
 const value=z.string().max(20000);
 export const customDefinition=z.object({id:z.string().min(1).max(100),name:z.string().min(1).max(100),formula:z.string().min(1).max(2000),unit:z.string().min(1).max(20),precision:z.number().int().min(0).max(8),note:z.string().max(2000).default(''),variables:z.array(z.object({id:z.string().min(1).max(100),name:z.string().min(1).max(30),unit:z.string().max(20),fixed:z.boolean(),value:z.string().max(100)})).max(30)});
 export const customSheet=customDefinition.extend({rows:z.array(z.object({id:z.string().min(1).max(100),name:z.string().max(200),values:z.record(z.string(),z.string().max(100)),note:z.string().max(2000).default('')})).max(20000)});
@@ -42,6 +42,7 @@ export function customSnapshot(project,rule,row){
 export function pasteCustomRows(rule,rowId,key,text,visibleRows=rule.rows){
  const keys=['name',...rule.variables.filter(v=>!v.fixed).map(v=>v.id),'note'],start=keys.indexOf(key),index=visibleRows.findIndex(r=>r.id===rowId),matrix=parseTSV(text);
  if(start<0||index<0||!matrix.length)throw Error('请重新选择粘贴位置');if(matrix.some(r=>r.length>keys.length-start))throw Error('粘贴列数超出当前输入区域；结果列由公式计算');
+ assertPasteCapacity(rule.rows.length,visibleRows.length-index,matrix.length);
  const rows=structuredClone(rule.rows),byId=new Map(rows.map(r=>[r.id,r]));
  for(const [i,cells] of matrix.entries()){let row=byId.get(visibleRows[index+i]?.id);if(!row){row={id:crypto.randomUUID(),name:'',values:{},note:''};rows.push(row);}for(const [j,v] of cells.entries()){const field=keys[start+j];if(field==='name'||field==='note')row[field]=v;else row.values[field]=v.trim().replace(/[，,]/g,'');}}
  if(rows.length>20000)throw Error('每张计算表最多20000行');return rows;

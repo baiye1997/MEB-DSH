@@ -1,7 +1,7 @@
 // Isolated browser acceptance. All workbench requests are handled by the fixture.
 import {build} from 'esbuild';
 import {createServer} from 'node:http';
-const result=await build({entryPoints:['test-fixtures/assistant-acceptance.jsx'],bundle:true,write:false,format:'iife',loader:{'.css':'text','.html':'text'}});
+const result=await build({entryPoints:[process.env.MEB_ACCEPTANCE_ENTRY||'test-fixtures/assistant-acceptance.jsx'],bundle:true,write:false,format:'iife',loader:{'.css':'text','.html':'text'}});
 const script=result.outputFiles[0].contents;
 const page='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MEB 隔离验收</title><style>html,body,#root{height:100%;overflow:hidden}body{margin:0}</style><div id="root"></div><script src="/app.js"></script></html>';
 const port=Number(process.env.MEB_ACCEPTANCE_PORT||4187);

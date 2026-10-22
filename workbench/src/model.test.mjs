@@ -2,7 +2,30 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {claimDailyIntro} from './daily-intro-state.js';
 test('daily intro runs once per local day',()=>{const values=new Map(),storage={getItem:key=>values.get(key),setItem:(key,value)=>values.set(key,value)};assert.equal(claimDailyIntro(storage,new Date(2040,0,1)),true);assert.equal(claimDailyIntro(storage,new Date(2040,0,1)),false);assert.equal(claimDailyIntro(storage,new Date(2040,0,2)),true);});
-import {makeDwgReviewRequest,makeDwgReferenceRequest,extractDwgReviewSuggestion,sharedPlanCandidateNumbers} from './dwg-assistant.js';
+import {makeDwgReviewRequest,makeDwgReferenceRequest,extractDwgReviewSuggestion,sharedPlanCandidateNumbers,settleDwgReviewRequest} from './dwg-assistant.js';
+test('settled drawing requests retain verification evidence and cannot clear a newer request',()=>{
+ const request={id:'review-a',sourceSha256:'a'.repeat(64),allowedNumbers:[1],file:{name:'synthetic.dwg'},text:'核对图纸',parsedEvidence:new Map([[1,['模拟图题']]])};
+ const sent=settleDwgReviewRequest(request,'review-a','sent');
+ assert.equal(sent.sent,true);assert.equal(sent.file,null);assert.equal(sent.text,'');assert.equal(request.sent,undefined);
+ const suggestion=extractDwgReviewSuggestion('```meb-model-review\n'+JSON.stringify({sourceSha256:request.sourceSha256,candidateNumbers:[1]})+'\n```',sent);
+ assert.deepEqual(suggestion.candidateNumbers,[1]);assert.equal(sent.parsedEvidence,request.parsedEvidence);
+ assert.equal(settleDwgReviewRequest(request,'review-old','sent'),request);
+ assert.equal(settleDwgReviewRequest(request,'review-old','cancelled'),request);
+ assert.equal(settleDwgReviewRequest(request,'review-a','cancelled'),null);
+});
+import {assertPasteCapacity} from './business.js';
+test('paste row limits count only appended rows and reject overflowing rectangles before mutation',()=>{
+ const columns=[{id:'description',name:'内容',type:'text'}],rows=Array.from({length:20000},(_,i)=>({id:'r'+i,cells:{description:'original'}})),book={columns,rows};
+ pasteCells(book,rows,columns,'r0','description',[['one'],['two']],'receipt');
+ assert.equal(book.rows.length,20000);assert.equal(rows[0].cells.description,'one');
+ assert.throws(()=>pasteCells(book,[rows.at(-1)],columns,'r19999','description',[['blocked'],['overflow']],'receipt'),/20000/);
+ assert.equal(rows.at(-1).cells.description,'original');
+ assert.doesNotThrow(()=>assertPasteCapacity(20000,2,2));assert.throws(()=>assertPasteCapacity(20000,1,2),/20000/);
+ const sheet={params:{},rows:Array.from({length:20000},(_,i)=>({...newCalculationRow(),id:'c'+i}))};
+ assert.throws(()=>pasteCalculationRows(sheet,'c19999','name','blocked\noverflow','cable'),/20000/);
+ assert.equal(sheet.rows.length,20000);assert.equal(sheet.rows.at(-1).name,'');
+ assert.equal(pasteCalculationRows(sheet,'c0','name','one\ntwo','cable').sheet.rows[1].name,'two');
+});
 import {presentDshResponse,assistantScope,responseForCopy,replyForClipboard,sentMessageScope,mebAssistantSystemPrompt} from './dsh-response.js';
 import {splitModelBuilding} from './model-split.js';
 import {blankProject,validate,decimal,display,difference,pasteRows,columns,MAX_DOCUMENT_BYTES} from './model.js';
@@ -12,12 +35,23 @@ test('import and validation preserve original on error',()=>{const d=initial();c
 test('reject cross project attachment and negative quantities without reason',()=>{const d=initial();d.projects[0].rows=[{id:'test',cells:{reported:'-1'},files:[],notes:''}];assert.throws(()=>validate(d),/填写说明/);d.projects[0].rows[0].cells={};d.projects[0].rows[0].files=['missing'];assert.throws(()=>validate(d),/附件不存在/);});
 import {ledgerBook,allRows,normalizeDate} from './model.js';
 import {calculate,defaults} from './calculations.js';
+import {referenceInputs} from '../test-fixtures/workspace.mjs';
+test('missing saved copper prices cannot fall back to reference workbook examples',()=>{
+ for(const kind of ['cable','bus']){
+  assert.equal(defaults(kind).base,'');assert.equal(defaults(kind).current,'');assert.equal(defaults(kind).length,'');
+  const sheet={params:{},rows:[]},row={...newCalculationRow(),specification:kind==='cable'?'YJV-3×4':'50×3×1+50×1.5×1',length:'10'};
+  assert.throws(()=>resolveCalculation(kind,sheet,row),/基准铜价/);
+  sheet.params.base='100';assert.throws(()=>resolveCalculation(kind,sheet,row),/施工月均铜价/);
+  sheet.params.current='110';assert(Number.isFinite(resolveCalculation(kind,sheet,row).result.value));
+ }
+ assert.equal(defaults('support').length,'');
+});
 test('backward-compatible ledgers isolate columns, records and validate attachments',()=>{const old=initial();const d=validate(old);const p=d.projects[0];ledgerBook(p,'contract').rows.push({id:'contract',cells:{title:'合同',reported:'100'},files:[],notes:''});assert.equal(p.rows.length,0);assert.equal(allRows(p).length,1);assert.equal(validate(d).projects[0].ledgers.contract.rows[0].cells.reported,'100');ledgerBook(p,'contract').rows[0].files=['missing'];assert.throws(()=>validate(d),/附件不存在/);});
 test('date import supports common Chinese Excel text and rejects invalid calendar dates',()=>{assert.equal(normalizeDate('2026/9/1'),'2026-09-01');assert.equal(normalizeDate('2026年9月1日'),'2026-09-01');const d=initial();d.projects[0].rows=pasteRows([['a','2026-02-30']],columns);assert.throws(()=>validate(d),/日期/);});
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-7,`${a} != ${b}`);
-test('calculations reconcile with original workbook cached cells',()=>{near(calculate('cable',defaults('cable')).value,23792.90728944);near(calculate('bus',defaults('bus'),'section').value,13402.4463027);near(calculate('bus',{...defaults('bus'),current:'105740'},'direct').value,13575.780946);near(calculate('support',defaults('support'),'frame').value,754.047919);near(calculate('support',{...defaults('support'),width:'100',height:'100',length:'206.13',rods:'1',steelWeight:'1.373'},'single').value,128.1468984);});
-test('adjustment thresholds, decreases and invalid inputs',()=>{const v={...defaults('cable'),base:'100',threshold:'3'};for(const current of ['97','100','103'])near(calculate('cable',{...v,current}).value,0);near(calculate('cable',{...v,current:'90'}).value,-.6793548*7);assert.throws(()=>calculate('cable',{...v,n1:'1.5'}),/整数/);assert.throws(()=>calculate('cable',{...v,length:''}),/长度/);assert.throws(()=>calculate('support',{...defaults('support'),spacing:'0'}),/大于/);});
-test('overflow results cannot enter a ledger',()=>{assert.throws(()=>calculate('support',{...defaults('support'),length:'1e308',beam:'1e308'}),/超出范围/);assert.throws(()=>calculate('cable',{...defaults('cable'),length:'1e308'}),/超出范围/);});
+test('calculations reconcile with original workbook cached cells',()=>{near(calculate('cable',referenceInputs('cable')).value,23792.90728944);near(calculate('bus',referenceInputs('bus'),'section').value,13402.4463027);near(calculate('bus',{...referenceInputs('bus'),current:'105740'},'direct').value,13575.780946);near(calculate('support',referenceInputs('support'),'frame').value,754.047919);near(calculate('support',{...referenceInputs('support'),width:'100',height:'100',length:'206.13',rods:'1',steelWeight:'1.373'},'single').value,128.1468984);});
+test('adjustment thresholds, decreases and invalid inputs',()=>{const v={...referenceInputs('cable'),base:'100',threshold:'3'};for(const current of ['97','100','103'])near(calculate('cable',{...v,current}).value,0);near(calculate('cable',{...v,current:'90'}).value,-.6793548*7);assert.throws(()=>calculate('cable',{...v,n1:'1.5'}),/整数/);assert.throws(()=>calculate('cable',{...v,length:''}),/长度/);assert.throws(()=>calculate('support',{...referenceInputs('support'),spacing:'0'}),/大于/);});
+test('overflow results cannot enter a ledger',()=>{assert.throws(()=>calculate('support',{...referenceInputs('support'),length:'1e308',beam:'1e308'}),/超出范围/);assert.throws(()=>calculate('cable',{...referenceInputs('cable'),length:'1e308'}),/超出范围/);});
 import {pasteCalculationRows,emptySheet,newCalculationRow,resolveCalculation,snapshotRecord} from './calculation-sheet.js';
 test('project calculation sheet parses specs, snapshots and keeps original inputs',()=>{
  const d=initial(),p=d.projects[0],s=emptySheet('cable');s.params.base='68740';s.params.current='105825';const r={...newCalculationRow(),specification:'YJV-3×400',length:'63.61'};s.rows.push(r);p.calculationSheets={cable:s};

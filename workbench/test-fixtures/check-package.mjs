@@ -16,5 +16,10 @@ const lock=JSON.parse(await readFile(new URL('../package-lock.json',import.meta.
 assert.equal(lock.version,manifest.version,'lockfile version must match the package');
 assert.equal(lock.packages[''].version,manifest.version,'lockfile root version must match the package');
 assert([...paths].every(path=>!/__pycache__|\.pyc$/.test(path)),'npm package contains Python cache files');
-for(const file of ['lib/client.js','lib/index.js','lib/model-embed.html']){const source=await readFile(new URL('../'+file,import.meta.url),'utf8');for(const marker of ['示例校园','示例楼栋 A','demo-project-','model-viewer/sample-model.json'])assert(!source.includes(marker),'runtime must not bundle example project data: '+file);}
+for(const file of [...paths].filter(path=>/\.(?:js|html|py|json|md)$/.test(path))){
+ const source=await readFile(new URL('../'+file,import.meta.url),'utf8');
+ assert(!/\/Users\/|\/home\/|[A-Z]:\\Users\\/.test(source),'package contains a personal build path: '+file);
+ assert(!/(?:gh[pousr]_[A-Za-z0-9]{24,}|github_pat_[A-Za-z0-9_]{40,}|sk-[A-Za-z0-9]{24,})/.test(source),'package contains a credential-like value: '+file);
+ for(const marker of ['示例校园','示例楼栋 A','demo-project-','model-viewer/sample-model.json','referenceInputs'])assert(!source.includes(marker),'package must not bundle example project data: '+file);
+}
 console.log(`Package ${packed.name}@${packed.version}: ${paths.size} files`);

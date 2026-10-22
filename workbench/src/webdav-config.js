@@ -1,13 +1,14 @@
 import {mkdir,readFile,writeFile,rename,rm} from 'node:fs/promises';
 import {homedir} from 'node:os';
-import {join} from 'node:path';
+import {join,resolve} from 'node:path';
 import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {webDavUrl} from './webdav-sync.js';
 
-const dir=join(homedir(),'.dsh'),file=join(dir,'meb-webdav-sync.json');
+const defaultDir=resolve(homedir(),'.dsh'),dir=resolve(process.env.DSH_HOME||defaultDir),file=join(dir,'meb-webdav-sync.json');
 const service='meb-workbench-webdav';
-const account=(url,username)=>createHash('sha256').update(url+'\0'+username).digest('hex');
+// Retain existing default-home credentials; isolated homes must not share or delete them.
+export const webDavCredentialAccount=(url,username,directory=dir)=>createHash('sha256').update(url+'\0'+username+(resolve(directory)===defaultDir?'':'\0'+resolve(directory))).digest('hex');
 
 function keychain(args,input){
  return new Promise((resolve,reject)=>{
@@ -32,7 +33,7 @@ export async function loadWebDavSettings(){
   if(!value?.url||!value?.username)return null;
   value.url=webDavUrl(value.url);
   if(process.platform!=='darwin')throw Error('当前版本的自动同步凭据存储需要 macOS 钥匙串');
-  const password=await keychain(['find-generic-password','-a',account(value.url,value.username),'-s',service,'-w']);
+  const password=await keychain(['find-generic-password','-a',webDavCredentialAccount(value.url,value.username),'-s',service,'-w']);
   return {...value,password};
  }catch(e){if(e.code==='ENOENT')return null;throw e;}
 }
@@ -41,7 +42,7 @@ export async function saveWebDavSettings({url,username,password},previous){
  url=webDavUrl(url);
  if(typeof username!=='string'||!username.trim()||/[:\r\n]/.test(username)||typeof password!=='string'||!password||/[\r\n]/.test(password))throw Error('请填写有效的 WebDAV 用户名和应用密码');
  if(process.platform!=='darwin')throw Error('当前版本的自动同步凭据存储需要 macOS 钥匙串');
- const id=account(url,username);
+ const id=webDavCredentialAccount(url,username);
  await keychain(['add-generic-password','-a',id,'-s',service,'-U','-w'],password+'\n'+password+'\n');
  const value={url,username,baseHash:previous?.url===url&&previous?.username===username?previous.baseHash:null};
  await writeSettings(value);
@@ -49,11 +50,11 @@ export async function saveWebDavSettings({url,username,password},previous){
 }
 
 export async function updateWebDavBase(settings,hash){
- settings.baseHash=hash;
  await writeSettings({url:settings.url,username:settings.username,baseHash:hash});
+ settings.baseHash=hash;
 }
 
 export async function removeWebDavSettings(settings){
  await rm(file,{force:true});
- if(settings&&process.platform==='darwin')try{await keychain(['delete-generic-password','-a',account(settings.url,settings.username),'-s',service]);}catch{}
+ if(settings&&process.platform==='darwin')try{await keychain(['delete-generic-password','-a',webDavCredentialAccount(settings.url,settings.username),'-s',service]);}catch{}
 }

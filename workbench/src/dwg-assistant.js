@@ -1,5 +1,13 @@
 const MAX_REVIEW_CANDIDATES=80;
 
+// Keep sent evidence available for proposal validation without rehydrating its composer.
+export function settleDwgReviewRequest(request,id,status){
+ if(!id||request?.id!==id)return request;
+ if(status==='cancelled')return null;
+ if(status==='sent')return {...request,sent:true,file:null,relatedFiles:[],visualFiles:[],text:''};
+ return request;
+}
+
 function footprintKey(drawing,candidate){
  if(!candidate.points?.length)return null;
  const xs=candidate.points.map(p=>p[0]+(drawing.origin?.[0]||0)),ys=candidate.points.map(p=>p[1]+(drawing.origin?.[1]||0));

@@ -1,4 +1,4 @@
-import {parseTSV} from './business.js';
+import {parseTSV,assertPasteCapacity} from './business.js';
 import {defaults,calculate,specs} from './calculations.js';
 import {customSummary} from './custom-calculation.js';
 export const formulaVersion='2026-09-21.1';
@@ -10,6 +10,7 @@ export function pasteCalculationRows(sheet,rowId,key,text,kind){
  if(start<0||index<0)throw Error('粘贴位置已变化，请重新选择单元格');
  if(!matrix.length)throw Error('剪贴板没有可写入的内容');
  if(matrix.some(row=>row.length>keys.length-start))throw Error(`从当前列最多可粘贴 ${keys.length-start} 列，请只复制当前表格可编辑的数据列`);
+ assertPasteCapacity(sheet.rows.length,sheet.rows.length-index,matrix.length);
  const next=structuredClone(sheet);
  for(const [i,cells] of matrix.entries()){
   const row=next.rows[index+i]||(next.rows[index+i]=newCalculationRow());

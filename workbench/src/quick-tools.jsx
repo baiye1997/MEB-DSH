@@ -2,12 +2,12 @@ import SheetTable from './sheet-table.jsx';
 import UIIcon from './ui-icon.jsx';
 import React,{useState,useEffect} from 'react';
 import {quickSpecs,quickResult} from './quick-tools.js';
-import {parseTSV,toTSV,businessColumns} from './business.js';
+import {parseTSV,toTSV,businessColumns,assertPasteCapacity} from './business.js';
 export default function QuickTools({project,onChange,busy,onUndo,canUndo,externalKind,assistantOpen=false,onInspectorOpen,onInspectorChange}){
  const [kind,setKind]=useState(externalKind||'price'),[notice,setNotice]=useState(''),spec=quickSpecs[kind],rows=(project.quickTools||[]).filter(r=>r.cells.kind===kind);
  useEffect(()=>{if(externalKind)setKind(externalKind);},[externalKind]);
  const keys=['title',...spec.fields.map(f=>f[0]),'result','source'];
- function paste(e,row,key){const text=e.clipboardData.getData('text');if(!/[\t\n]/.test(text))return;e.preventDefault();try{const matrix=parseTSV(text),start=keys.indexOf(key),ri=rows.findIndex(r=>r.id===row.id);if(matrix.some(a=>a.length>keys.length-start))throw Error('粘贴列数超出当前工具字段');onChange(p=>matrix.forEach((a,i)=>{let target=rows[ri+i]?p.quickTools.find(r=>r.id===rows[ri+i].id):null;if(!target){target={id:crypto.randomUUID(),cells:{kind},files:[],notes:''};p.quickTools.push(target);}a.forEach((v,j)=>{if(keys[start+j]!=='result')target.cells[keys[start+j]]=['title','source'].includes(keys[start+j])?v:v.replaceAll(',','').replaceAll('，','').trim();});}));setNotice('已粘贴，参数随项目保存');}catch(error){setNotice(error.message);}}
+ function paste(e,row,key){const text=e.clipboardData.getData('text');if(!/[\t\n]/.test(text))return;e.preventDefault();try{const matrix=parseTSV(text),start=keys.indexOf(key),ri=rows.findIndex(r=>r.id===row.id);if(busy)return;if(start<0||ri<0)throw Error('请重新选择粘贴位置');if(matrix.some(a=>a.length>keys.length-start))throw Error('粘贴列数超出当前工具字段');assertPasteCapacity(project.quickTools.length,rows.length-ri,matrix.length);onChange(p=>matrix.forEach((a,i)=>{let target=rows[ri+i]?p.quickTools.find(r=>r.id===rows[ri+i].id):null;if(!target){target={id:crypto.randomUUID(),cells:{kind},files:[],notes:''};p.quickTools.push(target);}a.forEach((v,j)=>{if(keys[start+j]!=='result')target.cells[keys[start+j]]=['title','source'].includes(keys[start+j])?v:v.replaceAll(',','').replaceAll('，','').trim();});}));setNotice('已粘贴，参数随项目保存');}catch(error){setNotice(error.message);}}
  const update=(id,key,value)=>onChange(p=>p.quickTools.find(r=>r.id===id).cells[key]=value);
  const [activeId,setActiveId]=useState(null),[detailOpen,setDetailOpen]=useState(false),[checked,setChecked]=useState([]);
  useEffect(()=>{setChecked([]);setActiveId(null);setDetailOpen(false);},[kind]);

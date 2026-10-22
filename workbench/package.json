@@ -62,7 +62,7 @@
     "setup:cad": "uv venv .venv && uv pip install --python .venv/bin/python -r cad-requirements.txt",
     "build": "node build.mjs",
     "prepare": "npm run build",
-    "test": "node --test src/workspace-updates.test.mjs src/sheet-range.test.mjs src/business-worksheets.test.mjs src/dashboard-summary.test.mjs src/calculation-worksheets.test.mjs src/sheet-format.test.mjs src/model.test.mjs src/ledger-layout.test.mjs src/ledger-filter.test.mjs src/webdav-sync.test.mjs src/ledger-state.test.mjs src/excel-workbook.test.mjs src/excel-import.test.mjs src/excel-import-xls.test.mjs src/dwg-import.test.mjs",
+    "test": "node --test src/webdav-config.test.mjs src/workspace-updates.test.mjs src/sheet-range.test.mjs src/business-worksheets.test.mjs src/dashboard-summary.test.mjs src/calculation-worksheets.test.mjs src/sheet-format.test.mjs src/model.test.mjs src/ledger-layout.test.mjs src/ledger-filter.test.mjs src/webdav-sync.test.mjs src/ledger-state.test.mjs src/excel-workbook.test.mjs src/excel-import.test.mjs src/excel-import-xls.test.mjs src/dwg-import.test.mjs",
     "test:render": "node test-fixtures/check-render.mjs",
     "test:package": "node test-fixtures/check-package.mjs",
     "verify": "npm test && npm run test:render && npm run build && npm run test:package",

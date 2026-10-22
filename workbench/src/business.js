@@ -43,10 +43,11 @@ export function projectAmounts(p){const f=p.finance||{},changes=[...(p.ledgers?.
 export function parseTSV(text){const rows=[];let row=[],cell='',quoted=false;for(let i=0;i<text.length;i++){const ch=text[i];if(ch==='"'&&(quoted||cell==='')){if(quoted&&text[i+1]==='"'){cell+='"';i++;}else quoted=!quoted;}else if(!quoted&&(ch==='\t'||ch==='\n'||ch==='\r')){row.push(cell);cell='';if(ch!=='\t'){rows.push(row);row=[];if(ch==='\r'&&text[i+1]==='\n')i++;}}else cell+=ch;}if(quoted)throw Error('粘贴内容引号不完整');if(cell||row.length){row.push(cell);rows.push(row);}return rows;}
 export const toTSV=matrix=>matrix.map(row=>row.map(v=>/[\t\n\r"]/.test(String(v))?'"'+String(v).replaceAll('"','""')+'"':String(v)).join('\t')).join('\r\n');
 export function approvalValue(text){const v=String(text).trim();if(!v||['无','未签未章','未签字未盖章'].includes(v))return '';if(v==='签字'||v==='已签字')return '签字';if(v==='盖章'||v==='已盖章')return '盖章';if(['签字+盖章','签字,盖章','签字、盖章','已签字已盖章'].includes(v))return '签字+盖章';throw Error('签章填写：签字、盖章、签字+盖章，或留空');}
+export function assertPasteCapacity(total,remaining,incoming){if(total+Math.max(0,incoming-remaining)>20000)throw Error('单表最多 20000 行，请拆分后粘贴');}
 export function pasteCells(book,visibleRows,visibleCols,rowId,columnId,matrix,kind,defaults={}){
  if(!matrix.length)return;const start=visibleRows.findIndex(r=>r.id===rowId),colStart=visibleCols.findIndex(c=>c.id===columnId);if(start<0||colStart<0)throw Error('请先选择粘贴起点');
  if(matrix.some(row=>row.length>visibleCols.length-colStart))throw Error('粘贴列数超出当前可见字段，请展开字段后重试');
- if(book.rows.length+matrix.length>20000)throw Error('单表最多 20000 行');
+ assertPasteCapacity(book.rows.length,visibleRows.length-start,matrix.length);
  matrix.forEach((cells,i)=>{let target=visibleRows[start+i]?book.rows.find(r=>r.id===visibleRows[start+i].id):null;if(!target){target={id:crypto.randomUUID(),cells:{...defaults},files:[],notes:''};book.rows.push(target);}cells.forEach((value,j)=>{const c=visibleCols[colStart+j];if(c.type==='computed')return;let v=String(value);if(c.type==='number')v=v.trim().replaceAll(',','').replaceAll('，','');if(c.type==='date'){const m=v.trim().match(/^(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})日?$/);if(m)v=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;}if(c.type==='approval')v=approvalValue(v);setLedgerCell(target,c.id,v);});});
 }
 
