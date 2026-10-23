@@ -1,30 +1,16 @@
 # MEB-DSH
 
-<div align="center">
-
 ### 工程造价人的 DSH 工作台
 
 台账、计算、图纸与项目助手，在同一个项目里核对。
 
-<p>
-  <a href="https://www.npmjs.com/package/meb-workbench"><img src="https://img.shields.io/npm/v/meb-workbench?label=npm&amp;color=2563eb" alt="npm 版本"></a>
-  <a href="https://github.com/baiye1997/MEB-DSH/blob/main/LICENSE"><img src="https://img.shields.io/github/license/baiye1997/MEB-DSH" alt="开源协议"></a>
-  <a href="https://github.com/baiye1997/MEB-DSH/actions/workflows/verify.yml"><img src="https://img.shields.io/github/actions/workflow/status/baiye1997/MEB-DSH/verify.yml?label=verify" alt="构建检查"></a>
-</p>
+[![npm 版本](https://img.shields.io/npm/v/meb-workbench?label=npm&color=2563eb)](https://www.npmjs.com/package/meb-workbench)
+[![开源协议](https://img.shields.io/github/license/baiye1997/MEB-DSH)](https://github.com/baiye1997/MEB-DSH/blob/main/LICENSE)
+[![构建检查](https://img.shields.io/github/actions/workflow/status/baiye1997/MEB-DSH/verify.yml?label=verify)](https://github.com/baiye1997/MEB-DSH/actions/workflows/verify.yml)
 
-<p>
-  <a href="#安装">安装</a> ·
-  <a href="#快速上手">快速上手</a> ·
-  <a href="https://github.com/baiye1997/MEB-DSH/blob/main/docs/usage.md">使用手册</a> ·
-  <a href="https://www.npmjs.com/package/meb-workbench?activeTab=versions">npm 版本</a> ·
-  <a href="https://github.com/baiye1997/MEB-DSH/issues">问题反馈</a>
-</p>
+[安装](#安装) · [快速上手](#快速上手) · [使用手册](https://github.com/baiye1997/MEB-DSH/blob/main/docs/usage.md) · [npm 版本](https://www.npmjs.com/package/meb-workbench?activeTab=versions) · [问题反馈](https://github.com/baiye1997/MEB-DSH/issues)
 
-</div>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/workspace-overview.jpg" alt="MEB 项目工作台实际界面，使用合成演示数据" width="100%">
-</p>
+![MEB 项目工作台实际界面，使用合成演示数据](https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/workspace-overview.jpg)
 
 MEB 是运行在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 桌面端的工程造价工作台。按项目整理台账、保留计算依据，对照 CAD 图纸核对数量，再让 DSH 助手基于当前项目继续工作。
 
@@ -43,13 +29,9 @@ MEB 是运行在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harn
 
 以下为 0.1.4 的实际截图，全部使用合成演示数据。首次安装为空工作区，不内置示例项目、模型或工程资料。
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/workspace-ledger.jpg" alt="收方台账使用连续表格、格式工具栏与独立工作表" width="100%">
-</p>
+![收方台账使用连续表格、格式工具栏与独立工作表](https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/workspace-ledger.jpg)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/workspace-calculator.jpg" alt="计算台支持多选批量设置、两期铜价编辑与独立工作表" width="100%">
-</p>
+![计算台支持多选批量设置、两期铜价编辑与独立工作表](https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/workspace-calculator.jpg)
 
 ## 安装
 
@@ -64,9 +46,7 @@ MEB 是运行在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harn
 meb-workbench@0.1.4
 ```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/dsh-install.svg" alt="安装步骤：打开添加插件、输入 meb-workbench、安装并打开工作台" width="100%">
-</p>
+![安装步骤：打开添加插件、输入 meb-workbench、安装并打开工作台](https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/dsh-install.svg)
 
 当前推荐固定安装 `meb-workbench@0.1.4`。刚发布的版本在部分 DSH / pnpm 环境中有等待期，仅填写包名可能安装到旧版。镜像源暂未同步时，可在「安装源」中选择 npm 官方源；已发布版本见 [npm 版本列表](https://www.npmjs.com/package/meb-workbench?activeTab=versions)。
 
@@ -109,9 +89,7 @@ github:baiye1997/MEB-DSH#main&path:workbench
 
 ## 使用与数据
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/data-boundary.svg" alt="项目工作台、本机保存、DSH 项目助手与可选 CAD 工具" width="100%">
-</p>
+![项目工作台、本机保存、DSH 项目助手与可选 CAD 工具](https://raw.githubusercontent.com/baiye1997/MEB-DSH/main/docs/images/data-boundary.svg)
 
 - **先核对，再保存。** 助手建议需确认后才进入编辑区；可撤销，点击「保存更改」后才保存到项目。
 - **数据保存在本机。** 项目、台账和模型由 DSH 保存；可导出备份。发送给 DSH 助手的资料会进入对应项目会话。
